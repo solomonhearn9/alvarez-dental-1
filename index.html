@@ -1,0 +1,1274 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvarez Dental Group, LLC - Bright Smiles, Gentle Care</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dhyana:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alerta:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+    <style>
+        /*
+        STYLE GUIDE
+        ===========
+        Primary Blue: #2BA5E8
+        Dark Background: #0a0a0a
+        White Text: #ffffff
+        
+        Typography:
+        - Headings: Sans-serif (Arial, Helvetica)
+        - Body: Sans-serif
+        
+        Breakpoint: 768px (mobile to desktop)
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 14px 0 6px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            min-height: 80px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 12px;
+            padding-top: 2px;
+            padding-bottom: 1px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            color: #212529;
+            margin-top: -3px;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 0.98;
+            margin: 0;
+            padding: 0;
+            font-family: 'Dhyana', sans-serif;
+            color: #212529;
+        }
+
+        .logo-text h1:first-child {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 0.98;
+        }
+
+        .logo-text h1:nth-child(2) {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 0.98;
+        }
+
+        .logo-text p {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+            line-height: 0.98;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+            flex: 1;
+            justify-content: center;
+            padding: 0 40px;
+            margin-left: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: #212529;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            font-family: 'Encode Sans Expanded', sans-serif;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #2BA5E8;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: #2BA5E8;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .active {
+            color: #007bff;
+        }
+
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #ffffff;
+            min-width: 240px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            border-radius: 4px;
+            overflow: hidden;
+            z-index: 1000;
+        }
+
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 20px;
+        }
+
+        .dropdown-menu a {
+            color: #212529;
+            padding: 12px 20px;
+            display: block;
+            text-decoration: none;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .dropdown-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-menu a::after {
+            display: none;
+        }
+
+        .dropdown-menu a:hover {
+            background-color: #2BA5E8;
+            color: #ffffff;
+            transform: translateX(5px);
+            padding-left: 25px;
+        }
+
+        .header-cta {
+            display: none;
+            gap: 15px;
+            align-items: center;
+            padding-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .phone-number {
+            color: #2BA5E8;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 400;
+            border: 2px solid #2BA5E8;
+            padding: 0;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #ffffff;
+            min-width: 236px;
+            min-height: 65px;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-number > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .phone-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #2BA5E8;
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .phone-number:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(43, 165, 232, 0.3);
+        }
+
+        .phone-number:hover::before {
+            left: 0;
+        }
+
+        .book-now-header {
+            background-color: #2BA5E8;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Jost', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 0;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 236px;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-now-header::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-10px);
+        }
+
+        .book-now-header:hover {
+            background-color: #1e8dc7;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(43, 165, 232, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .book-now-header:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Mobile Header */
+        .mobile-header-top {
+            display: flex;
+            background-color: #ffffff;
+            padding: 0;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 60px;
+        }
+
+        .mobile-book-now {
+            background-color: #0391DB;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0;
+            border-radius: 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-phone {
+            background-color: #002756;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0;
+            border-radius: 0;
+            flex: 1;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background-color: #2BA5E8;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: calc(100vh - 80px);
+            padding: 0;
+        }
+
+        .hero-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            max-width: 600px;
+            padding: 20px;
+        }
+
+        .mobile-hero-image {
+            display: block;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+
+        .mobile-hero-image img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #ffffff;
+            text-align: center;
+        }
+
+        .hero h2 .bright {
+            color: #2BA5E8;
+            font-family: 'Fuzzy Bubbles', cursive;
+            font-weight: 400;
+        }
+
+        .hero h2 .care {
+            color: #2BA5E8;
+            font-family: 'Fuzzy Bubbles', cursive;
+            font-weight: 400;
+        }
+
+        .trusted-text {
+            font-family: 'Familjen Grotesk', sans-serif;
+            font-size: 18px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .trusted-text .years {
+            color: #2BA5E8;
+            font-weight: 700;
+        }
+
+        .rating-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stars {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .google-icon {
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .google-icon:hover {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .google-icon svg {
+            width: 100%;
+            height: 100%;
+            transition: filter 0.3s ease;
+        }
+
+        .google-icon:hover svg {
+            filter: drop-shadow(0 0 8px rgba(66, 133, 244, 0.6));
+        }
+
+        .star {
+            color: #FDB300;
+            font-size: 32px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .star:hover {
+            transform: scale(1.3) rotate(15deg);
+            filter: drop-shadow(0 0 8px #FDB300);
+        }
+
+        .star.empty {
+            color: #444444;
+        }
+
+        .star-container {
+            position: relative;
+            display: inline-block;
+        }
+
+        .star-container .star-empty {
+            color: #444444;
+        }
+
+        .star-container .star-filled {
+            position: absolute;
+            top: 0;
+            left: 0;
+            color: #FDB300;
+            overflow: hidden;
+        }
+
+        .rating-text {
+            font-family: 'Alerta', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            color: #ffffff;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .book-now-hero {
+            background-color: #2BA5E8;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Jost', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            padding: 18px 50px;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(43, 165, 232, 0.3);
+        }
+
+        .book-now-hero::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s ease, height 0.6s ease;
+        }
+
+        .book-now-hero:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .book-now-hero:hover {
+            background-color: #1e8dc7;
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(43, 165, 232, 0.5);
+            letter-spacing: 3px;
+        }
+
+        .hero-image {
+            display: none;
+            margin-left: auto;
+            max-width: 620px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        /* Lottie Loader (Mobile Only) */
+        .lottie-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.8s ease-out;
+        }
+
+        .lottie-loader.active {
+            display: flex;
+        }
+
+        .lottie-loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .lottie-container {
+            width: 280px;
+            height: 280px;
+            position: relative;
+        }
+
+        .loader-text {
+            position: absolute;
+            bottom: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #2BA5E8;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0.8;
+            white-space: nowrap;
+        }
+
+        /* Hide hero initially on mobile during loader */
+        @media (max-width: 767px) {
+            body.loading .hero,
+            body.loading header,
+            body.loading .mobile-header-top {
+                opacity: 0;
+                visibility: hidden;
+            }
+
+            .lottie-loader {
+                display: none;
+            }
+
+            .lottie-loader.active {
+                display: flex;
+            }
+        }
+
+        /* Desktop - Never show loader */
+        @media (min-width: 768px) {
+            .lottie-loader {
+                display: none !important;
+            }
+        }
+
+        /* Page Load Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInFromLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-60px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInFade {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes popIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                transform: scale(1.1);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Apply animations to hero elements - Desktop only initially */
+        @media (min-width: 768px) {
+            .hero-image {
+                animation: fadeIn 1s ease-out;
+                animation-fill-mode: both;
+            }
+
+            .hero h2 {
+                animation: slideInFromLeft 0.8s ease-out;
+                animation-delay: 0.5s;
+                animation-fill-mode: both;
+            }
+
+            .trusted-text {
+                animation: slideInFade 0.6s ease-out;
+                animation-delay: 1.1s;
+                animation-fill-mode: both;
+            }
+
+            .rating-container {
+                animation: fadeIn 0.8s ease-out;
+                animation-delay: 1.6s;
+                animation-fill-mode: both;
+            }
+
+            .rating-text {
+                animation: fadeIn 0.8s ease-out;
+                animation-delay: 1.8s;
+                animation-fill-mode: both;
+            }
+
+            .book-now-hero {
+                animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                animation-delay: 2.2s;
+                animation-fill-mode: both;
+            }
+        }
+
+        /* Mobile animations - triggered after loader */
+        @media (max-width: 767px) {
+            .mobile-hero-image {
+                opacity: 0;
+            }
+
+            .hero h2 {
+                opacity: 0;
+            }
+
+            .trusted-text {
+                opacity: 0;
+            }
+
+            .rating-container {
+                opacity: 0;
+            }
+
+            .rating-text {
+                opacity: 0;
+            }
+
+            .book-now-hero {
+                opacity: 0;
+            }
+
+            /* Mobile reveal animations */
+            .mobile-hero-image.reveal {
+                animation: fadeIn 1s ease-in;
+                animation-fill-mode: both;
+            }
+
+            .trusted-text.reveal {
+                animation: fadeIn 0.8s ease-out;
+                animation-fill-mode: both;
+            }
+
+            .hero h2.reveal {
+                animation: slideInFromLeft 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                animation-delay: 0.2s;
+                animation-fill-mode: both;
+            }
+
+            .rating-container.reveal {
+                animation: fadeIn 0.8s ease-out;
+                animation-delay: 0.4s;
+                animation-fill-mode: both;
+            }
+
+            .rating-text.reveal {
+                animation: fadeIn 0.8s ease-out;
+                animation-delay: 0.4s;
+                animation-fill-mode: both;
+            }
+
+            .book-now-hero.reveal {
+                animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                animation-delay: 0.7s;
+                animation-fill-mode: both;
+            }
+
+            /* Shimmer effect for Book Now button */
+            @keyframes shimmer {
+                0% {
+                    background-position: -1000px 0;
+                }
+                100% {
+                    background-position: 1000px 0;
+                }
+            }
+
+            .book-now-hero.reveal::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(
+                    90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.3) 50%,
+                    rgba(255, 255, 255, 0) 100%
+                );
+                background-size: 1000px 100%;
+                animation: shimmer 2s ease-in-out 1.2s 1;
+            }
+        }
+
+        /* Mobile Styles - Hide desktop elements */
+        @media (max-width: 767px) {
+            .mobile-hero-image {
+                display: block;
+                transform: scale(0.85);
+                margin-bottom: 8px;
+                margin-top: -20px;
+            }
+
+            .mobile-hero-image img {
+                width: 100%;
+                height: auto;
+            }
+            
+            .hero-image {
+                display: none;
+            }
+            
+            .desktop-nav {
+                display: none;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+            
+            .hamburger {
+                margin-right: 12px;
+            }
+
+            /* Tighter spacing for all hero content */
+            .hero-content {
+                padding: 0 20px;
+                gap: 0;
+            }
+
+            /* Smaller review section for mobile */
+            .rating-container {
+                gap: 10px;
+                margin-bottom: 12px;
+            }
+
+            .google-icon {
+                width: 24px;
+                height: 24px;
+            }
+
+            .star {
+                font-size: 24px;
+            }
+
+            .stars {
+                gap: 3px;
+            }
+
+            .rating-text {
+                font-size: 13px;
+                letter-spacing: 0.5px;
+                margin-bottom: 12px;
+            }
+
+            /* Adjust spacing for reordered elements - tighter */
+            .trusted-text {
+                margin-bottom: 10px;
+                margin-top: -50px;
+            }
+
+            .hero h2 {
+                margin-bottom: 12px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            .mobile-header-top {
+                display: none;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .mobile-hero-image {
+                display: none;
+            }
+
+            header {
+                padding: 14px 0 6px 0;
+                min-height: 80px;
+            }
+
+            .logo-container {
+                padding-left: 12px;
+                padding-top: 2px;
+                padding-bottom: 1px;
+            }
+
+            .header-cta {
+                padding-right: 20px;
+            }
+
+            .desktop-nav {
+                display: flex;
+                padding: 0 40px;
+                margin-left: 20px;
+            }
+
+            .header-cta {
+                display: flex;
+            }
+
+            .hero {
+                flex-direction: row;
+                align-items: center;
+                padding: 30px 80px;
+                min-height: calc(100vh - 80px);
+                gap: 60px;
+                text-align: left;
+            }
+
+            .hero-content {
+                max-width: 700px;
+                align-items: flex-start;
+                text-align: left;
+            }
+
+            .hero h2 {
+                font-size: 72px;
+                margin-bottom: 30px;
+                text-align: left;
+                order: 1;
+            }
+
+            .trusted-text {
+                font-size: 24px;
+                margin-bottom: 40px;
+                text-align: left;
+                order: 2;
+            }
+
+            .rating-text {
+                font-size: 24px;
+                text-align: left;
+                order: 4;
+            }
+
+            .rating-container {
+                justify-content: flex-start;
+                order: 3;
+            }
+
+            .hero-content > div {
+                order: 5;
+            }
+
+            .google-icon {
+                width: 40px;
+                height: 40px;
+            }
+
+            .star {
+                font-size: 36px;
+            }
+
+            .book-now-hero {
+                font-size: 20px;
+                padding: 20px 60px;
+                margin: 0;
+            }
+
+            .hero-image {
+                display: block;
+                flex: 1;
+                max-width: 620px;
+                margin-left: auto;
+                margin-right: -40px;
+                margin-top: -0.25in;
+            }
+
+            .hero-image img {
+                width: 100%;
+                height: auto;
+                border-radius: 8px;
+            }
+
+            .team-photo {
+                width: 100%;
+                height: auto;
+                object-fit: cover;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            header {
+                padding: 14px 0 6px 0;
+                min-height: 80px;
+                max-width: 1400px;
+            }
+
+            .logo-container {
+                padding-left: 12px;
+                padding-top: 2px;
+                padding-bottom: 1px;
+            }
+
+            .header-cta {
+                padding-right: 20px;
+            }
+
+            .desktop-nav {
+                padding: 0 40px;
+                margin-left: 20px;
+            }
+
+            .hero {
+                padding: 40px 120px;
+            }
+
+            .hero-content {
+                max-width: 800px;
+            }
+
+            .hero h2 {
+                font-size: 82px;
+            }
+
+            .hero-image {
+                margin-right: -80px;
+                margin-top: -0.25in;
+            }
+        }
+    </style>
+</head>
+<body class="loading">
+    <!-- Lottie Loader (Mobile Only) -->
+    <div class="lottie-loader active" id="lottieLoader">
+        <div class="lottie-container">
+            <div id="lottieAnimation"></div>
+            <div class="loader-text">Loading</div>
+        </div>
+    </div>
+
+    <!-- Mobile Header Top -->
+    <div class="mobile-header-top">
+        <a href="#book" class="mobile-book-now">BOOK NOW</a>
+        <a href="tel:617-485-1769" class="mobile-phone">
+            <span>📞</span> 617-485-1769
+        </a>
+      </div>
+
+    <!-- Main Header -->
+    <header>
+        <div class="logo-container">
+            <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo" class="logo-image">
+            <div class="logo-text">
+                <h1>Alvarez</h1>
+                <h1>Dental</h1>
+                <p>Group, LLC</p>
+              </div>
+            </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="#home" class="active">HOME</a></li>
+                <li class="dropdown">
+                    <a href="#about">ABOUT ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#our-story">Our Story</a>
+                        <a href="#our-team">Meet Our Team</a>
+                        <a href="#mission">Our Mission & Values</a>
+                        <a href="#testimonials">Patient Testimonials</a>
+                        <a href="#technology">Advanced Technology</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="#services">SERVICES ▾</a>
+                    <div class="dropdown-menu">
+                        <a href="#general">General Dentistry</a>
+                        <a href="#cosmetic">Cosmetic Dentistry</a>
+                        <a href="#orthodontics">Orthodontics</a>
+                        <a href="#implants">Dental Implants</a>
+                        <a href="#emergency">Emergency Care</a>
+                        <a href="#pediatric">Pediatric Dentistry</a>
+                    </div>
+                </li>
+                <li><a href="#contact">CONTACT</a></li>
+                </ul>
+              </nav>
+
+        <div class="header-cta">
+            <a href="tel:617-485-1769" class="phone-number">
+                📞 617-485-1769
+            </a>
+            <a href="#book" class="book-now-header">BOOK NOW</a>
+          </div>
+
+        <!-- Mobile Hamburger -->
+        <div class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+            </div>
+          </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <!-- Mobile Hero Image -->
+        <div class="mobile-hero-image">
+            <img src="hero.png" 
+                 alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
+                 class="team-photo">
+        </div>
+
+        <div class="hero-content">
+            <p class="trusted-text">
+                Trusted by Cambridge Families for <span class="years">20+ Years</span>
+            </p>
+
+            <h2>
+                <span class="bright">Bright</span> Smiles,<br>
+                Gentle <span class="care">Care</span>
+                </h2>
+
+            <div class="rating-container">
+                <div class="google-icon">
+                    <svg viewBox="0 0 48 48">
+                        <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+                        <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+                        <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
+                        <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+                    </svg>
+                </div>
+                <div class="stars">
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="star-container">
+                        <span class="star star-empty">★</span>
+                        <span class="star star-filled" style="width: 80%;">★</span>
+                    </span>
+                </div>
+              </div>
+
+            <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
+
+            <div style="margin-top: 20px;">
+                <a href="#book" class="book-now-hero">BOOK NOW</a>
+            </div>
+                </div>
+
+        <!-- Desktop Hero Image -->
+        <div class="hero-image">
+            <img src="hero.png" 
+                 alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
+                 class="team-photo">
+        </div>
+    </section>
+
+    <script>
+        // Check if mobile view
+        function isMobile() {
+            return window.innerWidth <= 767;
+        }
+
+        // Initialize Lottie loader and hero reveal (Mobile Only)
+        if (isMobile()) {
+            // Load Lottie animation
+            const animation = lottie.loadAnimation({
+                container: document.getElementById('lottieAnimation'),
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                // Using a clean, minimal tooth sparkle animation
+                path: 'https://lottie.host/d7c0c9e3-49f0-4f7e-a8c5-9e0f2e5e6c8f/Z8qG4jKWJH.json'
+            });
+
+            // Set loader duration (1.8 seconds)
+            const loaderDuration = 1800;
+
+            setTimeout(() => {
+                // Fade out the loader
+                const loader = document.getElementById('lottieLoader');
+                loader.classList.add('fade-out');
+
+                // After fade transition, hide loader and reveal hero
+                setTimeout(() => {
+                    loader.style.display = 'none';
+                    document.body.classList.remove('loading');
+
+                    // Trigger hero reveal animations in order
+                    const mobileHeroImage = document.querySelector('.mobile-hero-image');
+                    const trustedText = document.querySelector('.trusted-text');
+                    const heroHeading = document.querySelector('.hero h2');
+                    const ratingContainer = document.querySelector('.rating-container');
+                    const ratingText = document.querySelector('.rating-text');
+                    const bookNowBtn = document.querySelector('.book-now-hero');
+
+                    if (mobileHeroImage) mobileHeroImage.classList.add('reveal');
+                    if (trustedText) trustedText.classList.add('reveal');
+                    if (heroHeading) heroHeading.classList.add('reveal');
+                    if (ratingContainer) ratingContainer.classList.add('reveal');
+                    if (ratingText) ratingText.classList.add('reveal');
+                    if (bookNowBtn) bookNowBtn.classList.add('reveal');
+
+                    // Fade in header elements
+                    const header = document.querySelector('header');
+                    const mobileHeaderTop = document.querySelector('.mobile-header-top');
+                    
+                    if (header) {
+                        header.style.transition = 'opacity 0.6s ease-out';
+                        header.style.opacity = '1';
+                    }
+                    if (mobileHeaderTop) {
+                        mobileHeaderTop.style.transition = 'opacity 0.6s ease-out';
+                        mobileHeaderTop.style.opacity = '1';
+                    }
+                }, 800); // Wait for fade-out transition
+            }, loaderDuration);
+        } else {
+            // Desktop: Remove loading class immediately
+            document.body.classList.remove('loading');
+            const loader = document.getElementById('lottieLoader');
+            if (loader) loader.style.display = 'none';
+        }
+
+        // Handle window resize
+        let resizeTimer;
+        window.addEventListener('resize', () => {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                if (!isMobile()) {
+                    document.body.classList.remove('loading');
+                    const loader = document.getElementById('lottieLoader');
+                    if (loader) loader.style.display = 'none';
+                }
+            }, 250);
+        });
+    </script>
+</body>
+</html>
