@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alerta:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
     <style>
         /*
         STYLE GUIDE
@@ -454,10 +453,17 @@
 
         .rating-container {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 20px;
+        }
+
+        .stars-row {
+            display: flex;
+            align-items: center;
+            gap: 15px;
         }
 
         .stars {
@@ -526,11 +532,15 @@
         .rating-text {
             font-family: 'Alerta', sans-serif;
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 300;
             color: #ffffff;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 1px;
+        }
+
+        .rating-text strong {
+            font-weight: 400;
         }
 
         .book-now-hero {
@@ -584,77 +594,20 @@
             max-width: 620px;
             overflow: hidden;
             border-radius: 8px;
+            transition: transform 0.3s ease;
         }
 
-        /* Lottie Loader (Mobile Only) */
-        .lottie-loader {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
-            display: none;
-            justify-content: center;
-            align-items: center;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.8s ease-out;
+        .hero-image:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 30px rgba(43, 165, 232, 0.3);
         }
 
-        .lottie-loader.active {
-            display: flex;
+        .hero-image img {
+            transition: transform 0.5s ease;
         }
 
-        .lottie-loader.fade-out {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .lottie-container {
-            width: 280px;
-            height: 280px;
-            position: relative;
-        }
-
-        .loader-text {
-            position: absolute;
-            bottom: -50px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #2BA5E8;
-            font-family: 'Jost', sans-serif;
-            font-size: 16px;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            opacity: 0.8;
-            white-space: nowrap;
-        }
-
-        /* Hide hero initially on mobile during loader */
-        @media (max-width: 767px) {
-            body.loading .hero,
-            body.loading header,
-            body.loading .mobile-header-top {
-                opacity: 0;
-                visibility: hidden;
-            }
-
-            .lottie-loader {
-                display: none;
-            }
-
-            .lottie-loader.active {
-                display: flex;
-            }
-        }
-
-        /* Desktop - Never show loader */
-        @media (min-width: 768px) {
-            .lottie-loader {
-                display: none !important;
-            }
+        .hero-image:hover img {
+            transform: scale(1.1);
         }
 
         /* Page Load Animations */
@@ -703,145 +656,46 @@
             }
         }
 
-        /* Apply animations to hero elements - Desktop only initially */
-        @media (min-width: 768px) {
-            .hero-image {
-                animation: fadeIn 1s ease-out;
-                animation-fill-mode: both;
-            }
-
-            .hero h2 {
-                animation: slideInFromLeft 0.8s ease-out;
-                animation-delay: 0.5s;
-                animation-fill-mode: both;
-            }
-
-            .trusted-text {
-                animation: slideInFade 0.6s ease-out;
-                animation-delay: 1.1s;
-                animation-fill-mode: both;
-            }
-
-            .rating-container {
-                animation: fadeIn 0.8s ease-out;
-                animation-delay: 1.6s;
-                animation-fill-mode: both;
-            }
-
-            .rating-text {
-                animation: fadeIn 0.8s ease-out;
-                animation-delay: 1.8s;
-                animation-fill-mode: both;
-            }
-
-            .book-now-hero {
-                animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                animation-delay: 2.2s;
-                animation-fill-mode: both;
-            }
+        /* Apply animations to hero elements */
+        .hero-image {
+            animation: fadeIn 1s ease-out;
+            animation-fill-mode: both;
         }
 
-        /* Mobile animations - triggered after loader */
-        @media (max-width: 767px) {
-            .mobile-hero-image {
-                opacity: 0;
-            }
+        .hero h2 {
+            animation: slideInFromLeft 0.8s ease-out;
+            animation-delay: 0.5s;
+            animation-fill-mode: both;
+        }
 
-            .hero h2 {
-                opacity: 0;
-            }
+        .trusted-text {
+            animation: slideInFade 0.6s ease-out;
+            animation-delay: 1.1s;
+            animation-fill-mode: both;
+        }
 
-            .trusted-text {
-                opacity: 0;
-            }
+        .rating-container {
+            animation: fadeIn 0.8s ease-out;
+            animation-delay: 1.6s;
+            animation-fill-mode: both;
+        }
 
-            .rating-container {
-                opacity: 0;
-            }
+        .rating-text {
+            animation: fadeIn 0.8s ease-out;
+            animation-delay: 1.8s;
+            animation-fill-mode: both;
+        }
 
-            .rating-text {
-                opacity: 0;
-            }
-
-            .book-now-hero {
-                opacity: 0;
-            }
-
-            /* Mobile reveal animations */
-            .mobile-hero-image.reveal {
-                animation: fadeIn 1s ease-in;
-                animation-fill-mode: both;
-            }
-
-            .trusted-text.reveal {
-                animation: fadeIn 0.8s ease-out;
-                animation-fill-mode: both;
-            }
-
-            .hero h2.reveal {
-                animation: slideInFromLeft 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                animation-delay: 0.2s;
-                animation-fill-mode: both;
-            }
-
-            .rating-container.reveal {
-                animation: fadeIn 0.8s ease-out;
-                animation-delay: 0.4s;
-                animation-fill-mode: both;
-            }
-
-            .rating-text.reveal {
-                animation: fadeIn 0.8s ease-out;
-                animation-delay: 0.4s;
-                animation-fill-mode: both;
-            }
-
-            .book-now-hero.reveal {
-                animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-                animation-delay: 0.7s;
-                animation-fill-mode: both;
-            }
-
-            /* Shimmer effect for Book Now button */
-            @keyframes shimmer {
-                0% {
-                    background-position: -1000px 0;
-                }
-                100% {
-                    background-position: 1000px 0;
-                }
-            }
-
-            .book-now-hero.reveal::after {
-                content: '';
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                background: linear-gradient(
-                    90deg,
-                    rgba(255, 255, 255, 0) 0%,
-                    rgba(255, 255, 255, 0.3) 50%,
-                    rgba(255, 255, 255, 0) 100%
-                );
-                background-size: 1000px 100%;
-                animation: shimmer 2s ease-in-out 1.2s 1;
-            }
+        .book-now-hero {
+            animation: popIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            animation-delay: 2.2s;
+            animation-fill-mode: both;
         }
 
         /* Mobile Styles - Hide desktop elements */
         @media (max-width: 767px) {
             .mobile-hero-image {
                 display: block;
-                transform: scale(0.85);
-                margin-bottom: 8px;
-                margin-top: -20px;
-            }
-
-            .mobile-hero-image img {
-                width: 100%;
-                height: auto;
             }
             
             .hero-image {
@@ -858,47 +712,6 @@
             
             .hamburger {
                 margin-right: 12px;
-            }
-
-            /* Tighter spacing for all hero content */
-            .hero-content {
-                padding: 0 20px;
-                gap: 0;
-            }
-
-            /* Smaller review section for mobile */
-            .rating-container {
-                gap: 10px;
-                margin-bottom: 12px;
-            }
-
-            .google-icon {
-                width: 24px;
-                height: 24px;
-            }
-
-            .star {
-                font-size: 24px;
-            }
-
-            .stars {
-                gap: 3px;
-            }
-
-            .rating-text {
-                font-size: 13px;
-                letter-spacing: 0.5px;
-                margin-bottom: 12px;
-            }
-
-            /* Adjust spacing for reordered elements - tighter */
-            .trusted-text {
-                margin-bottom: 10px;
-                margin-top: -50px;
-            }
-
-            .hero h2 {
-                margin-bottom: 12px;
             }
         }
 
@@ -958,31 +771,23 @@
 
             .hero h2 {
                 font-size: 72px;
-                margin-bottom: 30px;
+                margin-bottom: 40px;
                 text-align: left;
-                order: 1;
             }
 
             .trusted-text {
                 font-size: 24px;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
                 text-align: left;
-                order: 2;
             }
 
             .rating-text {
                 font-size: 24px;
                 text-align: left;
-                order: 4;
             }
 
             .rating-container {
-                justify-content: flex-start;
-                order: 3;
-            }
-
-            .hero-content > div {
-                order: 5;
+                align-items: flex-start;
             }
 
             .google-icon {
@@ -1063,15 +868,7 @@
         }
     </style>
 </head>
-<body class="loading">
-    <!-- Lottie Loader (Mobile Only) -->
-    <div class="lottie-loader active" id="lottieLoader">
-        <div class="lottie-container">
-            <div id="lottieAnimation"></div>
-            <div class="loader-text">Loading</div>
-        </div>
-    </div>
-
+<body>
     <!-- Mobile Header Top -->
     <div class="mobile-header-top">
         <a href="#book" class="mobile-book-now">BOOK NOW</a>
@@ -1145,37 +942,38 @@
         </div>
 
         <div class="hero-content">
-            <p class="trusted-text">
-                Trusted by Cambridge Families for <span class="years">20+ Years</span>
-            </p>
-
             <h2>
                 <span class="bright">Bright</span> Smiles,<br>
                 Gentle <span class="care">Care</span>
                 </h2>
 
-            <div class="rating-container">
-                <div class="google-icon">
-                    <svg viewBox="0 0 48 48">
-                        <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
-                        <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
-                        <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
-                        <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
-                    </svg>
-                </div>
-                <div class="stars">
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star">★</span>
-                    <span class="star-container">
-                        <span class="star star-empty">★</span>
-                        <span class="star star-filled" style="width: 80%;">★</span>
-                    </span>
-                </div>
-              </div>
+            <p class="trusted-text">
+                Trusted by Cambridge Families for <span class="years">20+ Years</span>
+            </p>
 
-            <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
+            <div class="rating-container">
+                <div class="stars-row">
+                    <div class="google-icon">
+                        <svg viewBox="0 0 48 48">
+                            <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+                            <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+                            <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
+                            <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+                        </svg>
+                    </div>
+                    <div class="stars">
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star">★</span>
+                        <span class="star-container">
+                            <span class="star star-empty">★</span>
+                            <span class="star star-filled" style="width: 80%;">★</span>
+                        </span>
+                    </div>
+                </div>
+                <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
+              </div>
 
             <div style="margin-top: 20px;">
                 <a href="#book" class="book-now-hero">BOOK NOW</a>
@@ -1189,86 +987,5 @@
                  class="team-photo">
         </div>
     </section>
-
-    <script>
-        // Check if mobile view
-        function isMobile() {
-            return window.innerWidth <= 767;
-        }
-
-        // Initialize Lottie loader and hero reveal (Mobile Only)
-        if (isMobile()) {
-            // Load Lottie animation
-            const animation = lottie.loadAnimation({
-                container: document.getElementById('lottieAnimation'),
-                renderer: 'svg',
-                loop: true,
-                autoplay: true,
-                // Using a clean, minimal tooth sparkle animation
-                path: 'https://lottie.host/d7c0c9e3-49f0-4f7e-a8c5-9e0f2e5e6c8f/Z8qG4jKWJH.json'
-            });
-
-            // Set loader duration (1.8 seconds)
-            const loaderDuration = 1800;
-
-            setTimeout(() => {
-                // Fade out the loader
-                const loader = document.getElementById('lottieLoader');
-                loader.classList.add('fade-out');
-
-                // After fade transition, hide loader and reveal hero
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                    document.body.classList.remove('loading');
-
-                    // Trigger hero reveal animations in order
-                    const mobileHeroImage = document.querySelector('.mobile-hero-image');
-                    const trustedText = document.querySelector('.trusted-text');
-                    const heroHeading = document.querySelector('.hero h2');
-                    const ratingContainer = document.querySelector('.rating-container');
-                    const ratingText = document.querySelector('.rating-text');
-                    const bookNowBtn = document.querySelector('.book-now-hero');
-
-                    if (mobileHeroImage) mobileHeroImage.classList.add('reveal');
-                    if (trustedText) trustedText.classList.add('reveal');
-                    if (heroHeading) heroHeading.classList.add('reveal');
-                    if (ratingContainer) ratingContainer.classList.add('reveal');
-                    if (ratingText) ratingText.classList.add('reveal');
-                    if (bookNowBtn) bookNowBtn.classList.add('reveal');
-
-                    // Fade in header elements
-                    const header = document.querySelector('header');
-                    const mobileHeaderTop = document.querySelector('.mobile-header-top');
-                    
-                    if (header) {
-                        header.style.transition = 'opacity 0.6s ease-out';
-                        header.style.opacity = '1';
-                    }
-                    if (mobileHeaderTop) {
-                        mobileHeaderTop.style.transition = 'opacity 0.6s ease-out';
-                        mobileHeaderTop.style.opacity = '1';
-                    }
-                }, 800); // Wait for fade-out transition
-            }, loaderDuration);
-        } else {
-            // Desktop: Remove loading class immediately
-            document.body.classList.remove('loading');
-            const loader = document.getElementById('lottieLoader');
-            if (loader) loader.style.display = 'none';
-        }
-
-        // Handle window resize
-        let resizeTimer;
-        window.addEventListener('resize', () => {
-            clearTimeout(resizeTimer);
-            resizeTimer = setTimeout(() => {
-                if (!isMobile()) {
-                    document.body.classList.remove('loading');
-                    const loader = document.getElementById('lottieLoader');
-                    if (loader) loader.style.display = 'none';
-                }
-            }, 250);
-        });
-    </script>
 </body>
 </html>
