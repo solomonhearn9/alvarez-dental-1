@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alerta:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /*
         STYLE GUIDE
@@ -34,24 +35,44 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
+        html, body {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Arial', 'Helvetica', sans-serif;
-            background-color: #0a0a0a;
-            color: #ffffff;
+            background-color: #F9F8FF;
+            color: #212529;
         }
 
         /* Header Styles */
         header {
             background-color: #ffffff;
-            padding: 14px 0 6px 0;
+            padding: 10px 0 6px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            position: relative;
-            min-height: 80px;
+            position: fixed;
+            top: 60px;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            min-height: 60px;
             width: 100%;
             max-width: 1400px;
             margin: 0 auto;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
         }
 
         .logo-container {
@@ -63,7 +84,7 @@
             padding-bottom: 1px;
             flex-shrink: 0;
             cursor: pointer;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .logo-container:hover {
@@ -71,8 +92,8 @@
         }
 
         .logo-image {
-            width: 80px;
-            height: 80px;
+            width: 60px;
+            height: 60px;
             object-fit: contain;
         }
 
@@ -82,7 +103,7 @@
         }
 
         .logo-text h1 {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             line-height: 0.98;
             margin: 0;
@@ -92,19 +113,19 @@
         }
 
         .logo-text h1:first-child {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             line-height: 0.98;
         }
 
         .logo-text h1:nth-child(2) {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             line-height: 0.98;
         }
 
         .logo-text p {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: 700;
             margin: 0;
             padding: 0;
@@ -139,7 +160,7 @@
         .nav-links a {
             color: #212529;
             text-decoration: none;
-            font-size: 19px;
+            font-size: 16px;
             font-weight: 400;
             transition: all 0.3s ease;
             font-family: 'Encode Sans Expanded', sans-serif;
@@ -237,7 +258,7 @@
         .phone-number {
             color: #2BA5E8;
             text-decoration: none;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             border: 2px solid #2BA5E8;
             padding: 0;
@@ -245,13 +266,13 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
+            gap: 10px;
             transition: all 0.3s ease;
             font-family: 'Arial', 'Helvetica', sans-serif;
             background-color: #ffffff;
-            min-width: 236px;
-            min-height: 65px;
-            letter-spacing: 2px;
+            min-width: 200px;
+            min-height: 50px;
+            letter-spacing: 1px;
             position: relative;
             overflow: hidden;
         }
@@ -288,15 +309,15 @@
             color: #ffffff;
             text-decoration: none;
             font-family: 'Jost', sans-serif;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
             padding: 0;
             border-radius: 0;
             transition: all 0.3s ease;
             text-transform: uppercase;
             letter-spacing: 1px;
-            min-width: 236px;
-            min-height: 65px;
+            min-width: 200px;
+            min-height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -307,7 +328,7 @@
         .book-now-header::after {
             content: '→';
             position: absolute;
-            right: 20px;
+            right: 15px;
             opacity: 0;
             transition: all 0.3s ease;
             transform: translateX(-10px);
@@ -333,6 +354,19 @@
             justify-content: space-between;
             align-items: stretch;
             height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1002;
+            width: 100%;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-header-top.hidden {
+            transform: translateY(-100%);
+            opacity: 0;
         }
 
         .mobile-book-now {
@@ -375,6 +409,8 @@
             background-color: #2BA5E8;
             padding: 10px;
             border-radius: 4px;
+            position: relative;
+            z-index: 1004;
         }
 
         .hamburger span {
@@ -382,16 +418,160 @@
             height: 3px;
             background-color: #ffffff;
             border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 1003;
+            display: none;
+            opacity: 0;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .mobile-nav.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .mobile-nav-logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .mobile-nav-logo-text {
+            color: #ffffff;
+            font-family: 'Dhyana', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .mobile-nav-close {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .mobile-nav-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-links li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover,
+        .mobile-nav-links a.active {
+            color: #2BA5E8;
+            background-color: rgba(43, 165, 232, 0.1);
+        }
+
+        .mobile-nav-links a.active {
+            color: #2BA5E8;
+        }
+
+        .nav-arrow {
+            font-size: 14px;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover .nav-arrow {
+            transform: translateX(3px);
+        }
+
+        .mobile-nav-contact {
+            padding: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin-top: 20px;
+        }
+
+        .mobile-nav-contact h3 {
+            color: #ffffff;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .mobile-nav-contact p {
+            color: #ffffff;
+            font-size: 14px;
+            margin-bottom: 8px;
+            line-height: 1.4;
+        }
+
+        .mobile-nav-contact a {
+            color: #2BA5E8;
+            text-decoration: none;
         }
 
         /* Hero Section */
         .hero {
-            background-color: #0a0a0a;
-            color: #ffffff;
+            background-color: #F9F8FF;
+            color: #212529;
             display: flex;
             flex-direction: column;
-            min-height: calc(100vh - 80px);
-            padding: 0;
+            min-height: 100vh;
+            padding: 120px 0 0 0;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
         }
 
         .hero-content {
@@ -403,25 +583,29 @@
             text-align: center;
             max-width: 600px;
             padding: 20px;
+            margin-top: -40px;
         }
 
         .mobile-hero-image {
             display: block;
             width: 100%;
             margin-bottom: 20px;
+            margin-top: 40px;
+            padding: 0 30px;
         }
 
         .mobile-hero-image img {
             width: 100%;
             height: auto;
             object-fit: cover;
+            border-radius: 12px;
         }
 
         .hero h2 {
             font-size: 48px;
             line-height: 1.2;
             margin-bottom: 20px;
-            color: #ffffff;
+            color: #212529;
             text-align: center;
         }
 
@@ -441,7 +625,7 @@
             font-family: 'Familjen Grotesk', sans-serif;
             font-size: 18px;
             margin-bottom: 20px;
-            color: #ffffff;
+            color: #212529;
             font-weight: 500;
             text-align: center;
         }
@@ -478,7 +662,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
             cursor: pointer;
         }
 
@@ -533,7 +717,7 @@
             font-family: 'Alerta', sans-serif;
             font-size: 16px;
             font-weight: 300;
-            color: #ffffff;
+            color: #212529;
             text-align: center;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -548,10 +732,11 @@
             color: #ffffff;
             text-decoration: none;
             font-family: 'Jost', sans-serif;
-            font-size: 20px;
+            font-size: 24px;
             font-weight: 700;
-            padding: 18px 50px;
-            border-radius: 4px;
+            padding: 22px 60px;
+            border-radius: 0;
+            border: 2px solid #000000;
             display: inline-block;
             width: fit-content;
             text-transform: uppercase;
@@ -594,7 +779,7 @@
             max-width: 620px;
             overflow: hidden;
             border-radius: 8px;
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
         .hero-image:hover {
@@ -608,6 +793,589 @@
 
         .hero-image:hover img {
             transform: scale(1.1);
+        }
+
+        /* New Sections Styles */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Intro Video Section */
+        .intro-video-section {
+            background-color: #2BA5E8;
+            padding: 60px 0 80px 0;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .intro-video-section h2 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Dhyana', sans-serif;
+            margin-top: -120px;
+        }
+
+        .intro-video-section .subtitle {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .intro-video-section .video-intro {
+            font-size: 18px;
+            margin-bottom: 60px;
+            color: #ffffff;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 300;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        .video-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-placeholder {
+            background-color: #000000;
+            border-radius: 12px;
+            padding: 0;
+            color: #2BA5E8;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: 0 auto;
+            aspect-ratio: 16/9;
+        }
+
+        .video-placeholder iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 12px;
+            display: block;
+        }
+
+        .video-placeholder .youtube-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('team-white.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .video-placeholder .youtube-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 12px;
+        }
+
+        .video-placeholder .youtube-overlay:hover {
+            transform: scale(1.02);
+        }
+
+        .video-placeholder .youtube-overlay:hover::before {
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .video-placeholder .youtube-play-button {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            color: #ff0000;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .video-placeholder .youtube-play-button:hover {
+            background-color: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .play-button {
+            width: 80px;
+            height: 80px;
+            background-color: #2BA5E8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .play-button:hover {
+            background-color: #1e8dc7;
+            transform: scale(1.1);
+        }
+
+        .video-placeholder p {
+            font-size: 18px;
+            margin: 0;
+            color: #666;
+        }
+
+        /* Team Section */
+        .team-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .team-section h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .team-section .subtitle {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .team-gallery {
+            display: flex;
+            gap: 40px;
+            overflow: hidden;
+            padding: 40px 0;
+            scroll-behavior: smooth;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            justify-content: flex-start;
+            position: relative;
+            width: 100%;
+        }
+
+        .team-gallery::-webkit-scrollbar {
+            display: none;
+        }
+
+
+
+        .team-gallery-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            position: relative;
+        }
+
+        .team-member {
+            flex-shrink: 0;
+            text-align: center;
+            width: 320px;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            display: none;
+        }
+
+        .team-member.active {
+            display: block;
+        }
+
+        .team-member:hover {
+            transform: translateY(-15px) scale(1.05);
+        }
+
+        .team-member img {
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 6px solid #2BA5E8;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 8px 25px rgba(43, 165, 232, 0.2);
+            background-color: #2BA5E8;
+            outline: none;
+        }
+
+        .team-member:hover img {
+            border-color: #1e8dc7;
+            box-shadow: 0 15px 40px rgba(43, 165, 232, 0.4);
+            transform: scale(1.1);
+        }
+
+        .team-member h3 {
+            font-size: 24px;
+            margin-bottom: 8px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover h3 {
+            color: #2BA5E8;
+            transform: translateY(-2px);
+        }
+
+        .team-member .role {
+            color: #2BA5E8;
+            font-size: 18px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .team-member:hover .role {
+            color: #1e8dc7;
+            transform: translateY(-2px);
+        }
+
+        .team-member::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            background: linear-gradient(45deg, #2BA5E8, #1e8dc7);
+            border-radius: 50%;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+
+        .team-member:hover::before {
+            opacity: 0.1;
+            transform: scale(1.1);
+        }
+
+        .team-carousel {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        .team-slide {
+            background-color: #f8f9fa;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .team-slide img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 4px solid #2BA5E8;
+        }
+
+        .team-slide h3 {
+            font-size: 28px;
+            margin-bottom: 10px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .team-slide .role {
+            color: #2BA5E8;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .team-slide p {
+            color: #666;
+            line-height: 1.6;
+            font-size: 16px;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: #212529;
+            color: #ffffff;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-nav:hover {
+            background-color: #2BA5E8;
+        }
+
+        .carousel-nav.prev {
+            left: -25px;
+        }
+
+        .carousel-nav.next {
+            right: -25px;
+        }
+
+        /* Services Section */
+        .services-section {
+            background-color: #f8f9fa;
+            padding: 80px 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .services-section h2 {
+            font-size: 48px;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .services-section .subtitle {
+            font-size: 24px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            border: 2px solid transparent;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #2BA5E8;
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: #2BA5E8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #ffffff;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .browse-all-services {
+            text-align: center;
+        }
+
+        .browse-all-services a {
+            color: #2BA5E8;
+            text-decoration: underline;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        /* Location Section */
+        .location-section {
+            background-color: #2BA5E8;
+            padding: 80px 0;
+            text-align: center;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .location-section h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #ffffff;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .location-section .address {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #ffffff;
+        }
+
+        .location-section h3 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #ffffff;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .hours-container {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 40px;
+            max-width: 600px;
+            margin: 0 auto 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .map-container {
+            background-color: #ffffff;
+            border-radius: 0;
+            padding: 0;
+            max-width: 90%;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 600px;
+            border: none;
+            display: block;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #212529;
+            color: #ffffff;
+            padding: 60px 0 20px;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .footer-text h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .footer-text p {
+            color: #2BA5E8;
+            font-size: 14px;
+        }
+
+        .footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .footer-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #2BA5E8;
+        }
+
+        .footer-contact p {
+            font-size: 14px;
+            margin-bottom: 8px;
+            color: #ccc;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #444;
+            padding-top: 20px;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            color: #ccc;
+            font-size: 14px;
         }
 
         /* Page Load Animations */
@@ -713,6 +1481,156 @@
             .hamburger {
                 margin-right: 12px;
             }
+
+            /* Mobile section adjustments */
+            .intro-video-section {
+                padding: 40px 0 60px 0;
+            }
+
+            .intro-video-section h2 {
+                font-size: 32px;
+                font-family: 'Josefin Sans', sans-serif;
+                margin-bottom: 10px;
+                margin-top: -80px;
+            }
+
+            .intro-video-section .subtitle {
+                font-size: 18px;
+                font-family: 'Josefin Sans', sans-serif;
+                margin-bottom: 15px;
+            }
+
+            .intro-video-section .video-intro {
+                font-size: 16px;
+                margin-bottom: 40px;
+                font-family: 'Josefin Sans', sans-serif;
+                max-width: 90%;
+            }
+
+            .team-section h2 {
+                font-size: 36px;
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .team-section .subtitle {
+                font-size: 20px;
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .services-section h2 {
+                font-size: 36px;
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .services-section .subtitle {
+                font-size: 20px;
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .location-section h2 {
+                font-size: 36px;
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .location-section h3 {
+                font-size: 28px;
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .location-section .address {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .team-slide h3 {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .team-slide .role {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .team-slide p {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .service-card h3 {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .service-card p {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .browse-all-services a {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .hours-container p {
+                font-family: 'Josefin Sans', sans-serif;
+            }
+
+            .map-container {
+                max-width: 95%;
+                margin: 20px auto 0 auto;
+            }
+
+            .map-container iframe {
+                height: 500px;
+            }
+
+            .carousel-nav {
+                display: none;
+            }
+
+            .team-carousel {
+                padding: 0 20px;
+            }
+
+            .team-gallery-container {
+                padding: 30px 0;
+            }
+
+            .team-gallery {
+                gap: 30px;
+                padding: 0;
+                overflow: hidden;
+            }
+
+
+            .team-member {
+                width: 280px;
+            }
+
+            .team-member img {
+                width: 220px;
+                height: 220px;
+                background-color: #2BA5E8;
+                outline: none;
+            }
+
+            .team-member h3 {
+                font-size: 20px;
+            }
+
+            .team-member .role {
+                font-size: 16px;
+            }
+
+            /* Ensure full width on mobile */
+            .hero,
+            .intro-video-section,
+            .team-section,
+            .services-section,
+            .location-section,
+            .footer {
+                width: 100vw !important;
+                margin-left: calc(-50vw + 50%) !important;
+            }
+
+            .container {
+                padding: 0 20px;
+                max-width: 100%;
+            }
         }
 
         /* Desktop Styles */
@@ -800,8 +1718,8 @@
             }
 
             .book-now-hero {
-                font-size: 20px;
-                padding: 20px 60px;
+                font-size: 28px;
+                padding: 24px 70px;
                 margin: 0;
             }
 
@@ -871,7 +1789,7 @@
 <body>
     <!-- Mobile Header Top -->
     <div class="mobile-header-top">
-        <a href="#book" class="mobile-book-now">BOOK NOW</a>
+        <a href="book.html" class="mobile-book-now">BOOK NOW</a>
         <a href="tel:617-485-1769" class="mobile-phone">
             <span>📞</span> 617-485-1769
         </a>
@@ -891,29 +1809,10 @@
         <!-- Desktop Navigation -->
         <nav class="desktop-nav">
             <ul class="nav-links">
-                <li><a href="#home" class="active">HOME</a></li>
-                <li class="dropdown">
-                    <a href="#about">ABOUT ▾</a>
-                    <div class="dropdown-menu">
-                        <a href="#our-story">Our Story</a>
-                        <a href="#our-team">Meet Our Team</a>
-                        <a href="#mission">Our Mission & Values</a>
-                        <a href="#testimonials">Patient Testimonials</a>
-                        <a href="#technology">Advanced Technology</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="#services">SERVICES ▾</a>
-                    <div class="dropdown-menu">
-                        <a href="#general">General Dentistry</a>
-                        <a href="#cosmetic">Cosmetic Dentistry</a>
-                        <a href="#orthodontics">Orthodontics</a>
-                        <a href="#implants">Dental Implants</a>
-                        <a href="#emergency">Emergency Care</a>
-                        <a href="#pediatric">Pediatric Dentistry</a>
-                    </div>
-                </li>
-                <li><a href="#contact">CONTACT</a></li>
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
                 </ul>
               </nav>
 
@@ -921,22 +1820,49 @@
             <a href="tel:617-485-1769" class="phone-number">
                 📞 617-485-1769
             </a>
-            <a href="#book" class="book-now-header">BOOK NOW</a>
+            <a href="book.html" class="book-now-header">BOOK NOW</a>
           </div>
 
         <!-- Mobile Hamburger -->
-        <div class="hamburger">
+        <div class="hamburger" id="hamburger">
             <span></span>
             <span></span>
             <span></span>
             </div>
           </header>
 
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <div class="mobile-nav-logo">
+                <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo">
+                <div class="mobile-nav-logo-text">
+                    <div>Alvarez Dental Group, LLC</div>
+                </div>
+            </div>
+            <button class="mobile-nav-close" id="mobileNavClose">CLOSE</button>
+        </div>
+        
+        <ul class="mobile-nav-links">
+            <li><a href="#home" class="active">HOME</a></li>
+            <li><a href="#about">ABOUT <span class="nav-arrow">→</span></a></li>
+            <li><a href="#services">SERVICES <span class="nav-arrow">→</span></a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+        
+        <div class="mobile-nav-contact">
+            <h3>Contact Information</h3>
+            <p>Phone: <a href="tel:617-485-1769">(617)-485-1769</a></p>
+            <p>Email: <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a></p>
+            <p>Address: 403 Cambridge St, Cambridge, MA 02141, United States of America</p>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="hero">
         <!-- Mobile Hero Image -->
         <div class="mobile-hero-image">
-            <img src="hero.png" 
+            <img src="team-white.png" 
                  alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
                  class="team-photo">
         </div>
@@ -975,17 +1901,406 @@
                 <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
               </div>
 
-            <div style="margin-top: 20px;">
-                <a href="#book" class="book-now-hero">BOOK NOW</a>
+            <div style="margin-top: 10px;">
+                <a href="book.html" class="book-now-hero">BOOK NOW</a>
             </div>
                 </div>
 
         <!-- Desktop Hero Image -->
         <div class="hero-image">
-            <img src="hero.png" 
+            <img src="team-white.png" 
                  alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
                  class="team-photo">
         </div>
     </section>
+
+    <!-- Intro Video Section -->
+    <section id="intro-video" class="intro-video-section">
+        <div class="container">
+            <h2>Welcome to Alvarez Dental Group</h2>
+            <div class="subtitle">Dr. Rosario Alvarez & Associates</div>
+            <div class="video-intro">Discover our commitment to providing exceptional dental care with the latest technology and a compassionate approach. Watch our introduction video to learn more about our practice and meet our experienced team.</div>
+            <div class="video-container">
+                <div class="video-placeholder" id="videoContainer">
+                    <div class="youtube-overlay" id="youtubeOverlay">
+                        <div class="youtube-play-button">
+                            ▶
+                        </div>
+                    </div>
+                    <iframe id="youtubeVideo" 
+                            src="" 
+                            title="Alvarez Dental Group Introduction Video" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            style="display: none;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Meet Our Team Section -->
+    <section id="about" class="team-section">
+        <div class="container">
+            <h2>Meet Our Team</h2>
+            <div class="subtitle">Dr. Rosario Alvarez & Associates</div>
+            <div class="team-gallery-container" id="teamGalleryContainer">
+                <div class="team-gallery" id="teamGallery">
+                    <!-- First set of team members -->
+                    <div class="team-member active">
+                        <img src="team-white.png" alt="Dr. Rosario Alvarez">
+                        <h3>Dr. Rosario Alvarez</h3>
+                        <div class="role">Lead Dentist & Founder</div>
+                    </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Dr. Maria Rodriguez">
+                    <h3>Dr. Maria Rodriguez</h3>
+                    <div class="role">Associate Dentist</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Dr. Jennifer Chen">
+                    <h3>Dr. Jennifer Chen</h3>
+                    <div class="role">Orthodontist</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Sarah Johnson">
+                    <h3>Sarah Johnson</h3>
+                    <div class="role">Dental Hygienist</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Lisa Martinez">
+                    <h3>Lisa Martinez</h3>
+                    <div class="role">Dental Assistant</div>
+                </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Amanda Davis">
+                    <h3>Amanda Davis</h3>
+                    <div class="role">Office Manager</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services-section">
+        <div class="container">
+            <h2>Featured Services</h2>
+            <div class="subtitle">Dr. Rosario Alvarez & Associates</div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>General Dentistry</h3>
+                    <p>Complete oral health care including cleanings, exams, fillings, and preventive treatments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Cosmetic Dentistry</h3>
+                    <p>Transform your smile with our cosmetic procedures designed to enhance your appearance.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>Orthodontics</h3>
+                    <p>Straighten your teeth and improve your bite with our modern orthodontic treatments.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Dental Implants</h3>
+                    <p>Replace missing teeth with durable, natural-looking dental implants.</p>
+                </div>
+            </div>
+            <div class="browse-all-services">
+                <a href="services.html">Browse All Services</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section id="contact" class="location-section">
+        <div class="container">
+            <h2>VISIT US</h2>
+            <div class="address">403 Cambridge St, Cambridge, MA 02141</div>
+            <h3>HOURS</h3>
+            <div class="hours-container">
+                <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 3:00 PM</p>
+                <p><strong>Sunday:</strong> Emergency Only</p>
+            </div>
+            <div class="map-container">
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.5!2d-71.1!3d42.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370a8c8b8b8b8%3A0x8b8b8b8b8b8b8b8b!2s403%20Cambridge%20St%2C%20Cambridge%2C%20MA%2002141!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                    allowfullscreen="" 
+                    loading="lazy" 
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo">
+                    <div class="footer-text">
+                        <h3>Alvarez Dental Group, LLC</h3>
+                        <p>Bright Smiles, Gentle Care</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <p>403 Cambridge St, Cambridge, MA 02141</p>
+                    <p>Phone: (617)-485-1769</p>
+                    <p>Email: info@alvarezdental.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alvarez Dental Group, LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll behavior with direction detection
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        const mobileHeaderTop = document.querySelector('.mobile-header-top');
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            // Only hide/show when scrolled past a certain point
+            if (scrollTop > 50) {
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    // Scrolling down - hide headers
+                    header.classList.add('hidden');
+                    if (mobileHeaderTop) {
+                        mobileHeaderTop.classList.add('hidden');
+                    }
+                } else {
+                    // Scrolling up - show headers
+                    header.classList.remove('hidden');
+                    if (mobileHeaderTop) {
+                        mobileHeaderTop.classList.remove('hidden');
+                    }
+                }
+            } else {
+                // When at the top (within 50px), always show headers
+                header.classList.remove('hidden');
+                if (mobileHeaderTop) {
+                    mobileHeaderTop.classList.remove('hidden');
+                }
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Enhanced smooth scrolling for better user experience
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const headerHeight = header.offsetHeight + (mobileHeaderTop ? mobileHeaderTop.offsetHeight : 0);
+                    const targetPosition = target.offsetTop - headerHeight - 20;
+                    
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // YouTube-style video functionality
+        const youtubeOverlay = document.getElementById('youtubeOverlay');
+        const youtubeVideo = document.getElementById('youtubeVideo');
+        
+        if (youtubeOverlay && youtubeVideo) {
+            youtubeOverlay.addEventListener('click', function() {
+                // Replace with your actual YouTube video ID
+                const videoId = 'dQw4w9WgXcQ'; // Example video ID - replace with your actual video
+                youtubeVideo.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1`;
+                youtubeVideo.style.display = 'block';
+                youtubeOverlay.style.display = 'none';
+            });
+        }
+
+        // Team gallery swipe navigation
+        const teamGalleryContainer = document.getElementById('teamGalleryContainer');
+        const teamGallery = document.getElementById('teamGallery');
+        
+        if (teamGalleryContainer && teamGallery) {
+            const teamMembers = teamGallery.querySelectorAll('.team-member');
+            let currentIndex = 0;
+            let startX = 0;
+            let endX = 0;
+            
+            function showMember(index) {
+                // Hide all members
+                teamMembers.forEach(member => member.classList.remove('active'));
+                // Show selected member
+                teamMembers[index].classList.add('active');
+                currentIndex = index;
+            }
+            
+            // Touch events for mobile
+            teamGalleryContainer.addEventListener('touchstart', (e) => {
+                startX = e.touches[0].clientX;
+            });
+            
+            teamGalleryContainer.addEventListener('touchend', (e) => {
+                endX = e.changedTouches[0].clientX;
+                handleSwipe();
+            });
+            
+            // Mouse events for desktop
+            teamGalleryContainer.addEventListener('mousedown', (e) => {
+                startX = e.clientX;
+                e.preventDefault();
+            });
+            
+            teamGalleryContainer.addEventListener('mouseup', (e) => {
+                endX = e.clientX;
+                handleSwipe();
+            });
+            
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = startX - endX;
+                
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0 && currentIndex < teamMembers.length - 1) {
+                        // Swipe left - next member
+                        showMember(currentIndex + 1);
+                    } else if (diff < 0 && currentIndex > 0) {
+                        // Swipe right - previous member
+                        showMember(currentIndex - 1);
+                    }
+                }
+            }
+        }
+
+        // Mobile navigation
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        mobileNavClose.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile nav when clicking outside
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile nav when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                // Close mobile nav
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                
+                // Smooth scroll to section
+                if (targetId.startsWith('#')) {
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Smooth scroll for desktop navigation
+        const desktopNavLinks = document.querySelectorAll('.nav-links a');
+        desktopNavLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                
+                if (targetId.startsWith('#')) {
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Smooth scroll for hero button
+        const heroButton = document.querySelector('.book-now-hero');
+        if (heroButton) {
+            heroButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = document.querySelector('#contact');
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+
+        // Smooth scroll for mobile header buttons
+        const mobileBookNow = document.querySelector('.mobile-book-now');
+        if (mobileBookNow) {
+            mobileBookNow.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = document.querySelector('#contact');
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+
+        // Smooth scroll for desktop header buttons
+        const desktopBookNow = document.querySelector('.book-now-header');
+        if (desktopBookNow) {
+            desktopBookNow.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetSection = document.querySelector('#contact');
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        }
+    </script>
 </body>
 </html>

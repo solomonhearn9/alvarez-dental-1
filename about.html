@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Alvarez Dental Group, LLC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dhyana:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fuzzy+Bubbles:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alerta:wght@400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /*
+        STYLE GUIDE
+        ===========
+        Primary Blue: #2BA5E8
+        Dark Background: #0a0a0a
+        White Text: #ffffff
+        
+        Typography:
+        - Headings: Sans-serif (Arial, Helvetica)
+        - Body: Sans-serif
+        
+        Breakpoint: 768px (mobile to desktop)
+        */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #F9F8FF;
+            color: #212529;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 14px 0 6px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            min-height: 80px;
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
+        }
+
+        header.hidden {
+            transform: translateY(-100%);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding-left: 12px;
+            padding-top: 2px;
+            padding-bottom: 1px;
+            flex-shrink: 0;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo-container:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-image {
+            width: 80px;
+            height: 80px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            color: #212529;
+            margin-top: -3px;
+        }
+
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 0.98;
+            margin: 0;
+            padding: 0;
+            font-family: 'Dhyana', sans-serif;
+            color: #212529;
+        }
+
+        .logo-text h1:first-child {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 0.98;
+        }
+
+        .logo-text h1:nth-child(2) {
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 0.98;
+        }
+
+        .logo-text p {
+            font-size: 24px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+            line-height: 0.98;
+        }
+
+        /* Desktop Navigation */
+        .desktop-nav {
+            display: none;
+            flex: 1;
+            justify-content: center;
+            padding: 0 40px;
+            margin-left: 20px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 50px;
+            list-style: none;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-links li {
+            position: relative;
+        }
+
+        .nav-links a {
+            color: #212529;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 400;
+            transition: all 0.3s ease;
+            font-family: 'Encode Sans Expanded', sans-serif;
+            position: relative;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 50%;
+            background-color: #2BA5E8;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover {
+            color: #2BA5E8;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links .active {
+            color: #2BA5E8;
+        }
+
+        .header-cta {
+            display: none;
+            gap: 15px;
+            align-items: center;
+            padding-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .phone-number {
+            color: #2BA5E8;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 400;
+            border: 2px solid #2BA5E8;
+            padding: 0;
+            border-radius: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #ffffff;
+            min-width: 236px;
+            min-height: 65px;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-number > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .phone-number::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: #2BA5E8;
+            transition: left 0.3s ease;
+            z-index: 0;
+        }
+
+        .phone-number:hover {
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(43, 165, 232, 0.3);
+        }
+
+        .phone-number:hover::before {
+            left: 0;
+        }
+
+        .book-now-header {
+            background-color: #2BA5E8;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Jost', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 0;
+            border-radius: 0;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            min-width: 236px;
+            min-height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .book-now-header::after {
+            content: '→';
+            position: absolute;
+            right: 20px;
+            opacity: 0;
+            transition: all 0.3s ease;
+            transform: translateX(-10px);
+        }
+
+        .book-now-header:hover {
+            background-color: #1e8dc7;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(43, 165, 232, 0.4);
+            letter-spacing: 2px;
+        }
+
+        .book-now-header:hover::after {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Mobile Header */
+        .mobile-header-top {
+            display: flex;
+            background-color: #ffffff;
+            padding: 0;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 60px;
+        }
+
+        .mobile-book-now {
+            background-color: #0391DB;
+            color: #ffffff;
+            text-decoration: none;
+            font-family: 'Jost', sans-serif;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 0;
+            border-radius: 0;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .mobile-phone {
+            background-color: #002756;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 0;
+            border-radius: 0;
+            flex: 1;
+        }
+
+        .hamburger {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background-color: #2BA5E8;
+            padding: 10px;
+            border-radius: 4px;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background-color: #ffffff;
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 999;
+            display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mobile-nav.active {
+            display: block;
+            opacity: 1;
+        }
+
+        .mobile-nav-content {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 80%;
+            max-width: 300px;
+            height: 100%;
+            background-color: #ffffff;
+            padding: 80px 20px 20px;
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-nav.active .mobile-nav-content {
+            transform: translateX(0);
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 20px;
+        }
+
+        .mobile-nav-links a {
+            color: #212529;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 600;
+            display: block;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            transition: color 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #2BA5E8;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            color: #212529;
+            cursor: pointer;
+        }
+
+        /* Page Content */
+        .page-content {
+            padding-top: 80px;
+            min-height: 100vh;
+        }
+
+        .about-hero {
+            background: linear-gradient(135deg, #2BA5E8 0%, #1e8dc7 100%);
+            color: #ffffff;
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .about-hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .about-hero p {
+            font-size: 20px;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .team-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .team-section h2 {
+            font-size: 36px;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .team-member {
+            background-color: #ffffff;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-5px);
+        }
+
+        .team-member img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #2BA5E8;
+        }
+
+        .team-member h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .team-member .role {
+            color: #2BA5E8;
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .team-member p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .mission-section {
+            background-color: #f8f9fa;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .mission-section h2 {
+            font-size: 36px;
+            margin-bottom: 40px;
+            color: #212529;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .mission-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            color: #666;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .value-card {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .value-card h3 {
+            color: #2BA5E8;
+            font-size: 24px;
+            margin-bottom: 15px;
+            font-family: 'Dhyana', sans-serif;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 767px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .header-cta {
+                display: none;
+            }
+            
+            .hamburger {
+                margin-right: 12px;
+            }
+
+            .about-hero h1 {
+                font-size: 36px;
+            }
+
+            .about-hero p {
+                font-size: 18px;
+            }
+
+            .team-section h2 {
+                font-size: 28px;
+            }
+
+            .team-member img {
+                width: 150px;
+                height: 150px;
+            }
+
+            .mission-section h2 {
+                font-size: 28px;
+            }
+        }
+
+        /* Desktop Styles */
+        @media (min-width: 768px) {
+            .mobile-header-top {
+                display: none;
+            }
+
+            .hamburger {
+                display: none;
+            }
+
+            .desktop-nav {
+                display: flex;
+            }
+
+            .header-cta {
+                display: flex;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Mobile Header Top -->
+    <div class="mobile-header-top">
+        <a href="book.html" class="mobile-book-now">BOOK NOW</a>
+        <a href="tel:617-485-1769" class="mobile-phone">
+            <span>📞</span> 617-485-1769
+        </a>
+    </div>
+
+    <!-- Main Header -->
+    <header>
+        <div class="logo-container">
+            <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo" class="logo-image">
+            <div class="logo-text">
+                <h1>Alvarez</h1>
+                <h1>Dental</h1>
+                <p>Group, LLC</p>
+            </div>
+        </div>
+
+        <!-- Desktop Navigation -->
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html" class="active">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-cta">
+            <a href="tel:617-485-1769" class="phone-number">
+                📞 617-485-1769
+            </a>
+            <a href="book.html" class="book-now-header">BOOK NOW</a>
+        </div>
+
+        <!-- Mobile Hamburger -->
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-content">
+            <button class="mobile-nav-close" id="mobileNavClose">&times;</button>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="book.html">BOOK NOW</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <!-- About Hero -->
+        <section class="about-hero">
+            <h1>About Our Team</h1>
+            <p>Meet the experienced professionals who make Alvarez Dental Group a trusted name in Cambridge for over 20 years.</p>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="team-white.png" alt="Dr. Sarah Alvarez">
+                    <h3>Dr. Sarah Alvarez</h3>
+                    <div class="role">Lead Dentist & Founder</div>
+                    <p>With over 20 years of experience, Dr. Alvarez leads our practice with a commitment to gentle, comprehensive dental care. She specializes in cosmetic and restorative dentistry.</p>
+                </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Dr. Maria Rodriguez">
+                    <h3>Dr. Maria Rodriguez</h3>
+                    <div class="role">Associate Dentist</div>
+                    <p>Dr. Rodriguez brings expertise in pediatric dentistry and orthodontics, ensuring our youngest patients receive the best care in a comfortable environment.</p>
+                </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Jennifer Chen">
+                    <h3>Jennifer Chen</h3>
+                    <div class="role">Dental Hygienist</div>
+                    <p>Jennifer has been with our practice for 15 years, providing exceptional preventive care and patient education to help maintain healthy smiles.</p>
+                </div>
+                <div class="team-member">
+                    <img src="team-white.png" alt="Lisa Thompson">
+                    <h3>Lisa Thompson</h3>
+                    <div class="role">Office Manager</div>
+                    <p>Lisa ensures our practice runs smoothly, handling appointments, insurance, and making sure every patient has a positive experience from start to finish.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Mission Section -->
+        <section class="mission-section">
+            <div class="mission-content">
+                <h2>Our Mission & Values</h2>
+                <p>At Alvarez Dental Group, we believe that everyone deserves a healthy, beautiful smile. Our mission is to provide exceptional dental care in a comfortable, welcoming environment where patients feel valued and respected.</p>
+                <p>We are committed to staying at the forefront of dental technology and continuing education to ensure our patients receive the most advanced and effective treatments available.</p>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Compassionate Care</h3>
+                        <p>We understand that dental visits can be anxiety-inducing, which is why we prioritize patient comfort and gentle treatment approaches.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Excellence</h3>
+                        <p>We maintain the highest standards of dental care, using state-of-the-art technology and evidence-based treatment methods.</p>
+                    </div>
+                    <div class="value-card">
+                        <h3>Community Focus</h3>
+                        <p>As a local practice, we're deeply committed to serving the Cambridge community and building lasting relationships with our patients.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Header scroll behavior
+        let lastScrollTop = 0;
+        const header = document.querySelector('header');
+        
+        window.addEventListener('scroll', function() {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > lastScrollTop && scrollTop > 100) {
+                // Scrolling down
+                header.classList.add('hidden');
+            } else {
+                // Scrolling up
+                header.classList.remove('hidden');
+            }
+            
+            lastScrollTop = scrollTop;
+        });
+
+        // Mobile navigation
+        const hamburger = document.getElementById('hamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileNavClose = document.getElementById('mobileNavClose');
+
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            mobileNav.classList.toggle('active');
+            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
+        });
+
+        mobileNavClose.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            mobileNav.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Close mobile nav when clicking outside
+        mobileNav.addEventListener('click', function(e) {
+            if (e.target === mobileNav) {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        });
+
+        // Close mobile nav when clicking on links
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>
