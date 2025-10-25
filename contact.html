@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Alerta:wght@400&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap" rel="stylesheet">
     <style>
         /*
         STYLE GUIDE
@@ -59,7 +60,7 @@
         }
 
         header.hidden {
-            transform: translateY(-100%);
+            /* Header stays visible - no hiding on scroll */
         }
 
         .logo-container {
@@ -202,7 +203,7 @@
             justify-content: center;
             gap: 12px;
             transition: all 0.3s ease;
-            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-family: 'Charis SIL', serif;
             background-color: #ffffff;
             min-width: 236px;
             min-height: 65px;
@@ -320,6 +321,7 @@
             padding: 0;
             border-radius: 0;
             flex: 1;
+            font-family: 'Charis SIL', serif;
         }
 
         .hamburger {
@@ -687,7 +689,10 @@
     <div class="mobile-header-top">
         <a href="book.html" class="mobile-book-now">BOOK NOW</a>
         <a href="tel:617-485-1769" class="mobile-phone">
-            <span>📞</span> 617-485-1769
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
+            </svg>
+            (617)-485-1769
         </a>
     </div>
 
@@ -714,7 +719,10 @@
 
         <div class="header-cta">
             <a href="tel:617-485-1769" class="phone-number">
-                📞 617-485-1769
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2BA5E8"/>
+                </svg>
+                (617)-485-1769
             </a>
             <a href="book.html" class="book-now-header">BOOK NOW</a>
         </div>
@@ -759,7 +767,7 @@
                         <div class="contact-icon">📞</div>
                         <div class="contact-details">
                             <h3>Phone</h3>
-                            <p><a href="tel:617-485-1769">617-485-1769</a></p>
+                            <p><a href="tel:617-485-1769">(617)-485-1769</a></p>
                         </div>
                     </div>
 
@@ -843,23 +851,8 @@
     </div>
 
     <script>
-        // Header scroll behavior
-        let lastScrollTop = 0;
-        const header = document.querySelector('header');
-        
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            
-            if (scrollTop > lastScrollTop && scrollTop > 100) {
-                // Scrolling down
-                header.classList.add('hidden');
-            } else {
-                // Scrolling up
-                header.classList.remove('hidden');
-            }
-            
-            lastScrollTop = scrollTop;
-        });
+        // Header stays fixed at all times - no scroll behavior needed
+        // Header remains visible regardless of scroll direction
 
         // Mobile navigation
         const hamburger = document.getElementById('hamburger');
