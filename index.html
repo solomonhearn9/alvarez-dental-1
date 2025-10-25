@@ -49,6 +49,7 @@
             font-family: 'Arial', 'Helvetica', sans-serif;
             background-color: #F9F8FF;
             color: #212529;
+            padding-bottom: 200px;
         }
 
         /* Header Styles */
@@ -538,13 +539,6 @@
             margin-top: 20px;
         }
 
-        .mobile-nav-contact h3 {
-            color: #ffffff;
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 15px;
-        }
-
         .mobile-nav-contact p {
             color: #ffffff;
             font-size: 14px;
@@ -563,8 +557,8 @@
             color: #212529;
             display: flex;
             flex-direction: column;
-            min-height: 100vh;
-            padding: 100px 0 0 0;
+            min-height: auto;
+            padding: 100px 0 50px 0;
             width: 100vw;
             margin-left: calc(-50vw + 50%);
         }
@@ -578,7 +572,7 @@
             text-align: center;
             max-width: 600px;
             padding: 20px;
-            margin-top: -260px;
+            margin-top: 0;
         }
 
         .mobile-hero-image {
@@ -601,6 +595,7 @@
             font-size: 48px;
             line-height: 0.9;
             margin-bottom: 12px;
+            margin-top: -20px;
             color: #212529;
             text-align: center;
             font-family: Helvetica, Arial, sans-serif;
@@ -1562,7 +1557,7 @@
         .footer {
             background: linear-gradient(135deg, #212529 0%, #1a1a1a 50%, #0f0f0f 100%);
             color: #ffffff;
-            padding: 80px 0 30px;
+            padding: 80px 0 80px 0;
             width: 100vw;
             margin-left: calc(-50vw + 50%);
             position: relative;
@@ -2015,7 +2010,7 @@
             }
 
             .footer {
-                padding: 60px 0 25px;
+                padding: 60px 0 60px 0;
             }
 
             .footer-content {
@@ -2130,10 +2125,14 @@
             .intro-video-section,
             .team-section,
             .services-section,
-            .location-section,
-            .footer {
+            .location-section {
                 width: 100vw !important;
                 margin-left: calc(-50vw + 50%) !important;
+            }
+
+            .footer {
+                width: 100% !important;
+                margin-left: 0 !important;
             }
 
             .container {
@@ -2182,40 +2181,41 @@
             }
 
             .hero {
-                flex-direction: row;
+                flex-direction: column;
                 align-items: center;
-                padding: 120px 80px 30px 80px;
-                min-height: calc(100vh - 80px);
-                gap: 60px;
-                text-align: left;
+                padding: 120px 80px 50px 80px;
+                min-height: auto;
+                gap: 40px;
+                text-align: center;
             }
 
             .hero-content {
                 max-width: 700px;
-                align-items: flex-start;
-                text-align: left;
+                align-items: center;
+                text-align: center;
             }
 
             .hero h2 {
                 font-size: 72px;
                 margin-bottom: 40px;
-                text-align: left;
+                margin-top: -20px;
+                text-align: center;
                 font-family: Helvetica, Arial, sans-serif;
             }
 
             .trusted-text {
                 font-size: 24px;
                 margin-bottom: 30px;
-                text-align: left;
+                text-align: center;
             }
 
             .rating-text {
                 font-size: 24px;
-                text-align: left;
+                text-align: center;
             }
 
             .rating-container {
-                align-items: flex-start;
+                align-items: center;
             }
 
             .google-icon {
@@ -2235,11 +2235,10 @@
 
             .hero-image {
                 display: block;
-                flex: 1;
+                flex: none;
                 max-width: 500px;
-                margin-left: auto;
-                margin-right: -40px;
-                margin-top: 0.3in;
+                margin: 0 auto;
+                margin-top: 0;
             }
 
             .hero-image img {
@@ -2280,7 +2279,7 @@
             }
 
             .hero {
-                padding: 40px 120px;
+                padding: 40px 120px 50px 120px;
             }
 
             .hero-content {
@@ -2289,13 +2288,13 @@
 
             .hero h2 {
                 font-size: 82px;
+                margin-top: -20px;
                 font-family: Helvetica, Arial, sans-serif;
             }
 
             .hero-image {
                 max-width: 500px;
-                margin-right: -80px;
-                margin-top: 0.3in;
+                margin: 0 auto;
             }
         }
     </style>
@@ -2364,22 +2363,28 @@
         </div>
         
         <ul class="mobile-nav-links">
-            <li><a href="#home" class="active">HOME</a></li>
-            <li><a href="#about">ABOUT <span class="nav-arrow">→</span></a></li>
-            <li><a href="#services">SERVICES <span class="nav-arrow">→</span></a></li>
-            <li><a href="#contact">CONTACT</a></li>
+            <li><a href="index.html" class="active">HOME</a></li>
+            <li><a href="about.html">ABOUT <span class="nav-arrow">></span></a></li>
+            <li><a href="services.html">SERVICES <span class="nav-arrow">></span></a></li>
+            <li><a href="contact.html">CONTACT</a></li>
         </ul>
         
         <div class="mobile-nav-contact">
-            <h3>Contact Information</h3>
-            <p>Phone: <a href="tel:617-485-1769">(617)-485-1769</a></p>
-            <p>Email: <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a></p>
-            <p>Address: 403 Cambridge St, Cambridge, MA 02141, United States of America</p>
+            <p><a href="tel:617-485-1769">(617)-485-1769</a></p>
+            <p><a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a></p>
+            <p>403 Cambridge St, Cambridge, MA 02141, United States of America</p>
         </div>
     </div>
 
     <!-- Hero Section -->
     <section class="hero">
+        <!-- Desktop Hero Image -->
+        <div class="hero-image">
+            <img src="hero.png" 
+                 alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
+                 class="team-photo">
+        </div>
+
         <!-- Mobile Hero Image -->
         <div class="mobile-hero-image">
             <img src="hero.png" 
@@ -2425,13 +2430,6 @@
                 <a href="book.html" class="book-now-hero">SCHEDULE APPOINTMENT</a>
             </div>
                 </div>
-
-        <!-- Desktop Hero Image -->
-        <div class="hero-image">
-            <img src="hero.png" 
-                 alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
-                 class="team-photo">
-        </div>
     </section>
 
     <!-- Intro Video Section -->
