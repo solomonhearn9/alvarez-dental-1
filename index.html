@@ -4,22 +4,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, orthodontics, and dental implants. Trusted by Cambridge families for 20+ years with 4.8-star rating. Schedule your appointment today!">
-    <meta name="keywords" content="dentist Cambridge MA, dental care Cambridge, cosmetic dentistry, orthodontics, dental implants, family dentist, teeth cleaning, dental exams, Alvarez Dental Group">
+    <meta name="description" content="Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, botox treatments, and dental implants. Trusted by Cambridge families for 20+ years with 4.8-star rating. Schedule your appointment today!">
+    <meta name="keywords" content="dentist Cambridge MA, dental care Cambridge, cosmetic dentistry, botox, dental implants, family dentist, teeth cleaning, dental exams, Alvarez Dental Group">
     <title>Alvarez Dental Group, LLC - Premier Dental Care in Cambridge, MA | Bright Smiles, Gentle Care</title>
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.alvarezdental.com/">
     <meta property="og:title" content="Alvarez Dental Group - Premier Dental Care in Cambridge, MA">
-    <meta property="og:description" content="Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, orthodontics, and dental implants. Trusted by Cambridge families for 20+ years with 4.8-star rating.">
+    <meta property="og:description" content="Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, botox treatments, and dental implants. Trusted by Cambridge families for 20+ years with 4.8-star rating.">
     <meta property="og:image" content="https://www.alvarezdental.com/alvarez-logo-white.png">
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.alvarezdental.com/">
     <meta property="twitter:title" content="Alvarez Dental Group - Premier Dental Care in Cambridge, MA">
-    <meta property="twitter:description" content="Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, orthodontics, and dental implants. Trusted by Cambridge families for 20+ years with 4.8-star rating.">
+    <meta property="twitter:description" content="Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, botox treatments, and dental implants. Trusted by Cambridge families for 20+ years with 4.8-star rating.">
     <meta property="twitter:image" content="https://www.alvarezdental.com/alvarez-logo-white.png">
 
     <!-- Canonical URL -->
@@ -75,7 +75,7 @@
         /* Header Styles */
         header {
             background-color: #ffffff;
-            padding: 2px 0;
+            padding: 8px 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -84,7 +84,7 @@
             left: 0;
             right: 0;
             z-index: 1001;
-            min-height: 50px;
+            min-height: 60px;
             width: 100%;
             max-width: 100%;
             margin: 0;
@@ -152,13 +152,13 @@
             display: none;
             flex: 1;
             justify-content: center;
-            padding: 0 40px;
-            margin-left: 20px;
+            padding: 0 60px;
+            margin-left: 40px;
         }
 
         .nav-links {
             display: flex;
-            gap: 50px;
+            gap: 40px;
             list-style: none;
             align-items: center;
             justify-content: center;
@@ -174,12 +174,18 @@
             color: #212529;
             text-decoration: none;
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 700;
             transition: all 0.3s ease;
-            font-family: 'Encode Sans Expanded', sans-serif;
+            font-family: 'Arial', 'Helvetica', sans-serif;
             position: relative;
             display: block;
-            padding: 5px 0;
+            padding: 12px 0;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border: none;
+            background-color: transparent;
+            min-width: auto;
+            text-align: left;
         }
 
         .nav-links a::after {
@@ -196,15 +202,28 @@
 
         .nav-links a:hover {
             color: #2BA5E8;
-            transform: translateY(-2px);
+            background-color: transparent;
+            transform: none;
         }
 
         .nav-links a:hover::after {
-            width: 100%;
+            display: none;
         }
 
         .nav-links .active {
-            color: #007bff;
+            color: #2BA5E8;
+            background-color: transparent;
+        }
+
+        .dropdown-arrow {
+            font-size: 12px;
+            margin-left: 5px;
+            color: #212529;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover .dropdown-arrow {
+            color: #2BA5E8;
         }
 
         /* Dropdown Menu Styles */
@@ -272,20 +291,20 @@
             color: #2BA5E8;
             text-decoration: none;
             font-size: 16px;
-            font-weight: 400;
+            font-weight: 600;
             border: 2px solid #2BA5E8;
-            padding: 0;
+            padding: 12px 24px;
             border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
             transition: all 0.3s ease;
-            font-family: 'Charis SIL', serif;
+            font-family: 'Arial', 'Helvetica', sans-serif;
             background-color: #ffffff;
             min-width: 200px;
-            min-height: 50px;
-            letter-spacing: 1px;
+            height: 50px;
+            letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
         }
@@ -321,16 +340,16 @@
             background-color: #2BA5E8;
             color: #ffffff;
             text-decoration: none;
-            font-family: 'Jost', sans-serif;
+            font-family: 'Arial', 'Helvetica', sans-serif;
             font-size: 16px;
-            font-weight: 600;
-            padding: 0;
+            font-weight: 700;
+            padding: 12px 24px;
             border-radius: 0;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            min-width: 200px;
-            min-height: 50px;
+            letter-spacing: 0.5px;
+            min-width: 160px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -564,6 +583,41 @@
             opacity: 1;
         }
 
+        /* Mobile Submenu Styles */
+        .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-submenu.active {
+            max-height: 500px;
+        }
+
+        .mobile-submenu a {
+            font-size: 18px;
+            padding: 15px 30px 15px 50px;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-submenu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-parent-link {
+            cursor: pointer;
+        }
+
+        .mobile-parent-link .nav-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-parent-link.active .nav-arrow {
+            transform: rotate(90deg);
+        }
+
         .mobile-nav-contact {
             padding: 32px;
             border-top: 1px solid rgba(255, 255, 255, 0.15);
@@ -604,6 +658,15 @@
             margin-left: calc(-50vw + 50%);
         }
 
+        /* Desktop Hero Layout - Flexbox */
+        .hero-desktop-container {
+            display: none;
+        }
+
+        .hero-mobile-container {
+            display: block;
+        }
+
         .hero-content {
             flex: 1;
             display: flex;
@@ -642,16 +705,23 @@
             font-family: Helvetica, Arial, sans-serif;
         }
 
+        .hero h1 .bright-line {
+            white-space: nowrap;
+            display: inline-block;
+        }
+
         .hero h1 .bright {
             color: #2BA5E8;
             font-family: 'Fuzzy Bubbles', cursive;
             font-weight: 400;
+            display: inline;
         }
 
         .hero h1 .care {
             color: #2BA5E8;
             font-family: 'Fuzzy Bubbles', cursive;
             font-weight: 400;
+            display: inline;
         }
 
         .trusted-text {
@@ -765,12 +835,12 @@
             background-color: #2BA5E8;
             color: #ffffff;
             text-decoration: none;
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: 'Fira Sans', Helvetica, Arial, sans-serif;
             font-size: 18px;
             font-weight: 700;
             padding: 15px 40px;
             border-radius: 0;
-            border: 2px solid #000000;
+            border: 1px solid #2BA5E8;
             display: inline-block;
             width: fit-content;
             text-transform: uppercase;
@@ -1475,6 +1545,11 @@
             text-transform: uppercase;
         }
 
+        /* Hide line breaks on mobile */
+        .desktop-break {
+            display: none;
+        }
+
         .location-section .address {
             font-size: 24px;
             margin-bottom: 50px;
@@ -1990,6 +2065,11 @@
                 letter-spacing: 1px;
             }
 
+            /* Show line breaks on mobile */
+            .desktop-break {
+                display: block;
+            }
+
             .location-section h3 {
                 font-size: 32px;
                 font-family: 'Josefin Sans', sans-serif;
@@ -2211,8 +2291,8 @@
             }
 
             header {
-                padding: 12px 0 4px 0;
-                min-height: 90px;
+                padding: 8px 0;
+                min-height: 60px;
                 top: 0;
                 max-width: 100%;
                 margin: 0;
@@ -2239,77 +2319,110 @@
             }
 
             .hero {
-                flex-direction: row;
-                align-items: center;
-                padding: 150px 80px 50px 80px;
-                min-height: auto;
-                gap: 60px;
-                text-align: left;
-            }
-
-            .hero-content {
-                flex: 1;
-                max-width: none;
-                align-items: flex-start;
-                text-align: left;
                 padding: 0;
-                margin-top: 0;
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
             }
 
-            .hero h1 {
-                font-size: 72px;
-                margin-bottom: 40px;
-                margin-top: -20px;
+            /* Desktop Hero Layout - Flexbox */
+            .hero-desktop-container {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 120px;
+                max-width: 1400px;
+                width: 100%;
+                height: 100vh;
+                padding: 0 80px;
+            }
+
+            .hero-mobile-container {
+                display: none;
+            }
+
+            .hero-left-content {
+                flex: 1;
+                max-width: 600px;
+                text-align: left;
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                padding-left: 0;
+            }
+
+            .hero-right-image {
+                flex: 1;
+                max-width: 750px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            .hero-right-image img {
+                width: 100%;
+                height: auto;
+                max-height: 625px;
+                object-fit: cover;
+                object-position: center;
+                border-radius: 8px;
+            }
+
+            .hero-left-content h1 {
+                font-size: 68px;
+                line-height: 0.9;
+                margin-bottom: 30px;
+                margin-top: 0;
+                color: #212529;
                 text-align: left;
                 font-family: Helvetica, Arial, sans-serif;
+                width: 100%;
+                min-width: 600px;
+                max-width: 100%;
             }
 
-            .trusted-text {
+            .hero-left-content .trusted-text {
                 font-size: 23px;
                 margin-bottom: 30px;
                 text-align: left;
+                font-family: Helvetica, Arial, sans-serif;
+                font-weight: 500;
+                color: #212529;
             }
 
-            .rating-text {
+            .hero-left-content .rating-container {
+                align-items: flex-start;
+                margin-bottom: 40px;
+            }
+
+            .hero-left-content .rating-text {
                 font-size: 24px;
                 text-align: left;
             }
 
-            .rating-container {
-                align-items: flex-start;
-            }
-
-            .google-icon {
+            .hero-left-content .google-icon {
                 width: 40px;
                 height: 40px;
             }
 
-            .star {
+            .hero-left-content .star {
                 font-size: 36px;
             }
 
-            .book-now-hero {
-                font-size: 20px;
-                padding: 18px 50px;
-                margin: 0;
-                margin-left: 0;
-            }
-
-            .hero-image {
-                display: block;
-                flex: none;
-                max-width: 500px;
-                margin: 0;
+            .hero-left-content .hero-cta {
                 margin-top: 0;
             }
 
-            .hero-image img {
-                width: 100%;
-                height: 400px;
-                object-fit: cover;
-                object-position: center top;
-                border-radius: 8px;
+            .hero-left-content .book-now-hero {
+                font-size: 18px;
+                padding: 16px 40px;
+                margin: 0;
+                border-radius: 6px;
             }
+
+
 
             .team-photo {
                 width: 100%;
@@ -2335,12 +2448,17 @@
             .team-nav-dots {
                 display: none;
             }
+
+            /* Show line breaks on desktop */
+            .desktop-break {
+                display: block;
+            }
         }
 
         @media (min-width: 1200px) {
             header {
-                padding: 12px 0 4px 0;
-                min-height: 90px;
+                padding: 8px 0;
+                min-height: 60px;
                 max-width: 100%;
                 margin: 0;
             }
@@ -2361,22 +2479,27 @@
             }
 
             .hero {
-                padding: 170px 120px 50px 120px;
+                padding: 0;
             }
 
-            .hero-content {
-                max-width: none;
-            }
-
-            .hero h1 {
+            .hero-left-content h1 {
                 font-size: 82px;
-                margin-top: -20px;
+                margin-top: 0;
                 font-family: Helvetica, Arial, sans-serif;
             }
 
-            .hero-image {
-                max-width: 500px;
-                margin: 0;
+            .hero-desktop-container {
+                max-width: 1600px;
+                gap: 140px;
+                padding: 0 120px;
+            }
+
+            .hero-right-image {
+                max-width: 875px;
+            }
+
+            .hero-right-image img {
+                max-height: 750px;
             }
         }
     </style>
@@ -2389,7 +2512,7 @@
         "name": "Alvarez Dental Group, LLC",
         "url": "https://www.alvarezdental.com",
         "logo": "https://www.alvarezdental.com/alvarez-logo-white.png",
-        "description": "Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, orthodontics, and dental implants.",
+        "description": "Alvarez Dental Group in Cambridge, MA offers comprehensive dental care including general dentistry, cosmetic procedures, botox treatments, and dental implants.",
         "address": {
             "@type": "PostalAddress",
             "streetAddress": "403 Cambridge St",
@@ -2480,10 +2603,25 @@
         <nav class="desktop-nav">
             <ul class="nav-links">
                 <li><a href="index.html" class="active">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="services.html">SERVICES</a></li>
+                <li class="dropdown">
+                    <a href="about.html">ABOUT <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="our-team.html">Our Team</a>
+                        <a href="our-story.html">Our Story</a>
+                        <a href="our-founder.html">Our Founder</a>
+                    </div>
+                </li>
+                <li class="dropdown">
+                    <a href="services.html">SERVICES <span class="dropdown-arrow">▼</span></a>
+                    <div class="dropdown-menu">
+                        <a href="general-dentistry.html">General Dentistry</a>
+                        <a href="cosmetic-dentistry.html">Cosmetic Dentistry</a>
+                        <a href="botox.html">Botox & Aesthetics</a>
+                        <a href="dental-implants.html">Dental Implants</a>
+                    </div>
+                </li>
                 <li><a href="contact.html">CONTACT</a></li>
-                </ul>
+            </ul>
               </nav>
 
         <div class="header-cta">
@@ -2520,8 +2658,23 @@
         
         <ul class="mobile-nav-links">
             <li><a href="index.html" class="active">HOME</a></li>
-            <li><a href="about.html">ABOUT <span class="nav-arrow">></span></a></li>
-            <li><a href="services.html">SERVICES <span class="nav-arrow">></span></a></li>
+            <li>
+                <a href="#" class="mobile-parent-link" data-submenu="about">ABOUT <span class="nav-arrow">></span></a>
+                <div class="mobile-submenu" id="about-submenu">
+                    <a href="our-team.html">Our Team</a>
+                    <a href="our-story.html">Our Story</a>
+                    <a href="our-founder.html">Our Founder</a>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="mobile-parent-link" data-submenu="services">SERVICES <span class="nav-arrow">></span></a>
+                <div class="mobile-submenu" id="services-submenu">
+                    <a href="general-dentistry.html">General Dentistry</a>
+                    <a href="cosmetic-dentistry.html">Cosmetic Dentistry</a>
+                    <a href="botox.html">Botox & Aesthetics</a>
+                    <a href="dental-implants.html">Dental Implants</a>
+                </div>
+            </li>
             <li><a href="contact.html">CONTACT</a></li>
         </ul>
         
@@ -2534,58 +2687,103 @@
 
     <!-- Hero Section -->
     <section class="hero">
-        <!-- Desktop Hero Image -->
-        <div class="hero-image">
-            <img src="hero.png" 
-                 alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
-                 class="team-photo">
-        </div>
-
-        <!-- Mobile Hero Image -->
-        <div class="mobile-hero-image">
-            <img src="hero.png" 
-                 alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
-                 class="team-photo">
-        </div>
-
-        <div class="hero-content">
-            <h1>
-                <span class="bright">Bright</span> Smiles,<br>
-                Gentle <span class="care">Care</span>
+        <!-- Desktop Layout - Flexbox -->
+        <div class="hero-desktop-container">
+            <!-- Left Side - Content -->
+            <div class="hero-left-content">
+                <h1>
+                    <span class="bright-line"><span class="bright">Bright</span> Smiles,</span><br>
+                    Gentle <span class="care">Care</span>
                 </h1>
 
-            <p class="trusted-text">
-                Cambridge's Premier Family Dentist for <span class="years">20+ Years</span>
-            </p>
+                <p class="trusted-text">
+                    Trusted by Cambridge Families for <span class="years">20+ Years</span>
+                </p>
 
-            <div class="rating-container">
-                <div class="stars-row">
-                    <div class="google-icon">
-                        <svg viewBox="0 0 48 48">
-                            <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
-                            <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
-                            <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
-                            <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
-                        </svg>
+                <div class="rating-container">
+                    <div class="stars-row">
+                        <div class="google-icon">
+                            <svg viewBox="0 0 48 48">
+                                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+                                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+                                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
+                                <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+                            </svg>
+                        </div>
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star-container">
+                                <span class="star star-empty">★</span>
+                                <span class="star star-filled" style="width: 80%;">★</span>
+                            </span>
+                        </div>
                     </div>
-                    <div class="stars">
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star">★</span>
-                        <span class="star-container">
-                            <span class="star star-empty">★</span>
-                            <span class="star star-filled" style="width: 80%;">★</span>
-                        </span>
-                    </div>
+                    <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
                 </div>
-                <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
-              </div>
 
-            <div style="margin-top: 10px;">
-                <a href="book.html" class="book-now-hero">SCHEDULE APPOINTMENT</a>
+                <div class="hero-cta">
+                    <a href="book.html" class="book-now-hero">SCHEDULE APPOINTMENT</a>
+                </div>
             </div>
+
+            <!-- Right Side - Image -->
+            <div class="hero-right-image">
+                <img src="hero.png" 
+                     alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
+                     class="team-photo">
+            </div>
+        </div>
+
+        <!-- Mobile Layout - Keep Original -->
+        <div class="hero-mobile-container">
+            <div class="mobile-hero-image">
+                <img src="hero.png" 
+                     alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
+                     class="team-photo">
+            </div>
+
+            <div class="hero-content">
+                <h1>
+                    <span class="bright">Bright</span> Smiles,<br>
+                    Gentle <span class="care">Care</span>
+                </h1>
+
+                <p class="trusted-text">
+                    Cambridge's Premier Family Dentist for <span class="years">20+ Years</span>
+                </p>
+
+                <div class="rating-container">
+                    <div class="stars-row">
+                        <div class="google-icon">
+                            <svg viewBox="0 0 48 48">
+                                <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z"/>
+                                <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z"/>
+                                <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24c0 3.55.85 6.91 2.34 9.88l7.35-5.7z"/>
+                                <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z"/>
+                            </svg>
+                        </div>
+                        <div class="stars">
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star">★</span>
+                            <span class="star-container">
+                                <span class="star star-empty">★</span>
+                                <span class="star star-filled" style="width: 80%;">★</span>
+                            </span>
+                        </div>
+                    </div>
+                    <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
                 </div>
+
+                <div style="margin-top: 10px;">
+                    <a href="book.html" class="book-now-hero">SCHEDULE APPOINTMENT</a>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- Intro Video Section -->
@@ -2617,12 +2815,12 @@
     <section id="about" class="team-section">
         <div class="container">
             <h2>Meet Our Expert Dental Team</h2>
-            <div class="subtitle">Our highly qualified dental professionals bring decades of combined experience in general dentistry, cosmetic procedures, orthodontics, and specialized dental treatments to serve Cambridge families with exceptional care</div>
+            <div class="subtitle">Our highly qualified dental professionals bring decades of combined experience in general dentistry, cosmetic procedures, aesthetic treatments, and specialized dental care to serve Cambridge families with exceptional service</div>
             <div class="team-gallery-container" id="teamGalleryContainer">
                 <div class="team-gallery" id="teamGallery">
                     <img src="staff0.png" alt="Dr. Rosario Alvarez - Lead Dentist and Practice Owner at Alvarez Dental Group Cambridge MA" class="team-member">
                     <img src="staff1.png" alt="Dr. Maria Rodriguez - General Dentist specializing in preventive dental care and cosmetic procedures" class="team-member">
-                    <img src="staff2.png" alt="Dr. Jennifer Chen - Orthodontist and cosmetic dentist providing braces and smile makeovers" class="team-member">
+                    <img src="staff2.png" alt="Dr. Jennifer Chen - Cosmetic dentist specializing in aesthetic treatments and smile makeovers" class="team-member">
                     <img src="staff3.png" alt="Sarah Johnson - Licensed Dental Hygienist providing professional teeth cleaning and oral health education" class="team-member">
                     <img src="staff4.png" alt="Lisa Martinez - Dental Assistant and patient care coordinator ensuring comfortable dental visits" class="team-member">
                 </div>
@@ -2641,7 +2839,7 @@
     <section id="services" class="services-section">
         <div class="container">
             <h2>Featured Dental Services</h2>
-            <div class="subtitle">Comprehensive dental care services in Cambridge, MA including preventive care, cosmetic dentistry, orthodontics, and advanced treatments</div>
+            <div class="subtitle">Comprehensive dental care services in Cambridge, MA including preventive care, cosmetic dentistry, botox treatments, and advanced dental implants</div>
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
@@ -2673,13 +2871,13 @@
                     <div class="service-image">
                         <div class="service-icon">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C6.48 2 2 6.48 2 12S6.48 22 12 22 22 17.52 22 12 17.52 2 12 2ZM12 20C7.59 20 4 16.41 4 12S7.59 4 12 4 20 7.59 20 12 16.41 20 12 20ZM12 6C9.79 6 8 7.79 8 10S9.79 14 12 14 16 12.21 16 10 14.21 6 12 6ZM12 12C10.9 12 10 11.1 10 10S10.9 8 12 8 14 8.9 14 10 13.1 12 12 12Z" fill="currentColor"/>
+                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2ZM12 6C10.9 6 10 6.9 10 8C10 9.1 10.9 10 12 10C13.1 10 14 9.1 14 8C14 6.9 13.1 6 12 6Z" fill="currentColor"/>
                             </svg>
                         </div>
                     </div>
                     <div class="service-content">
-                        <h3>Orthodontics</h3>
-                        <p>Straighten your teeth and improve your bite with our modern orthodontic treatments including traditional braces, clear aligners, and specialized appliances for patients of all ages in Cambridge.</p>
+                        <h3>Botox & Aesthetic Treatments</h3>
+                        <p>Professional facial rejuvenation services including Botox for wrinkle reduction, TMJ relief, and gummy smile correction. Our trained dental professionals provide safe, natural-looking results to enhance your confidence.</p>
                     </div>
                 </div>
                 <div class="service-card">
@@ -2705,7 +2903,7 @@
     <!-- Location Section -->
     <section id="contact" class="location-section">
         <div class="container">
-            <h2>VISIT OUR CAMBRIDGE DENTAL OFFICE</h2>
+            <h2>VISIT OUR <br class="desktop-break">CAMBRIDGE<br class="desktop-break">DENTAL OFFICE</h2>
             <div class="address">403 Cambridge St, Cambridge, MA 02141 - Conveniently Located in Cambridge</div>
             <h3>OFFICE HOURS</h3>
             <div class="hours-container">
@@ -3005,11 +3203,35 @@
             }
         });
 
-        // Close mobile nav when clicking on links
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-        mobileNavLinks.forEach(link => {
+        // Handle mobile submenu toggles
+        const mobileParentLinks = document.querySelectorAll('.mobile-parent-link');
+        mobileParentLinks.forEach(link => {
             link.addEventListener('click', function(e) {
                 e.preventDefault();
+                const submenuId = this.getAttribute('data-submenu') + '-submenu';
+                const submenu = document.getElementById(submenuId);
+                
+                // Toggle the submenu
+                submenu.classList.toggle('active');
+                this.classList.toggle('active');
+            });
+        });
+
+        // Close mobile nav when clicking on submenu links
+        const mobileSubMenuLinks = document.querySelectorAll('.mobile-submenu a');
+        mobileSubMenuLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                // Close mobile nav
+                hamburger.classList.remove('active');
+                mobileNav.classList.remove('active');
+                allowScroll();
+            });
+        });
+
+        // Close mobile nav when clicking on regular links
+        const mobileNavRegularLinks = document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-parent-link)');
+        mobileNavRegularLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
                 const targetId = this.getAttribute('href');
                 
                 // Close mobile nav
@@ -3017,8 +3239,9 @@
                 mobileNav.classList.remove('active');
                 allowScroll();
                 
-                // Smooth scroll to section
+                // Smooth scroll to section if it's a hash link
                 if (targetId.startsWith('#')) {
+                    e.preventDefault();
                     const targetSection = document.querySelector(targetId);
                     if (targetSection) {
                         targetSection.scrollIntoView({
@@ -3030,14 +3253,15 @@
             });
         });
 
-        // Smooth scroll for desktop navigation
+        // Smooth scroll for desktop navigation (only for hash links)
         const desktopNavLinks = document.querySelectorAll('.nav-links a');
         desktopNavLinks.forEach(link => {
             link.addEventListener('click', function(e) {
-                e.preventDefault();
                 const targetId = this.getAttribute('href');
                 
+                // Only prevent default and smooth scroll for hash links
                 if (targetId.startsWith('#')) {
+                    e.preventDefault();
                     const targetSection = document.querySelector(targetId);
                     if (targetSection) {
                         targetSection.scrollIntoView({
@@ -3046,6 +3270,7 @@
                         });
                     }
                 }
+                // For regular links (like about.html, services.html), let the default behavior happen
             });
         });
 

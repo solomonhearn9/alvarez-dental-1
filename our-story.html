@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn about the history and story of Alvarez Dental Group. Serving Cambridge families with exceptional dental care for over 20 years.">
+    <title>Our Story - Alvarez Dental Group, LLC</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #F9F8FF;
+            color: #212529;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            min-height: 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 2px 12px;
+            cursor: pointer;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .logo-text-visual {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.1;
+            font-family: Helvetica, Arial, sans-serif;
+            color: #212529;
+        }
+
+        .desktop-nav {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            padding: 0 60px;
+            margin-left: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #212529;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #2BA5E8;
+        }
+
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-right: 20px;
+        }
+
+        .phone-number {
+            color: #2BA5E8;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .book-now-header {
+            background-color: #2BA5E8;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .book-now-header:hover {
+            background-color: #1a8ac9;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, #2BA5E8 0%, #1a8ac9 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Story Section */
+        .story-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .story-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .story-content h2 {
+            font-size: 36px;
+            color: #2BA5E8;
+            margin-bottom: 30px;
+            margin-top: 60px;
+        }
+
+        .story-content h2:first-child {
+            margin-top: 0;
+        }
+
+        .story-content p {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            color: #555;
+        }
+
+        .timeline {
+            margin: 60px 0;
+            padding: 40px;
+            background: #F9F8FF;
+            border-radius: 15px;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 40px;
+            align-items: flex-start;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .timeline-year {
+            font-size: 32px;
+            font-weight: 700;
+            color: #2BA5E8;
+            min-width: 100px;
+        }
+
+        .timeline-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+            color: #212529;
+        }
+
+        .timeline-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            background: #F9F8FF;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: #2BA5E8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .value-card h3 {
+            font-size: 22px;
+            color: #2BA5E8;
+            margin-bottom: 15px;
+        }
+
+        .value-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 0;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 60px 20px 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .footer-text h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            color: #2BA5E8;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #2BA5E8;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .footer-contact a {
+            color: #2BA5E8;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 32px;
+            }
+
+            .page-hero p {
+                font-size: 16px;
+            }
+
+            .story-content h2 {
+                font-size: 28px;
+            }
+
+            .story-content p {
+                font-size: 16px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .timeline-year {
+                font-size: 24px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo" class="logo-image">
+            <span class="logo-text-visual">Alvarez<br>Dental<br>Group, LLC</span>
+        </div>
+
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-cta">
+            <a href="tel:617-485-1769" class="phone-number">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2BA5E8"/>
+                </svg>
+                (617)-485-1769
+            </a>
+            <a href="book.html" class="book-now-header">BOOK NOW</a>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>Our Story</h1>
+        <p>A legacy of exceptional dental care, built on trust and compassion</p>
+    </section>
+
+    <!-- Story Section -->
+    <section class="story-section">
+        <div class="container">
+            <div class="story-content">
+                <h2>The Beginning</h2>
+                <p>Over 20 years ago, Dr. Rosario Alvarez had a vision: to create a dental practice that would treat every patient like family. With this dream in mind, she opened the doors to Alvarez Dental Group in the heart of Cambridge, Massachusetts.</p>
+                
+                <p>Starting with just one dental chair and a commitment to excellence, Dr. Alvarez built her practice on the principles of gentle care, advanced technology, and personalized attention. Word quickly spread throughout the Cambridge community about the exceptional care patients received at Alvarez Dental Group.</p>
+
+                <h2>Growing with the Community</h2>
+                <p>As the practice grew, so did our team of dedicated dental professionals. We expanded our services to meet the evolving needs of our patients, incorporating the latest advancements in dental technology while maintaining the warm, personal touch that has always been our hallmark.</p>
+
+                <p>Today, Alvarez Dental Group serves thousands of Cambridge families, from young children experiencing their first dental visit to seniors maintaining their smiles for life. We've had the privilege of caring for multiple generations of families, watching children grow into adults and then bringing their own children to us for care.</p>
+
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-year">2003</div>
+                        <div class="timeline-content">
+                            <h3>The Foundation</h3>
+                            <p>Dr. Rosario Alvarez opens Alvarez Dental Group with a single dental chair and a big dream to serve the Cambridge community.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2008</div>
+                        <div class="timeline-content">
+                            <h3>Expansion & Growth</h3>
+                            <p>The practice doubles in size, adding state-of-the-art equipment and welcoming Dr. Maria Rodriguez to the team.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2015</div>
+                        <div class="timeline-content">
+                            <h3>Innovation in Care</h3>
+                            <p>Introduction of digital dentistry and advanced cosmetic procedures, making Alvarez Dental Group a leader in modern dental care.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2020</div>
+                        <div class="timeline-content">
+                            <h3>Community Leader</h3>
+                            <p>Recognized as one of Cambridge's most trusted dental practices, serving over 5,000 patients annually.</p>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-year">2025</div>
+                        <div class="timeline-content">
+                            <h3>Continuing Excellence</h3>
+                            <p>Expanding services to include advanced cosmetic treatments while maintaining our commitment to personalized, gentle care.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h2>Our Core Values</h2>
+                <p>Everything we do is guided by our commitment to excellence and our deep respect for every patient who walks through our doors.</p>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">♥</div>
+                        <h3>Compassionate Care</h3>
+                        <p>We treat every patient with kindness, understanding, and respect, ensuring comfort at every visit.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">★</div>
+                        <h3>Excellence</h3>
+                        <p>We maintain the highest standards of dental care through continuous education and advanced technology.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">⚡</div>
+                        <h3>Innovation</h3>
+                        <p>We embrace the latest advancements in dentistry to provide the most effective treatments available.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <div class="value-icon">✓</div>
+                        <h3>Integrity</h3>
+                        <p>We build lasting relationships based on trust, honesty, and transparent communication.</p>
+                    </div>
+                </div>
+
+                <h2>Looking Forward</h2>
+                <p>As we look to the future, our commitment remains unchanged: to provide exceptional dental care that improves lives and creates beautiful, healthy smiles. We're grateful for the trust the Cambridge community has placed in us, and we look forward to serving families for generations to come.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo">
+                    <div class="footer-text">
+                        <h3>Alvarez Dental Group, LLC</h3>
+                        <p>Bright Smiles, Gentle Care</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p>403 Cambridge St<br>Cambridge, MA 02141</p>
+                    <p>Phone: <a href="tel:617-485-1769">(617)-485-1769</a></p>
+                    <p>Email: <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alvarez Dental Group, LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

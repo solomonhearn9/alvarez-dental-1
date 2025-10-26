@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="General dentistry services at Alvarez Dental Group. Professional teeth cleanings, dental exams, fillings, and preventive care in Cambridge, MA.">
+    <title>General Dentistry - Alvarez Dental Group, LLC</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            background-color: #F9F8FF;
+            color: #212529;
+            padding-top: 80px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            padding: 8px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1001;
+            min-height: 60px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 2px 12px;
+            cursor: pointer;
+        }
+
+        .logo-image {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+
+        .logo-text-visual {
+            font-size: 20px;
+            font-weight: 700;
+            line-height: 1.1;
+            font-family: Helvetica, Arial, sans-serif;
+            color: #212529;
+        }
+
+        .desktop-nav {
+            display: flex;
+            flex: 1;
+            justify-content: center;
+            padding: 0 60px;
+            margin-left: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #212529;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links a:hover {
+            color: #2BA5E8;
+        }
+
+        .header-cta {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding-right: 20px;
+        }
+
+        .phone-number {
+            color: #2BA5E8;
+            text-decoration: none;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .book-now-header {
+            background-color: #2BA5E8;
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .book-now-header:hover {
+            background-color: #1a8ac9;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .page-hero {
+            background: linear-gradient(135deg, #2BA5E8 0%, #1a8ac9 100%);
+            padding: 80px 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .page-hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .page-hero p {
+            font-size: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Service Section */
+        .service-section {
+            padding: 80px 20px;
+            background-color: white;
+        }
+
+        .service-intro {
+            max-width: 900px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+
+        .service-intro h2 {
+            font-size: 36px;
+            color: #2BA5E8;
+            margin-bottom: 25px;
+        }
+
+        .service-intro p {
+            font-size: 18px;
+            line-height: 1.8;
+            color: #555;
+        }
+
+        .services-list {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .service-item {
+            background: #F9F8FF;
+            padding: 40px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-item h3 {
+            font-size: 28px;
+            color: #2BA5E8;
+            margin-bottom: 20px;
+        }
+
+        .service-item p {
+            font-size: 17px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .service-item ul {
+            margin-top: 20px;
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .service-item li {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 12px;
+            padding-left: 30px;
+            position: relative;
+            color: #555;
+        }
+
+        .service-item li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #2BA5E8;
+            font-weight: 700;
+            font-size: 18px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #2BA5E8 0%, #1a8ac9 100%);
+            color: white;
+            padding: 60px 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: white;
+            color: #2BA5E8;
+            padding: 15px 40px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #f0f0f0;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 60px 20px 20px;
+            border-top: 1px solid #e0e0e0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .footer-logo img {
+            width: 60px;
+            height: 60px;
+        }
+
+        .footer-text h3 {
+            font-size: 20px;
+            margin-bottom: 5px;
+        }
+
+        .footer-links h4,
+        .footer-contact h4 {
+            margin-bottom: 20px;
+            color: #2BA5E8;
+        }
+
+        .footer-links a {
+            display: block;
+            color: #555;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #2BA5E8;
+        }
+
+        .footer-contact p {
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        .footer-contact a {
+            color: #2BA5E8;
+            text-decoration: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e0e0e0;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+
+            .page-hero h1 {
+                font-size: 32px;
+            }
+
+            .page-hero p {
+                font-size: 16px;
+            }
+
+            .service-intro h2 {
+                font-size: 28px;
+            }
+
+            .service-item {
+                padding: 30px 20px;
+            }
+
+            .service-item h3 {
+                font-size: 24px;
+            }
+
+            .cta-section h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo-container" onclick="window.location.href='index.html'">
+            <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo" class="logo-image">
+            <span class="logo-text-visual">Alvarez<br>Dental<br>Group, LLC</span>
+        </div>
+
+        <nav class="desktop-nav">
+            <ul class="nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-cta">
+            <a href="tel:617-485-1769" class="phone-number">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2BA5E8"/>
+                </svg>
+                (617)-485-1769
+            </a>
+            <a href="book.html" class="book-now-header">BOOK NOW</a>
+        </div>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <h1>General Dentistry</h1>
+        <p>Comprehensive oral health care for the whole family</p>
+    </section>
+
+    <!-- Service Section -->
+    <section class="service-section">
+        <div class="container">
+            <div class="service-intro">
+                <h2>Complete Oral Health Care</h2>
+                <p>At Alvarez Dental Group, we believe that preventive care is the foundation of excellent oral health. Our comprehensive general dentistry services are designed to keep your teeth and gums healthy for life, while addressing any issues before they become serious problems.</p>
+            </div>
+
+            <div class="services-list">
+                <div class="service-item">
+                    <h3>Professional Teeth Cleaning</h3>
+                    <p>Regular professional cleanings are essential for maintaining optimal oral health. Our skilled dental hygienists use advanced techniques to remove plaque, tartar, and stains that regular brushing can't reach.</p>
+                    <ul>
+                        <li>Thorough plaque and tartar removal</li>
+                        <li>Professional polishing for a brighter smile</li>
+                        <li>Fluoride treatments for added protection</li>
+                        <li>Personalized home care recommendations</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Comprehensive Dental Exams</h3>
+                    <p>Our detailed dental examinations help catch potential problems early, when they're easiest and most cost-effective to treat. We use the latest diagnostic technology to ensure nothing is overlooked.</p>
+                    <ul>
+                        <li>Complete oral cancer screening</li>
+                        <li>Digital X-rays with minimal radiation</li>
+                        <li>Gum disease evaluation and assessment</li>
+                        <li>Bite and jaw alignment check</li>
+                        <li>Review of medical history and medications</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Tooth-Colored Fillings</h3>
+                    <p>When cavities occur, we restore your teeth with natural-looking composite fillings that blend seamlessly with your smile. These modern fillings are durable, safe, and virtually invisible.</p>
+                    <ul>
+                        <li>Mercury-free composite materials</li>
+                        <li>Color-matched to your natural teeth</li>
+                        <li>Strong and long-lasting results</li>
+                        <li>Conservative tooth preparation</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Preventive Care</h3>
+                    <p>Prevention is always better than treatment. We offer a range of preventive services to protect your teeth and help you maintain excellent oral health between visits.</p>
+                    <ul>
+                        <li>Dental sealants to prevent cavities</li>
+                        <li>Fluoride treatments for all ages</li>
+                        <li>Custom night guards for teeth grinding</li>
+                        <li>Sports mouthguards for active patients</li>
+                        <li>Nutritional counseling for oral health</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Root Canal Therapy</h3>
+                    <p>When the inner pulp of a tooth becomes infected or damaged, root canal therapy can save the tooth and relieve pain. Our gentle approach makes the procedure comfortable and effective.</p>
+                    <ul>
+                        <li>Advanced pain management techniques</li>
+                        <li>State-of-the-art endodontic equipment</li>
+                        <li>Preservation of your natural tooth</li>
+                        <li>Same-day emergency appointments available</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Dental Crowns & Bridges</h3>
+                    <p>Restore damaged or missing teeth with custom-crafted crowns and bridges. Our restorations are designed to look natural and function just like your own teeth.</p>
+                    <ul>
+                        <li>High-quality porcelain materials</li>
+                        <li>Custom color and shape matching</li>
+                        <li>Durable and long-lasting results</li>
+                        <li>Same-day crown options available</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Extractions</h3>
+                    <p>When a tooth cannot be saved or is causing problems, we perform gentle extractions with careful attention to your comfort. We also discuss tooth replacement options to restore your smile.</p>
+                    <ul>
+                        <li>Gentle and pain-free procedures</li>
+                        <li>Sedation options for anxious patients</li>
+                        <li>Detailed aftercare instructions</li>
+                        <li>Options for tooth replacement</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="cta-section">
+                <h2>Ready to Schedule Your Appointment?</h2>
+                <p>Take the first step toward better oral health. Call us today or book online!</p>
+                <a href="book.html" class="cta-button">BOOK NOW</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo">
+                    <div class="footer-text">
+                        <h3>Alvarez Dental Group, LLC</h3>
+                        <p>Bright Smiles, Gentle Care</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <a href="index.html">Home</a>
+                    <a href="about.html">About</a>
+                    <a href="services.html">Services</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contact Info</h4>
+                    <p>403 Cambridge St<br>Cambridge, MA 02141</p>
+                    <p>Phone: <a href="tel:617-485-1769">(617)-485-1769</a></p>
+                    <p>Email: <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a></p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Alvarez Dental Group, LLC. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
