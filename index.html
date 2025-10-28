@@ -84,7 +84,7 @@
             left: 0;
             right: 0;
             z-index: 1001;
-            min-height: 60px;
+            min-height: 52px;
             width: 100%;
             max-width: 100%;
             margin: 0;
@@ -732,6 +732,7 @@
             color: #212529;
             font-weight: 500;
             text-align: center;
+            white-space: nowrap;
         }
 
         .trusted-text .years {
@@ -1423,6 +1424,22 @@
             margin-bottom: 60px;
         }
 
+        .service-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .service-title {
+            font-size: 20px;
+            margin-top: 20px;
+            color: #212529;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+            text-align: center;
+        }
+
         .service-card {
             background-color: rgba(255, 255, 255, 0.95);
             border-radius: 16px;
@@ -1430,15 +1447,12 @@
             text-align: center;
             transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             border: 2px solid transparent;
-            min-height: 280px;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-start;
             overflow: hidden;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
             position: relative;
             z-index: 2;
             backdrop-filter: blur(10px);
+            width: 100%;
         }
 
         .service-card:hover {
@@ -1450,11 +1464,10 @@
         .service-image {
             width: 100%;
             height: 200px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            display: block;
             position: relative;
             overflow: hidden;
+            border-radius: 16px;
         }
 
         .service-image img {
@@ -1462,6 +1475,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            border-radius: 16px;
         }
 
         .service-icon {
@@ -2080,9 +2094,11 @@
                 font-family: 'Josefin Sans', sans-serif;
             }
 
-            .service-card {
-                min-height: 400px;
+            .service-item {
                 margin-bottom: 30px;
+            }
+
+            .service-card {
                 border-radius: 24px;
                 box-shadow: 0 8px 32px rgba(43, 165, 232, 0.15);
             }
@@ -2099,23 +2115,12 @@
                 border-radius: 20px;
             }
 
-            .service-content {
-                padding: 40px 30px 50px 30px;
-            }
-
-            .service-card h3 {
-                font-size: 32px;
+            .service-title {
+                font-size: 28px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
-                margin-bottom: 20px;
+                margin-top: 25px;
                 line-height: 1.2;
-            }
-
-            .service-card p {
-                font-size: 18px;
-                font-family: 'Josefin Sans', sans-serif;
-                line-height: 1.6;
-                font-weight: 400;
             }
 
             .services-grid {
@@ -2281,7 +2286,7 @@
 
             header {
                 padding: 8px 0;
-                min-height: 60px;
+                min-height: 52px;
                 top: 0;
                 max-width: 100%;
                 margin: 0;
@@ -2379,6 +2384,7 @@
                 font-family: Helvetica, Arial, sans-serif;
                 font-weight: 500;
                 color: #212529;
+                white-space: nowrap;
             }
 
             .hero-left-content .rating-container {
@@ -2447,7 +2453,7 @@
         @media (min-width: 1200px) {
             header {
                 padding: 8px 0;
-                min-height: 60px;
+                min-height: 52px;
                 max-width: 100%;
                 margin: 0;
             }
@@ -2714,7 +2720,7 @@
                 </div>
 
                 <div class="hero-cta">
-                    <a href="book.html" class="book-now-hero">SCHEDULE APPOINTMENT</a>
+                    <a href="book.html" class="book-now-hero">BOOK NOW</a>
                 </div>
             </div>
 
@@ -2769,7 +2775,7 @@
                 </div>
 
                 <div style="margin-top: 10px;">
-                    <a href="book.html" class="book-now-hero">SCHEDULE APPOINTMENT</a>
+                    <a href="book.html" class="book-now-hero">BOOK NOW</a>
                 </div>
             </div>
         </div>
@@ -2779,7 +2785,6 @@
     <section id="intro-video" class="intro-video-section">
         <div class="container">
             <h2>Meet Your Cambridge Dental Family</h2>
-            <div class="video-intro">Discover why Alvarez Dental Group has been Cambridge's trusted dental practice for over 20 years. Watch our introduction video to meet our skilled team of dentists, hygienists, and dental specialists who are dedicated to creating beautiful, healthy smiles for patients of all ages.</div>
             <div class="video-container">
                 <div class="video-placeholder" id="videoContainer">
                     <div class="youtube-overlay" id="youtubeOverlay">
@@ -2830,41 +2835,37 @@
             <h2>Featured Dental Services</h2>
             <div class="subtitle">Comprehensive dental care services in Cambridge, MA including preventive care, cosmetic dentistry, botox treatments, and advanced dental implants</div>
             <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="General Dentistry - Friendly Dental Care">
+                <div class="service-item">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="General Dentistry - Friendly Dental Care">
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>General Dentistry</h3>
-                        <p>Complete oral health care including professional teeth cleanings, comprehensive dental exams, tooth-colored fillings, and preventive treatments to maintain optimal dental health for Cambridge families.</p>
-                    </div>
+                    <h3 class="service-title">General Dentistry</h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="cosmetic.jpg" alt="Cosmetic Dentistry - Happy Smile">
+                <div class="service-item">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="cosmetic.jpg" alt="Cosmetic Dentistry - Happy Smile">
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>Cosmetic Dentistry</h3>
-                        <p>Transform your smile with our advanced cosmetic dental procedures including teeth whitening, porcelain veneers, dental bonding, and smile makeovers designed to enhance your confidence and appearance.</p>
-                    </div>
+                    <h3 class="service-title">Cosmetic Dentistry</h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dental Implants - Professional Care">
+                <div class="service-item">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dental Implants - Professional Care">
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>Dental Implants</h3>
-                        <p>Replace missing teeth with durable, natural-looking dental implants that restore function and aesthetics. Our experienced dentists provide advanced implant procedures for long-lasting, comfortable results.</p>
-                    </div>
+                    <h3 class="service-title">Dental Implants</h3>
                 </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <img src="smile.jpg" alt="Botox & Aesthetic Treatments">
+                <div class="service-item">
+                    <div class="service-card">
+                        <div class="service-image">
+                            <img src="smile.jpg" alt="Botox & Aesthetic Treatments">
+                        </div>
                     </div>
-                    <div class="service-content">
-                        <h3>Botox & Aesthetic Treatments</h3>
-                        <p>Professional facial rejuvenation services including Botox for wrinkle reduction, TMJ relief, and gummy smile correction. Our trained dental professionals provide safe, natural-looking results to enhance your confidence.</p>
-                    </div>
+                    <h3 class="service-title">Botox & Aesthetic Treatments</h3>
                 </div>
             </div>
             <div class="browse-all-services">
