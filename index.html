@@ -303,7 +303,7 @@
             font-family: 'Arial', 'Helvetica', sans-serif;
             background-color: #ffffff;
             min-width: 200px;
-            height: 50px;
+            height: 44px;
             letter-spacing: 0.5px;
             position: relative;
             overflow: hidden;
@@ -349,7 +349,7 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             min-width: 160px;
-            height: 50px;
+            height: 44px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1449,8 +1449,7 @@
 
         .service-image {
             width: 100%;
-            height: 140px;
-            background: linear-gradient(135deg, #2BA5E8 0%, #1e8dc7 100%);
+            height: 200px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -1458,31 +1457,15 @@
             overflow: hidden;
         }
 
-        .service-image::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(43, 165, 232, 0.8) 0%, rgba(30, 141, 199, 0.8) 100%);
+        .service-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
         }
 
         .service-icon {
-            width: 50px;
-            height: 50px;
-            background-color: rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto;
-            font-size: 24px;
-            color: #ffffff;
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            display: none;
         }
 
         .service-content {
@@ -1935,24 +1918,24 @@
 
             /* Mobile section adjustments */
             .intro-video-section {
-                padding: 100px 0 120px 0;
+                padding: 40px 0 120px 0;
             }
 
             .intro-video-section h2 {
-                font-size: 72px;
+                font-size: 32px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
-                margin-bottom: 20px;
+                margin-bottom: 30px;
                 margin-top: 0;
                 line-height: 1.2;
                 max-width: 800px;
                 margin-left: auto;
                 margin-right: auto;
-                padding-top: 40px;
+                padding-top: 0;
             }
 
             .intro-video-section .subtitle {
-                font-size: 28px;
+                font-size: 20px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 400;
                 margin-bottom: 30px;
@@ -1973,16 +1956,21 @@
                 margin: 0 auto;
             }
 
+            .team-section {
+                padding: 40px 0 40px 0;
+            }
+
             .team-section h2 {
-                font-size: 72px;
+                font-size: 32px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
-                margin-bottom: 40px;
+                margin-bottom: 30px;
+                margin-top: 0;
                 line-height: 1.1;
             }
 
             .team-section .subtitle {
-                font-size: 28px;
+                font-size: 18px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 400;
                 margin-bottom: 30px;
@@ -2043,15 +2031,16 @@
             }
 
             .services-section h2 {
-                font-size: 72px;
+                font-size: 32px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
-                margin-bottom: 50px;
+                margin-bottom: 30px;
+                margin-top: 0;
                 line-height: 1.1;
             }
 
             .services-section .subtitle {
-                font-size: 28px;
+                font-size: 18px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 400;
                 margin-bottom: 40px;
@@ -2059,7 +2048,7 @@
             }
 
             .location-section h2 {
-                font-size: 48px;
+                font-size: 32px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
                 letter-spacing: 1px;
@@ -2136,7 +2125,7 @@
             }
 
             .services-section {
-                padding: 100px 0;
+                padding: 40px 0 100px 0;
             }
 
             .browse-all-services a {
@@ -2557,7 +2546,7 @@
         "@type": "LocalBusiness",
         "@id": "https://www.alvarezdental.com",
         "name": "Alvarez Dental Group",
-        "image": "https://www.alvarezdental.com/hero.png",
+        "image": "https://www.alvarezdental.com/hero-black.png",
         "telephone": "(617)-485-1769",
         "email": "info@alvarezdental.com",
         "address": {
@@ -2616,8 +2605,8 @@
                     <div class="dropdown-menu">
                         <a href="general-dentistry.html">General Dentistry</a>
                         <a href="cosmetic-dentistry.html">Cosmetic Dentistry</a>
-                        <a href="botox.html">Botox & Aesthetics</a>
                         <a href="dental-implants.html">Dental Implants</a>
+                        <a href="botox.html">Botox & Aesthetics</a>
                     </div>
                 </li>
                 <li><a href="contact.html">CONTACT</a></li>
@@ -2671,8 +2660,8 @@
                 <div class="mobile-submenu" id="services-submenu">
                     <a href="general-dentistry.html">General Dentistry</a>
                     <a href="cosmetic-dentistry.html">Cosmetic Dentistry</a>
-                    <a href="botox.html">Botox & Aesthetics</a>
                     <a href="dental-implants.html">Dental Implants</a>
+                    <a href="botox.html">Botox & Aesthetics</a>
                 </div>
             </li>
             <li><a href="contact.html">CONTACT</a></li>
@@ -2731,7 +2720,7 @@
 
             <!-- Right Side - Image -->
             <div class="hero-right-image">
-                <img src="hero.png" 
+                <img src="hero-black.png" 
                      alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
                      class="team-photo">
             </div>
@@ -2740,7 +2729,7 @@
         <!-- Mobile Layout - Keep Original -->
         <div class="hero-mobile-container">
             <div class="mobile-hero-image">
-                <img src="hero.png" 
+                <img src="hero-black.png" 
                      alt="Professional dental team of five women in white coats, showing the caring and experienced staff at Alvarez Dental Group"
                      class="team-photo">
             </div>
@@ -2790,7 +2779,7 @@
     <section id="intro-video" class="intro-video-section">
         <div class="container">
             <h2>Meet Your Cambridge Dental Family</h2>
-            <div class="video-intro">Discover why Alvarez Dental Group has been Cambridge's trusted dental practice for over 20 years. Our experienced dental professionals combine advanced dental technology with compassionate, personalized care to ensure your optimal oral health. Watch our introduction video to meet our skilled team of dentists, hygienists, and dental specialists who are dedicated to creating beautiful, healthy smiles for patients of all ages.</div>
+            <div class="video-intro">Discover why Alvarez Dental Group has been Cambridge's trusted dental practice for over 20 years. Watch our introduction video to meet our skilled team of dentists, hygienists, and dental specialists who are dedicated to creating beautiful, healthy smiles for patients of all ages.</div>
             <div class="video-container">
                 <div class="video-placeholder" id="videoContainer">
                     <div class="youtube-overlay" id="youtubeOverlay">
@@ -2843,11 +2832,7 @@
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-image">
-                        <div class="service-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2C13.1 2 14 2.9 14 4C14 5.1 13.1 6 12 6C10.9 6 10 5.1 10 4C10 2.9 10.9 2 12 2ZM21 9V7L15 6.5V9H21ZM3 9H9V6.5L3 7V9ZM12 8C10.9 8 10 8.9 10 10V12H14V10C14 8.9 13.1 8 12 8ZM8 14H16V16H8V14ZM6 18H18V20H6V18Z" fill="currentColor"/>
-                            </svg>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="General Dentistry - Friendly Dental Care">
                     </div>
                     <div class="service-content">
                         <h3>General Dentistry</h3>
@@ -2856,11 +2841,7 @@
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <div class="service-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2ZM12 6C10.9 6 10 6.9 10 8C10 9.1 10.9 10 12 10C13.1 10 14 9.1 14 8C14 6.9 13.1 6 12 6Z" fill="currentColor"/>
-                            </svg>
-                        </div>
+                        <img src="cosmetic.jpg" alt="Cosmetic Dentistry - Happy Smile">
                     </div>
                     <div class="service-content">
                         <h3>Cosmetic Dentistry</h3>
@@ -2869,28 +2850,20 @@
                 </div>
                 <div class="service-card">
                     <div class="service-image">
-                        <div class="service-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2ZM12 6C10.9 6 10 6.9 10 8C10 9.1 10.9 10 12 10C13.1 10 14 9.1 14 8C14 6.9 13.1 6 12 6Z" fill="currentColor"/>
-                            </svg>
-                        </div>
-                    </div>
-                    <div class="service-content">
-                        <h3>Botox & Aesthetic Treatments</h3>
-                        <p>Professional facial rejuvenation services including Botox for wrinkle reduction, TMJ relief, and gummy smile correction. Our trained dental professionals provide safe, natural-looking results to enhance your confidence.</p>
-                    </div>
-                </div>
-                <div class="service-card">
-                    <div class="service-image">
-                        <div class="service-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M12 2L13.09 8.26L20 9L13.09 9.74L12 16L10.91 9.74L4 9L10.91 8.26L12 2ZM12 6C10.9 6 10 6.9 10 8C10 9.1 10.9 10 12 10C13.1 10 14 9.1 14 8C14 6.9 13.1 6 12 6Z" fill="currentColor"/>
-                            </svg>
-                        </div>
+                        <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dental Implants - Professional Care">
                     </div>
                     <div class="service-content">
                         <h3>Dental Implants</h3>
                         <p>Replace missing teeth with durable, natural-looking dental implants that restore function and aesthetics. Our experienced dentists provide advanced implant procedures for long-lasting, comfortable results.</p>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-image">
+                        <img src="smile.jpg" alt="Botox & Aesthetic Treatments">
+                    </div>
+                    <div class="service-content">
+                        <h3>Botox & Aesthetic Treatments</h3>
+                        <p>Professional facial rejuvenation services including Botox for wrinkle reduction, TMJ relief, and gummy smile correction. Our trained dental professionals provide safe, natural-looking results to enhance your confidence.</p>
                     </div>
                 </div>
             </div>
@@ -2904,11 +2877,11 @@
     <section id="contact" class="location-section">
         <div class="container">
             <h2>VISIT OUR <br class="desktop-break">CAMBRIDGE<br class="desktop-break">DENTAL OFFICE</h2>
-            <div class="address">403 Cambridge St, Cambridge, MA 02141 - Conveniently Located in Cambridge</div>
+            <div class="address">403 Cambridge St, Cambridge, MA 02141 - Conveniently Located in East Cambridge</div>
             <h3>OFFICE HOURS</h3>
             <div class="hours-container">
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM (Extended hours for busy Cambridge professionals)</p>
-                <p><strong>Saturday:</strong> 9:00 AM - 3:00 PM (Convenient weekend appointments)</p>
+                <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
+                <p><strong>Saturday:</strong> 9:00 AM - 3:00 PM </p>
                 <p><strong>Sunday:</strong> Emergency Dental Care Only</p>
             </div>
             
