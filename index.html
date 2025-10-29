@@ -35,6 +35,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         /*
         STYLE GUIDE
@@ -58,6 +59,7 @@
 
         html {
             scroll-behavior: smooth;
+            height: 100%;
         }
 
         html, body {
@@ -70,6 +72,8 @@
             background-color: #F9F8FF;
             color: #212529;
             padding-bottom: 0;
+            min-height: 100%;
+            position: relative;
         }
 
         /* Header Styles */
@@ -142,7 +146,7 @@
             line-height: 1.1;
             margin: 0;
             padding: 0;
-            font-family: Helvetica, Arial, sans-serif;
+            font-family: 'Montserrat', sans-serif;
             color: #212529;
             display: block;
         }
@@ -464,13 +468,16 @@
             left: 0;
             width: 100%;
             height: 100vh;
-            background-color: #000000;
-            z-index: 1003;
+            background-color: #1a1a1a;
+            z-index: 9999;
             display: none;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .mobile-nav.active {
-            display: block;
+            display: flex;
+            opacity: 1;
         }
 
         /* Prevent scrolling when mobile menu is open */
@@ -478,109 +485,122 @@
             overflow: hidden !important;
         }
 
+        .mobile-nav-content {
+            width: 100%;
+            height: 100%;
+            background-color: #1a1a1a;
+            display: flex;
+            flex-direction: column;
+            padding: 24px 32px;
+            box-sizing: border-box;
+        }
+
         .mobile-nav-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 24px 32px;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            background-color: rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .mobile-nav-logo {
+        .mobile-nav-logo-container {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 12px;
+            margin-left: -8px;
         }
 
-        .mobile-nav-logo img {
-            width: 64px;
-            height: 64px;
+        .mobile-nav-logo-container img {
+            width: 60px;
+            height: 60px;
             object-fit: contain;
         }
 
         .mobile-nav-logo-text {
             color: #ffffff;
-            font-family: 'Helvetica', 'Arial', sans-serif;
-            font-size: 18px;
-            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .mobile-nav-logo-text h1 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #ffffff;
             line-height: 1.1;
-            letter-spacing: -0.3px;
+        }
+
+        .mobile-nav-logo-text p {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            color: #ffffff;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.1;
         }
 
         .mobile-nav-close {
             background: none;
             border: none;
+            font-size: 18px;
             color: #ffffff;
-            font-size: 16px;
-            font-weight: 300;
-            font-family: 'Helvetica', 'Arial', sans-serif;
             cursor: pointer;
-            padding: 12px 20px;
-            border-radius: 6px;
-            transition: all 0.3s ease;
-            margin-top: -5px;
-            margin-right: -5px;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 2px;
+            padding: 0;
             text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .mobile-nav-close:hover {
-            background-color: rgba(255, 255, 255, 0.1);
         }
 
         .mobile-nav-links {
             list-style: none;
             padding: 0;
             margin: 0;
-            background-color: rgba(0, 0, 0, 0.02);
+            flex: 1;
         }
 
         .mobile-nav-links li {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-        }
-
-        .mobile-nav-links li:last-child {
-            border-bottom: none;
+            margin-bottom: 0;
         }
 
         .mobile-nav-links a {
             color: #ffffff;
             text-decoration: none;
-            font-size: 20px;
-            font-weight: 400;
-            font-family: 'Helvetica', 'Arial', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 24px 32px;
-            transition: all 0.3s ease;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-        }
-
-        .mobile-nav-links a:hover,
-        .mobile-nav-links a.active {
-            color: #2BA5E8;
-            background-color: rgba(43, 165, 232, 0.08);
-            padding-left: 40px;
-        }
-
-        .mobile-nav-links a.active {
-            color: #2BA5E8;
+            font-size: 32px;
             font-weight: 500;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: color 0.3s ease;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .mobile-nav-links a:hover {
+            color: #2BA5E8;
+        }
+
+        .mobile-nav-links a.active {
+            color: #2BA5E8;
         }
 
         .nav-arrow {
-            font-size: 16px;
-            font-weight: 300;
-            transition: transform 0.3s ease, opacity 0.3s ease;
-            opacity: 0.7;
+            font-size: 36px;
+            color: #ffffff;
+            margin-left: -8px;
         }
 
         .mobile-nav-links a:hover .nav-arrow {
-            transform: translateX(5px);
-            opacity: 1;
+            color: #2BA5E8;
+        }
+
+        .mobile-nav-links a.active .nav-arrow {
+            color: #2BA5E8;
         }
 
         /* Mobile Submenu Styles */
@@ -618,32 +638,26 @@
             transform: rotate(90deg);
         }
 
-        .mobile-nav-contact {
-            padding: 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.15);
-            margin-top: 0;
-            background-color: rgba(0, 0, 0, 0.05);
+        .mobile-nav-footer {
+            margin-top: auto;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .mobile-nav-contact p {
+        .mobile-nav-footer a,
+        .mobile-nav-footer p {
             color: #ffffff;
-            font-size: 16px;
-            font-family: 'Helvetica', 'Arial', sans-serif;
-            font-weight: 400;
-            margin-bottom: 12px;
-            line-height: 1.5;
-            letter-spacing: 0.2px;
-        }
-
-        .mobile-nav-contact a {
-            color: #2BA5E8;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.8;
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            margin-bottom: 8px;
         }
 
-        .mobile-nav-contact a:hover {
-            color: #1e8dc7;
+        .mobile-nav-footer a:hover {
+            color: #2BA5E8;
         }
 
         /* Hero Section */
@@ -925,17 +939,30 @@
         }
 
         .intro-video-section h2 {
-            font-size: 48px;
-            margin-bottom: 40px;
-            color: #ffffff;
-            font-family: 'Dhyana', sans-serif;
+            font-size: 58px;
+            margin-bottom: 20px;
+            color: #000000;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 400;
             margin-top: -80px;
             line-height: 1.2;
             max-width: 800px;
             margin-left: auto;
             margin-right: auto;
             padding-top: 0;
-            white-space: nowrap;
+        }
+
+        .intro-video-section .video-subtitle {
+            font-size: 20px;
+            margin-bottom: 50px;
+            color: #ffffff;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 400;
+            text-align: center;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.7;
         }
 
         .intro-video-section .subtitle {
@@ -958,7 +985,7 @@
         }
 
         .video-container {
-            max-width: 800px;
+            max-width: 1200px;
             margin: 0 auto;
         }
 
@@ -1105,25 +1132,26 @@
         }
 
         .team-section h2 {
-            font-size: 42px;
+            font-size: 58px;
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 60px;
             color: #ffffff;
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 700;
             letter-spacing: -0.5px;
             position: relative;
+            padding-bottom: 20px;
         }
 
         .team-section h2::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 60px;
+            width: 100px;
             height: 4px;
-            background: linear-gradient(90deg, #2BA5E8, #1e8dc7);
+            background: #2BA5E8;
             border-radius: 2px;
         }
 
@@ -1387,8 +1415,7 @@
         .services-section {
             background: linear-gradient(rgba(248, 249, 250, 0.9), rgba(248, 249, 250, 0.9)), 
                         url('https://images.unsplash.com/photo-1606811841689-23dfddceeee3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover;
-            padding: 80px 0;
-            min-height: 100vh;
+            padding: 60px 0 40px 0;
             display: flex;
             align-items: center;
             width: 100vw;
@@ -1397,9 +1424,9 @@
         }
 
         .services-section h2 {
-            font-size: 48px;
+            font-size: 58px;
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 20px;
             color: #212529;
             font-family: 'Dhyana', sans-serif;
             text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
@@ -1410,7 +1437,7 @@
         .services-section .subtitle {
             font-size: 24px;
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
             color: #212529;
             font-family: 'Dhyana', sans-serif;
             text-shadow: 0 2px 4px rgba(255, 255, 255, 0.8);
@@ -1511,6 +1538,7 @@
             text-align: center;
             position: relative;
             z-index: 2;
+            margin-top: 40px;
         }
 
         .browse-all-services a {
@@ -1614,11 +1642,56 @@
             overflow: hidden;
         }
 
+        .map-container {
+            position: relative;
+        }
+
         .map-container iframe {
             width: 100%;
             height: 800px;
             border: none;
             display: block;
+        }
+
+        .map-loading {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #f5f5f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 10;
+            transition: opacity 0.3s ease;
+        }
+
+        .map-loading.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .map-spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid #e0e0e0;
+            border-top: 4px solid #2BA5E8;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .map-loading-text {
+            margin-top: 20px;
+            color: #666;
+            font-size: 16px;
+            font-family: 'Arial', sans-serif;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
         .location-book-now {
@@ -1929,25 +2002,41 @@
             /* Adjust hero padding for mobile header layout */
             .hero {
                 padding-top: 130px;
+                padding-bottom: 60px;
+                min-height: auto;
+            }
+
+            /* Remove min-height constraints on mobile to prevent extra whitespace */
+            .intro-video-section,
+            .services-section,
+            .location-section {
+                min-height: auto;
             }
 
             /* Mobile section adjustments */
             .intro-video-section {
-                padding: 40px 0 120px 0;
+                padding: 40px 0 60px 0;
             }
 
             .intro-video-section h2 {
-                font-size: 26px;
+                font-size: 42px;
                 font-family: 'Josefin Sans', sans-serif;
-                font-weight: 700;
-                margin-bottom: 40px;
-                margin-top: -60px;
+                font-weight: 400;
+                margin-bottom: 15px;
+                margin-top: 0;
                 line-height: 1.2;
                 max-width: 95%;
                 margin-left: auto;
                 margin-right: auto;
                 padding-top: 0;
-                white-space: nowrap;
+                padding-left: 10px;
+                padding-right: 10px;
+                color: #000000;
+            }
+
+            .intro-video-section .video-subtitle {
+                font-size: 20px;
+                margin-bottom: 80px;
                 padding-left: 10px;
                 padding-right: 10px;
             }
@@ -1970,7 +2059,7 @@
             }
 
             .video-container {
-                max-width: 90%;
+                max-width: 95%;
                 margin: 0 auto;
             }
 
@@ -1979,12 +2068,18 @@
             }
 
             .team-section h2 {
-                font-size: 32px;
+                font-size: 38px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
-                margin-bottom: 30px;
+                margin-bottom: 50px;
                 margin-top: 0;
-                line-height: 1.1;
+                line-height: 1.2;
+                padding-bottom: 15px;
+            }
+
+            .team-section h2::after {
+                width: 80px;
+                height: 3px;
             }
 
             .team-section .subtitle {
@@ -2049,7 +2144,7 @@
             }
 
             .services-section h2 {
-                font-size: 32px;
+                font-size: 42px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
                 margin-bottom: 40px;
@@ -2059,12 +2154,12 @@
             }
 
             .services-section .subtitle {
-                font-size: 18px;
+                font-size: 20px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 400;
                 margin-bottom: 50px;
                 line-height: 1.3;
-                padding: 0 15px;
+                padding: 0 10px;
             }
 
             .location-section h2 {
@@ -2145,13 +2240,13 @@
 
             .services-grid {
                 grid-template-columns: 1fr;
-                gap: 50px;
+                gap: 25px;
                 margin-bottom: 80px;
                 padding: 0 10px;
             }
 
             .services-section {
-                padding: 50px 20px 120px 20px;
+                padding: 40px 20px 50px 20px;
             }
 
             .browse-all-services a {
@@ -2222,6 +2317,21 @@
             .map-container iframe {
                 height: 600px;
                 width: 100vw;
+            }
+
+            .map-loading {
+                height: 600px;
+            }
+
+            .map-spinner {
+                width: 40px;
+                height: 40px;
+                border-width: 3px;
+            }
+
+            .map-loading-text {
+                font-size: 14px;
+                margin-top: 15px;
             }
 
             .carousel-nav {
@@ -2447,9 +2557,14 @@
             }
 
             .team-section h2 {
-                font-size: 64px;
-                margin-bottom: 40px;
+                font-size: 66px;
+                margin-bottom: 70px;
                 letter-spacing: -1px;
+                padding-bottom: 20px;
+            }
+
+            .team-section h2::after {
+                width: 120px;
             }
 
             .team-section .subtitle {
@@ -2660,44 +2775,46 @@
 
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
-        <div class="mobile-nav-header">
-            <div class="mobile-nav-logo">
-                <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo">
-                <div class="mobile-nav-logo-text">
-                    <div>Alvarez</div>
-                    <div>Dental</div>
-                    <div>Group, LLC</div>
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <div class="mobile-nav-logo-container">
+                    <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo">
+                    <div class="mobile-nav-logo-text">
+                        <h1>Alvarez</h1>
+                        <h1>Dental</h1>
+                        <p>Group, LLC</p>
+                    </div>
                 </div>
+                <button class="mobile-nav-close" id="mobileNavClose">CLOSE</button>
             </div>
-            <button class="mobile-nav-close" id="mobileNavClose">CLOSE</button>
-        </div>
-        
-        <ul class="mobile-nav-links">
-            <li><a href="index.html" class="active">HOME</a></li>
-            <li>
-                <a href="#" class="mobile-parent-link" data-submenu="about">ABOUT <span class="nav-arrow">></span></a>
-                <div class="mobile-submenu" id="about-submenu">
-                    <a href="our-team.html">Our Team</a>
-                    <a href="our-story.html">Our Story</a>
-                    <a href="our-founder.html">Our Founder</a>
-                </div>
-            </li>
-            <li>
-                <a href="#" class="mobile-parent-link" data-submenu="services">SERVICES <span class="nav-arrow">></span></a>
-                <div class="mobile-submenu" id="services-submenu">
-                    <a href="general-dentistry.html">General Dentistry</a>
-                    <a href="cosmetic-dentistry.html">Cosmetic Dentistry</a>
-                    <a href="dental-implants.html">Dental Implants</a>
-                    <a href="botox.html">Botox & Aesthetics</a>
-                </div>
-            </li>
-            <li><a href="contact.html">CONTACT</a></li>
-        </ul>
-        
-        <div class="mobile-nav-contact">
-            <p><a href="tel:617-485-1769">(617)-485-1769</a></p>
-            <p><a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a></p>
-            <p>403 Cambridge St, Cambridge, MA 02141, United States of America</p>
+            
+            <ul class="mobile-nav-links">
+                <li><a href="index.html" class="active">HOME</a></li>
+                <li>
+                    <a href="#" class="mobile-parent-link" data-submenu="about">ABOUT<span class="nav-arrow">›</span></a>
+                    <div class="mobile-submenu" id="about-submenu">
+                        <a href="our-team.html">Our Team</a>
+                        <a href="our-story.html">Our Story</a>
+                        <a href="our-founder.html">Our Founder</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="mobile-parent-link" data-submenu="services">SERVICES<span class="nav-arrow">›</span></a>
+                    <div class="mobile-submenu" id="services-submenu">
+                        <a href="general-dentistry.html">General Dentistry</a>
+                        <a href="cosmetic-dentistry.html">Cosmetic Dentistry</a>
+                        <a href="dental-implants.html">Dental Implants</a>
+                        <a href="botox.html">Botox & Aesthetics</a>
+                    </div>
+                </li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            
+            <div class="mobile-nav-footer">
+                <a href="tel:617-485-1769">(617)-485-1769</a>
+                <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a>
+                <p>403 Cambridge St, Cambridge, MA 02141,<br>United States of America</p>
+            </div>
         </div>
     </div>
 
@@ -2805,7 +2922,8 @@
     <!-- Intro Video Section -->
     <section id="intro-video" class="intro-video-section">
         <div class="container">
-            <h2>Meet Your Dental Family</h2>
+            <h2>Welcome to<br>Alvarez Dental</h2>
+            <p class="video-subtitle">Experience compassionate, comprehensive dental care in the heart of Cambridge. Our expert team is dedicated to creating healthy, beautiful smiles for every member of your family.</p>
             <div class="video-container">
                 <div class="video-placeholder" id="videoContainer">
                     <div class="youtube-overlay" id="youtubeOverlay">
@@ -2830,7 +2948,6 @@
     <section id="about" class="team-section">
         <div class="container">
             <h2>Meet Our Expert Dental Team</h2>
-            <div class="subtitle">Our highly qualified dental professionals bring decades of combined experience in general dentistry, cosmetic procedures, aesthetic treatments, and specialized dental care to serve Cambridge families with exceptional service</div>
             <div class="team-gallery-container" id="teamGalleryContainer">
                 <div class="team-gallery" id="teamGallery">
                     <img src="staff0.png" alt="Dr. Rosario Alvarez - Lead Dentist and Practice Owner at Alvarez Dental Group Cambridge MA" class="team-member">
@@ -2912,7 +3029,12 @@
             </div>
             
             <div class="map-container">
+                <div class="map-loading" id="mapLoading">
+                    <div class="map-spinner"></div>
+                    <div class="map-loading-text">Loading map...</div>
+                </div>
                 <iframe 
+                    id="mapIframe"
                     src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.5!2d-71.1!3d42.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370a8c8b8b8b8%3A0x8b8b8b8b8b8b8b8b!2s403%20Cambridge%20St%2C%20Cambridge%2C%20MA%2002141!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
                     allowfullscreen="" 
                     loading="lazy" 
@@ -3269,6 +3391,26 @@
         // Mobile header Book Now button now navigates to booking page - no JavaScript needed
 
         // Desktop header Book Now button now navigates to booking page - no JavaScript needed
+
+        // Map loading animation
+        const mapIframe = document.getElementById('mapIframe');
+        const mapLoading = document.getElementById('mapLoading');
+        
+        if (mapIframe && mapLoading) {
+            // Hide loading animation after map loads
+            mapIframe.addEventListener('load', function() {
+                setTimeout(function() {
+                    mapLoading.classList.add('hidden');
+                }, 500); // Small delay to ensure smooth transition
+            });
+
+            // Fallback: Hide loading animation after 3 seconds if load event doesn't fire
+            setTimeout(function() {
+                if (!mapLoading.classList.contains('hidden')) {
+                    mapLoading.classList.add('hidden');
+                }
+            }, 3000);
+        }
     </script>
 </body>
 </html>
