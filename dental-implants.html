@@ -124,18 +124,51 @@
 
         .book-now-header {
             background-color: #2BA5E8;
-            color: white;
-            padding: 12px 30px;
-            border-radius: 30px;
+            color: #ffffff;
             text-decoration: none;
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-size: 16px;
             font-weight: 700;
+            padding: 12px 24px;
+            border-radius: 0;
             transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            min-width: 160px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
         }
 
         .book-now-header:hover {
-            background-color: #1a8ac9;
+            background-color: #1e8dc7;
             transform: translateY(-2px);
         }
+
+        /* Mobile Header */
+        .mobile-header-top {
+            display: flex;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 0;
+            justify-content: space-between;
+            align-items: stretch;
+            height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1002;
+            width: 100%;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .mobile-book-now { background-color:#0391DB; color:#fff; display:flex; align-items:center; justify-content:center; width:50%; min-height:60px; text-decoration:none; font-weight:700; letter-spacing:1px; }
+        .mobile-phone { background-color:#002756; color:#fff; display:flex; align-items:center; justify-content:center; width:50%; min-height:60px; text-decoration:none; font-weight:700; gap:8px; padding:0 14px; }
 
         /* Hero Section */
         .page-hero {
@@ -409,25 +442,32 @@
                 font-size: 28px;
             }
         }
+
+        @media (max-width: 767px) {
+            body { padding-top: 120px; }
+        }
+
+        /* Mobile: Position header below mobile-header-top */
+        @media (max-width: 767px) {
+            header { top: 60px; z-index: 1000; }
+        }
     </style>
 </head>
 <body>
     <!-- Header -->
     <header>
         <div class="logo-container" onclick="window.location.href='index.html'">
-            <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo" class="logo-image">
-            <span class="logo-text-visual">Alvarez<br>Dental<br>Group, LLC</span>
+            <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo" class="logo-image">
+            <span class="logo-text-visual" style="color:#ffffff">Alvarez<br>Dental<br>Group, LLC</span>
         </div>
-
         <nav class="desktop-nav">
             <ul class="nav-links">
                 <li><a href="index.html">HOME</a></li>
                 <li><a href="about.html">ABOUT</a></li>
-                <li><a href="services.html">SERVICES</a></li>
+                <li><a href="services.html" class="active">SERVICES</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
         </nav>
-
         <div class="header-cta">
             <a href="tel:617-485-1769" class="phone-number">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -437,7 +477,40 @@
             </a>
             <a href="book.html" class="book-now-header">BOOK NOW</a>
         </div>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
     </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-content">
+            <div class="mobile-nav-header">
+                <div class="mobile-nav-logo-container">
+                    <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo">
+                    <div class="mobile-nav-logo-text">
+                        <h1>Alvarez</h1>
+                        <h1>Dental</h1>
+                        <p>Group, LLC</p>
+                    </div>
+                </div>
+                <button class="mobile-nav-close" id="mobileNavClose">CLOSE</button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="services.html" class="active">SERVICES<span class="nav-arrow">›</span></a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+            <div class="mobile-nav-footer">
+                <a href="tel:617-485-1769">(617)-485-1769</a>
+                <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a>
+                <p>403 Cambridge St, Cambridge, MA 02141</p>
+            </div>
+        </div>
+    </div>
 
     <!-- Page Hero -->
     <section class="page-hero">
@@ -633,5 +706,24 @@
             </div>
         </div>
     </footer>
+    <script>
+        // Mobile nav handlers (match homepage)
+        (function(){
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            function preventScroll(){ document.body.classList.add('menu-open'); document.body.style.overflow='hidden'; }
+            function allowScroll(){ document.body.classList.remove('menu-open'); document.body.style.overflow=''; }
+            if(hamburger && mobileNav){
+                hamburger.addEventListener('click', ()=>{
+                    hamburger.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    mobileNav.classList.contains('active') ? preventScroll() : allowScroll();
+                });
+            }
+            if(mobileNavClose){ mobileNavClose.addEventListener('click', ()=>{ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); }); }
+            if(mobileNav){ mobileNav.addEventListener('click', (e)=>{ if(e.target===mobileNav){ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); } }); }
+        })();
+    </script>
 </body>
 </html>

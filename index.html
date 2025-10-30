@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -36,6 +35,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Google reCAPTCHA -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    
     <style>
         /*
         STYLE GUIDE
@@ -87,12 +90,12 @@
             top: 0;
             left: 0;
             right: 0;
-            z-index: 1001;
+            z-index: 1000;
             min-height: 78px;
             width: 100%;
             max-width: 100%;
-            margin: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            margin: 0 auto;
+            transition: transform 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
@@ -109,7 +112,9 @@
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 2px 12px;
+            padding-left: 12px;
+            padding-top: 2px;
+            padding-bottom: 1px;
             flex-shrink: 0;
             cursor: pointer;
             transition: transform 0.3s ease, opacity 0.3s ease;
@@ -127,28 +132,27 @@
 
         .logo-text {
             color: #212529;
-            margin-top: 1px;
-            margin-left: -4px;
+            margin-top: -3px;
         }
 
         .logo-text h1 {
-            font-size: 0;
-            line-height: 0;
-            margin: 0;
-            padding: 0;
-            height: 0;
-            overflow: hidden;
-        }
-
-        .logo-text-visual {
             font-size: 19px;
             font-weight: 700;
-            line-height: 1.15;
+            line-height: 1.1;
             margin: 0;
             padding: 0;
             font-family: 'Montserrat', sans-serif;
             color: #212529;
-            display: block;
+        }
+
+        .logo-text p {
+            font-size: 19px;
+            font-weight: 700;
+            margin: 0;
+            padding: 0;
+            color: #212529;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.1;
         }
 
         /* Desktop Navigation */
@@ -156,13 +160,13 @@
             display: none;
             flex: 1;
             justify-content: center;
-            padding: 0 60px;
-            margin-left: 40px;
+            padding: 0 40px;
+            margin-left: 20px;
         }
 
         .nav-links {
             display: flex;
-            gap: 40px;
+            gap: 50px;
             list-style: none;
             align-items: center;
             justify-content: center;
@@ -177,19 +181,13 @@
         .nav-links a {
             color: #212529;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 700;
+            font-size: 19px;
+            font-weight: 400;
             transition: all 0.3s ease;
-            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-family: 'Encode Sans Expanded', sans-serif;
             position: relative;
             display: block;
-            padding: 12px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border: none;
-            background-color: transparent;
-            min-width: auto;
-            text-align: left;
+            padding: 5px 0;
         }
 
         .nav-links a::after {
@@ -207,16 +205,15 @@
         .nav-links a:hover {
             color: #2BA5E8;
             background-color: transparent;
-            transform: none;
+            transform: translateY(-2px);
         }
 
         .nav-links a:hover::after {
-            display: none;
+            width: 100%;
         }
 
         .nav-links .active {
             color: #2BA5E8;
-            background-color: transparent;
         }
 
         .dropdown-arrow {
@@ -287,28 +284,28 @@
             display: none;
             gap: 15px;
             align-items: center;
-            padding: 3px 20px 3px 0;
+            padding-right: 20px;
             flex-shrink: 0;
         }
 
         .phone-number {
             color: #2BA5E8;
             text-decoration: none;
-            font-size: 16px;
-            font-weight: 600;
+            font-size: 18px;
+            font-weight: 400;
             border: 2px solid #2BA5E8;
-            padding: 12px 24px;
+            padding: 0;
             border-radius: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
+            gap: 12px;
             transition: all 0.3s ease;
-            font-family: 'Arial', 'Helvetica', sans-serif;
+            font-family: 'Charis SIL', serif;
             background-color: #ffffff;
-            min-width: 200px;
-            height: 44px;
-            letter-spacing: 0.5px;
+            min-width: 236px;
+            min-height: 65px;
+            letter-spacing: 2px;
             position: relative;
             overflow: hidden;
         }
@@ -344,16 +341,16 @@
             background-color: #2BA5E8;
             color: #ffffff;
             text-decoration: none;
-            font-family: 'Arial', 'Helvetica', sans-serif;
-            font-size: 16px;
-            font-weight: 700;
-            padding: 12px 24px;
+            font-family: 'Jost', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 0;
             border-radius: 0;
             transition: all 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            min-width: 160px;
-            height: 44px;
+            letter-spacing: 1px;
+            min-width: 236px;
+            min-height: 65px;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -364,7 +361,7 @@
         .book-now-header::after {
             content: '→';
             position: absolute;
-            right: 15px;
+            right: 20px;
             opacity: 0;
             transition: all 0.3s ease;
             transform: translateX(-10px);
@@ -940,7 +937,7 @@
 
         .intro-video-section h2 {
             font-size: 58px;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             color: #000000;
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 400;
@@ -954,7 +951,7 @@
 
         .intro-video-section .video-subtitle {
             font-size: 20px;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
             color: #ffffff;
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 400;
@@ -1042,13 +1039,15 @@
             content: 'Watch Our Introduction';
             position: absolute;
             top: 20px;
-            left: 20px;
+            left: 50%;
+            transform: translateX(-50%);
             color: #ffffff;
             font-size: 18px;
             font-weight: 600;
             font-family: 'Josefin Sans', sans-serif;
             text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
             z-index: 2;
+            text-align: center;
         }
 
         .video-placeholder .youtube-overlay:hover {
@@ -1197,31 +1196,46 @@
             display: none;
         }
 
-        .team-member {
+        .team-member-wrapper {
             flex: 0 0 300px;
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
-            position: relative;
-            scroll-snap-align: center;
-            height: 400px;
             width: 300px;
-            opacity: 0;
-            transform: translateY(50px) rotateX(15deg);
-            animation: slideInUp 0.8s cubic-bezier(0.23, 1, 0.32, 1) forwards;
-            object-fit: cover;
-            object-position: center 30%;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            background-color: #f8f9fa;
+            height: 300px;
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s ease;
+            scroll-snap-align: center;
         }
 
-        .team-member:nth-child(1) { animation-delay: 0.1s; }
-        .team-member:nth-child(2) { animation-delay: 0.2s; }
-        .team-member:nth-child(2) img { object-position: center 25%; }
-        .team-member:nth-child(3) { animation-delay: 0.3s; }
-        .team-member:nth-child(3) img { object-position: center 25%; }
-        .team-member:nth-child(4) { animation-delay: 0.4s; }
-        .team-member:nth-child(4) img { object-position: center 25%; }
-        .team-member:nth-child(5) { animation-delay: 0.5s; }
+        .team-member-wrapper:hover {
+            transform: scale(1.03);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+        }
+
+        .team-member {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 30%;
+            display: block;
+        }
+
+        .team-member-name {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 18px 14px;
+            font-size: 19px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 600;
+            color: #ffffff;
+            text-align: center;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5), transparent);
+            margin: 0;
+        }
+
 
         @keyframes slideInUp {
             to {
@@ -1502,8 +1516,14 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+            object-position: center center;
             display: block;
             border-radius: 16px;
+        }
+
+        /* Adjust dental implants image crop */
+        .service-item:nth-child(3) .service-image img {
+            object-position: center 40%;
         }
 
         .service-icon {
@@ -1548,203 +1568,212 @@
             font-weight: 600;
         }
 
-        /* Location Section */
+        /* Location Section - Redesigned */
         .location-section {
-            background-color: #2BA5E8;
+            background: linear-gradient(180deg, rgba(255,255,255,0.06) 0%, rgba(0,0,0,0.06) 100%), #33A9DC;
             padding: 60px 0;
-            text-align: center;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             width: 100vw;
             margin-left: calc(-50vw + 50%);
         }
 
+        .location-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
         .location-section h2 {
-            font-size: 72px;
-            margin-bottom: 50px;
-            color: #000000;
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-
-        /* Hide line breaks on mobile */
-        .desktop-break {
-            display: none;
-        }
-
-        .location-section .address {
-            font-size: 24px;
-            margin-bottom: 50px;
-            color: #ffffff;
-            font-weight: 500;
-            font-family: 'Josefin Sans', sans-serif;
-        }
-
-        .location-section h3 {
-            font-size: 32px;
-            margin-bottom: 15px;
+            font-size: 48px;
+            margin-bottom: 60px;
             color: #1a365d;
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 700;
+            text-align: center;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        .hours-container {
-            background-color: transparent;
-            border-radius: 0;
-            padding: 20px 0;
-            max-width: 600px;
-            margin: 0 auto 40px auto;
-            box-shadow: none;
+        /* Single column centered stack */
+        .location-single {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
         }
 
-        .hours-container p {
-            font-size: 22px;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            color: #ffffff;
-            font-family: 'Josefin Sans', sans-serif;
-            font-weight: 500;
-        }
-
-        .hours-container p:last-child {
-            margin-bottom: 0;
-        }
-
-        .hours-container strong {
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 22px;
-        }
-
-        .phone-info {
-            margin-bottom: 30px;
-        }
-
-        .phone-info p {
-            font-size: 24px;
-            color: #ffffff;
+        .address-centered {
+            font-size: 26px;
+            color: #0f2d4a;
             font-family: 'Josefin Sans', sans-serif;
             font-weight: 600;
-            margin: 0;
+            margin: 0 auto 32px auto;
         }
 
-        .map-container {
-            background-color: transparent;
-            border-radius: 0;
-            padding: 0;
+        .location-divider {
+            height: 1px;
             width: 100%;
-            margin: 0 auto;
-            box-shadow: none;
-            overflow: hidden;
+            background: rgba(255,255,255,0.35);
+            margin: 0 auto 24px auto;
         }
 
         .map-container {
             position: relative;
-            max-width: 800px;
+            width: 100%;
+            height: 320px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
             margin: 0 auto;
         }
 
         .map-container iframe {
             width: 100%;
-            height: 350px;
+            height: 100%;
             border: none;
             display: block;
         }
 
-        .map-loading {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #f5f5f5;
-            display: flex;
-            flex-direction: column;
+        .maps-view-link {
+            display: inline-block;
+            margin: 12px auto 40px auto;
+            color: #0f2d4a;
+            text-decoration: underline;
+            font-family: 'Josefin Sans', sans-serif;
+            font-size: 16px;
+        }
+
+        .hours-card {
+            max-width: 700px;
+            margin: 0 auto 32px auto;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 30px 24px;
+        }
+
+        .hours-card h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #1a365d;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .hours-list.centered p { text-align: center; }
+
+        .btn-book-appointment {
+            display: inline-flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
-            transition: opacity 0.3s ease;
-        }
-
-        .map-loading.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .map-spinner {
-            width: 50px;
-            height: 50px;
-            border: 4px solid #e0e0e0;
-            border-top: 4px solid #2BA5E8;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-
-        .map-loading-text {
-            margin-top: 20px;
-            color: #666;
-            font-size: 16px;
-            font-family: 'Arial', sans-serif;
-        }
-
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .location-book-now {
-            text-align: center;
-            margin: 40px 0;
-        }
-
-        .book-now-location {
-            background-color: #ffffff;
-            color: #2BA5E8;
-            text-decoration: none;
-            font-family: 'Jost', sans-serif;
-            font-size: 24px;
-            font-weight: 700;
-            padding: 22px 60px;
-            border-radius: 0;
-            border: 3px solid #ffffff;
-            display: inline-block;
-            width: fit-content;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
-        }
-
-        .book-now-location::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background-color: rgba(43, 165, 232, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s ease, height 0.6s ease;
-        }
-
-        .book-now-location:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .book-now-location:hover {
-            background-color: #2BA5E8;
+            height: 52px;
+            padding: 0 24px;
+            max-width: 280px;
+            width: 100%;
+            margin: 0 auto;
+            background-color: #1E3A5F;
             color: #ffffff;
-            transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.5);
-            letter-spacing: 3px;
+            font-size: 16px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-book-appointment:hover {
+            background-color: #274A78;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .location-cta {
+            margin-top: 20px;
+        }
+
+        .consultation-section {
+            background-color: #f5f5f5;
+            padding: 80px 0;
+            width: 100vw;
+            margin-left: calc(-50vw + 50%);
+        }
+
+        .consultation-container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .consultation-section h2 {
+            font-size: 42px;
+            margin-bottom: 50px;
+            color: #1a365d;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .form-wrapper {
+            background: #ffffff;
+            padding: 50px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+
+        .consultation-form .form-group {
+            margin-bottom: 25px;
+        }
+
+        .consultation-form input,
+        .consultation-form textarea {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Josefin Sans', sans-serif;
+            transition: border-color 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .consultation-form input:focus,
+        .consultation-form textarea:focus {
+            outline: none;
+            border-color: #33A9DC;
+        }
+
+        .consultation-form textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .recaptcha-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+        }
+
+        .btn-submit-form {
+            width: 100%;
+            padding: 18px 40px;
+            background-color: #33A9DC;
+            color: #ffffff;
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            font-family: 'Josefin Sans', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-submit-form:hover {
+            background-color: #2897c5;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(51, 169, 220, 0.3);
         }
 
         /* Footer - Professional Design */
@@ -2024,7 +2053,7 @@
                 font-size: 42px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 400;
-                margin-bottom: 15px;
+                margin-bottom: 25px;
                 margin-top: 0;
                 line-height: 1.2;
                 max-width: 95%;
@@ -2038,9 +2067,27 @@
 
             .intro-video-section .video-subtitle {
                 font-size: 20px;
-                margin-bottom: 80px;
+                margin-bottom: 40px;
                 padding-left: 10px;
                 padding-right: 10px;
+            }
+
+            /* Center video overlay text and play button on mobile */
+            .video-placeholder .youtube-overlay::after {
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                text-align: center;
+                width: 100%;
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+
+            .video-placeholder .youtube-play-button {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
             }
 
             .intro-video-section .subtitle {
@@ -2073,7 +2120,7 @@
                 font-size: 38px;
                 font-family: 'Josefin Sans', sans-serif;
                 font-weight: 700;
-                margin-bottom: 50px;
+                margin-bottom: 25px;
                 margin-top: 0;
                 line-height: 1.2;
                 padding-bottom: 15px;
@@ -2093,6 +2140,17 @@
                 line-height: 1.3;
             }
 
+            .team-description {
+                font-size: 18px;
+                font-family: 'Josefin Sans', sans-serif;
+                font-weight: 400;
+                line-height: 1.6;
+                color: #ffffff;
+                margin-bottom: 30px;
+                padding: 0 20px;
+                text-align: center;
+            }
+
             .team-gallery-container {
                 padding: 0 15px;
             }
@@ -2103,15 +2161,43 @@
                 align-items: center;
             }
 
-            .team-member {
+            .team-member-wrapper {
                 flex: 0 0 280px;
-                height: 350px;
                 width: 280px;
+                height: 280px;
+                position: relative;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                transition: all 0.3s ease;
+            }
+
+            .team-member-wrapper:hover {
+                transform: scale(1.03);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            }
+
+            .team-member {
+                width: 100%;
+                height: 100%;
                 object-fit: cover;
                 object-position: center 30%;
-                border-radius: 8px;
-                box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-                background-color: #f8f9fa;
+                display: block;
+            }
+
+            .team-member-name {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 16px 12px;
+                font-size: 18px;
+                font-family: 'Josefin Sans', sans-serif;
+                font-weight: 600;
+                color: #ffffff;
+                text-align: center;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5), transparent);
+                margin: 0;
             }
 
 
@@ -2161,28 +2247,94 @@
                 font-weight: 400;
                 margin-bottom: 50px;
                 line-height: 1.3;
-                padding: 0 10px;
+                padding: 0 20px;
+                max-width: 95%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            /* Mobile - Location Section */
+            .location-section {
+                padding: 60px 0;
+            }
+
+            .location-container {
+                padding: 0 20px;
             }
 
             .location-section h2 {
+                font-size: 36px;
+                margin-bottom: 40px;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .map-container {
+                height: 300px;
+                border-radius: 8px;
+            }
+
+            .btn-get-directions {
+                padding: 25px 20px;
+            }
+
+            .btn-get-directions svg {
+                width: 28px;
+                height: 28px;
+            }
+
+            .btn-get-directions span {
+                font-size: 18px;
+            }
+
+            .btn-get-directions small {
+                font-size: 14px;
+            }
+
+            .hours-block h3 {
+                font-size: 24px;
+            }
+
+            .hours-list p {
+                font-size: 16px;
+            }
+
+            .btn-book-appointment {
+                width: 100%;
+                padding: 16px 40px;
+                font-size: 16px;
+            }
+
+            /* Mobile - Consultation Section */
+            .consultation-section {
+                padding: 60px 0;
+            }
+
+            .consultation-container {
+                padding: 0 20px;
+            }
+
+            .consultation-section h2 {
                 font-size: 32px;
-                font-family: 'Josefin Sans', sans-serif;
-                font-weight: 700;
-                letter-spacing: 1px;
+                margin-bottom: 40px;
             }
 
-            /* Show line breaks on mobile */
-            .desktop-break {
-                display: block;
+            .form-wrapper {
+                padding: 30px 20px;
             }
 
-            .location-section h3 {
-                font-size: 32px;
-                font-family: 'Josefin Sans', sans-serif;
+            .consultation-form input,
+            .consultation-form textarea {
+                padding: 14px 16px;
+                font-size: 15px;
             }
 
-            .location-section .address {
-                font-family: 'Josefin Sans', sans-serif;
+            .btn-submit-form {
+                padding: 16px 30px;
+                font-size: 16px;
             }
 
             .team-slide h3 {
@@ -2307,23 +2459,6 @@
                 font-family: 'Josefin Sans', sans-serif;
             }
 
-            .map-container {
-                max-width: 100vw;
-                width: 100vw;
-                margin-left: calc(-50vw + 50%);
-                margin-right: calc(-50vw + 50%);
-                padding: 0;
-                border: 20px solid #2BA5E8;
-            }
-
-            .map-container iframe {
-                height: 600px;
-                width: 100vw;
-            }
-
-            .map-loading {
-                height: 600px;
-            }
 
             .map-spinner {
                 width: 40px;
@@ -2335,6 +2470,7 @@
                 font-size: 14px;
                 margin-top: 15px;
             }
+
 
             .carousel-nav {
                 display: none;
@@ -2354,24 +2490,43 @@
                 overflow: hidden;
             }
 
-
-            .team-member {
+            .team-member-wrapper {
                 width: 400px;
-                background-color: #ffffff;
-                border-radius: 12px;
-                padding: 15px 10px;
-                box-shadow: 0 4px 15px rgba(43, 165, 232, 0.1);
-                border: 2px solid transparent;
+                height: 400px;
+                position: relative;
+                border-radius: 16px;
+                overflow: hidden;
+                box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+                transition: all 0.3s ease;
             }
 
-            .team-member img {
+            .team-member-wrapper:hover {
+                transform: scale(1.03);
+                box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            }
+
+            .team-member {
                 width: 100%;
-                height: 250px;
-                border-radius: 12px;
-                background-color: #f8f9fa;
+                height: 100%;
                 outline: none;
                 object-fit: cover;
                 object-position: center 30%;
+                display: block;
+            }
+
+            .team-member-name {
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                padding: 20px 16px;
+                font-size: 20px;
+                font-family: 'Josefin Sans', sans-serif;
+                font-weight: 600;
+                color: #ffffff;
+                text-align: center;
+                background: linear-gradient(to top, rgba(0, 0, 0, 0.85), rgba(0, 0, 0, 0.5), transparent);
+                margin: 0;
             }
 
             .team-member h3 {
@@ -2417,6 +2572,15 @@
                 display: none;
             }
 
+            /* Hide mobile-only elements on desktop */
+            .team-description {
+                display: none;
+            }
+
+            .team-member-name {
+                display: none;
+            }
+
             header {
                 padding: 10px 0;
                 min-height: 78px;
@@ -2447,10 +2611,12 @@
 
             .hero {
                 padding: 0;
-                min-height: 100vh;
+                min-height: 85vh;
+                min-height: max(85vh, 700px);
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                background: linear-gradient(135deg, #FFFFFF 0%, #E8F4F8 50%, #D4E9F2 100%);
             }
 
             /* Desktop Hero Layout - Flexbox */
@@ -2458,10 +2624,10 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                gap: 120px;
+                gap: 40px;
                 max-width: 1400px;
                 width: 100%;
-                height: 100vh;
+                min-height: inherit;
                 padding: 0 80px;
             }
 
@@ -2470,49 +2636,50 @@
             }
 
             .hero-left-content {
-                flex: 1;
-                max-width: 600px;
+                flex: 0 0 50%;
+                max-width: 50%;
                 text-align: left;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 justify-content: center;
-                padding-left: 0;
+                padding-left: 96px;
             }
 
             .hero-right-image {
-                flex: 1;
-                max-width: 750px;
+                flex: 0 0 50%;
+                max-width: 50%;
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                padding-right: 60px;
             }
 
             .hero-right-image img {
-                width: 100%;
-                height: auto;
-                max-height: 700px;
-                object-fit: contain;
+                width: min(90%, 600px);
+                height: 600px;
+                object-fit: cover;
                 object-position: center;
-                border-radius: 8px;
+                border-radius: 20px;
+                box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
             }
 
             .hero-left-content h1 {
-                font-size: 68px;
-                line-height: 0.9;
-                margin-bottom: 30px;
+                font-size: 60px;
+                line-height: 1.1;
+                font-weight: 800;
+                margin-bottom: 24px;
                 margin-top: 0;
                 color: #212529;
                 text-align: left;
                 font-family: Helvetica, Arial, sans-serif;
                 width: 100%;
-                min-width: 600px;
                 max-width: 100%;
             }
 
             .hero-left-content .trusted-text {
-                font-size: 23px;
-                margin-bottom: 30px;
+                font-size: 24px;
+                margin-bottom: 24px;
                 text-align: left;
                 font-family: Helvetica, Arial, sans-serif;
                 font-weight: 500;
@@ -2522,7 +2689,8 @@
 
             .hero-left-content .rating-container {
                 align-items: flex-start;
-                margin-bottom: 40px;
+                margin-top: 40px;
+                margin-bottom: 0;
             }
 
             .hero-left-content .rating-text {
@@ -2540,14 +2708,20 @@
             }
 
             .hero-left-content .hero-cta {
-                margin-top: 0;
+                margin-top: 40px;
             }
 
             .hero-left-content .book-now-hero {
                 font-size: 18px;
-                padding: 16px 40px;
+                font-weight: 700;
+                width: 260px;
+                height: 60px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 10px;
                 margin: 0;
-                border-radius: 6px;
+                border-radius: 8px;
             }
 
 
@@ -2590,10 +2764,10 @@
 
         @media (min-width: 1200px) {
             header {
-                padding: 8px 0;
-                min-height: 52px;
+                padding: 10px 0;
+                min-height: 78px;
                 max-width: 100%;
-                margin: 0;
+                margin: 0 auto;
             }
 
             .logo-container {
@@ -2616,23 +2790,24 @@
             }
 
             .hero-left-content h1 {
-                font-size: 82px;
+                font-size: 64px;
                 margin-top: 0;
                 font-family: Helvetica, Arial, sans-serif;
             }
 
             .hero-desktop-container {
                 max-width: 1600px;
-                gap: 140px;
+                gap: 60px;
                 padding: 0 120px;
             }
 
             .hero-right-image {
-                max-width: 875px;
+                max-width: 50%;
             }
 
             .hero-right-image img {
-                max-height: 800px;
+                width: min(90%, 700px);
+                height: 700px;
             }
         }
     </style>
@@ -2727,35 +2902,21 @@
         <div class="logo-container">
             <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo" class="logo-image">
             <div class="logo-text">
-                <h1>Alvarez Dental Group, LLC</h1>
-                <span class="logo-text-visual">Alvarez<br>Dental<br>Group, LLC</span>
-              </div>
+                <h1>Alvarez</h1>
+                <h1>Dental</h1>
+                <p>Group, LLC</p>
             </div>
+        </div>
 
         <!-- Desktop Navigation -->
         <nav class="desktop-nav">
             <ul class="nav-links">
                 <li><a href="index.html" class="active">HOME</a></li>
-                <li class="dropdown">
-                    <a href="about.html">ABOUT <span class="dropdown-arrow">▼</span></a>
-                    <div class="dropdown-menu">
-                        <a href="our-team.html">Our Team</a>
-                        <a href="our-story.html">Our Story</a>
-                        <a href="our-founder.html">Our Founder</a>
-                    </div>
-                </li>
-                <li class="dropdown">
-                    <a href="services.html">SERVICES <span class="dropdown-arrow">▼</span></a>
-                    <div class="dropdown-menu">
-                        <a href="general-dentistry.html">General Dentistry</a>
-                        <a href="cosmetic-dentistry.html">Cosmetic Dentistry</a>
-                        <a href="dental-implants.html">Dental Implants</a>
-                        <a href="botox.html">Botox & Aesthetics</a>
-                    </div>
-                </li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="services.html">SERVICES</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
-              </nav>
+        </nav>
 
         <div class="header-cta">
             <a href="tel:617-485-1769" class="phone-number">
@@ -2860,7 +3021,11 @@
                 </div>
 
                 <div class="hero-cta">
-                    <a href="book.html" class="book-now-hero">BOOK NOW</a>
+                    <a href="book.html" class="book-now-hero">BOOK NOW
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+                            <path d="M5 12h14M13 5l7 7-7 7" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
                 </div>
             </div>
 
@@ -2914,7 +3079,7 @@
                     <p class="rating-text"><strong>4.8</strong> RATING FROM <strong>23</strong> REVIEWS</p>
                 </div>
 
-                <div style="margin-top: 10px;">
+                <div style="margin-top: 30px;">
                     <a href="book.html" class="book-now-hero">BOOK NOW</a>
                 </div>
             </div>
@@ -2946,29 +3111,6 @@
         </div>
     </section>
 
-    <!-- Meet Our Team Section -->
-    <section id="about" class="team-section">
-        <div class="container">
-            <h2>Meet Our Expert Dental Team</h2>
-            <div class="team-gallery-container" id="teamGalleryContainer">
-                <div class="team-gallery" id="teamGallery">
-                    <img src="staff0.png" alt="Dr. Rosario Alvarez - Lead Dentist and Practice Owner at Alvarez Dental Group Cambridge MA" class="team-member">
-                    <img src="staff1.png" alt="Dr. Maria Rodriguez - General Dentist specializing in preventive dental care and cosmetic procedures" class="team-member">
-                    <img src="staff2.png" alt="Dr. Jennifer Chen - Cosmetic dentist specializing in aesthetic treatments and smile makeovers" class="team-member">
-                    <img src="staff3.png" alt="Sarah Johnson - Licensed Dental Hygienist providing professional teeth cleaning and oral health education" class="team-member">
-                    <img src="staff4.png" alt="Lisa Martinez - Dental Assistant and patient care coordinator ensuring comfortable dental visits" class="team-member">
-                </div>
-                <div class="team-nav-dots" id="teamNavDots">
-                    <button class="nav-dot active" data-index="0"></button>
-                    <button class="nav-dot" data-index="1"></button>
-                    <button class="nav-dot" data-index="2"></button>
-                    <button class="nav-dot" data-index="3"></button>
-                    <button class="nav-dot" data-index="4"></button>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <!-- Services Section -->
     <section id="services" class="services-section">
         <div class="container">
@@ -2994,7 +3136,7 @@
                 <div class="service-item">
                     <div class="service-card">
                         <div class="service-image">
-                            <img src="https://images.unsplash.com/photo-1629909613654-28e377c37b09?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dental Implants - Professional Care">
+                            <img src="smile-6.jpg" alt="Dental Implants - Professional Care">
                         </div>
                     </div>
                     <h3 class="service-title">Dental Implants</h3>
@@ -3014,34 +3156,109 @@
         </div>
     </section>
 
+    <!-- Meet Our Team Section -->
+    <section id="about" class="team-section">
+        <div class="container">
+            <h2>Meet Our <br> Team</h2>
+            <p class="team-description">Meet the dedicated professionals behind your exceptional dental care. Our experienced team blends expertise with a compassionate, patient-focused approach to deliver personalized treatment and excellent results. Committed to your oral health and comfort, our team ensures every visit is a positive experience tailored to your individual needs.</p>
+            <div class="team-gallery-container" id="teamGalleryContainer">
+                <div class="team-gallery" id="teamGallery">
+                    <div class="team-member-wrapper">
+                        <img src="staff0.png" alt="Dr. Rosario Alvarez - Lead Dentist and Practice Owner at Alvarez Dental Group Cambridge MA" class="team-member">
+                        <p class="team-member-name">Dr. Rosario Alvarez</p>
+                    </div>
+                    <div class="team-member-wrapper">
+                        <img src="staff1.png" alt="Dr. Maria Rodriguez - General Dentist specializing in preventive dental care and cosmetic procedures" class="team-member">
+                        <p class="team-member-name">Dr. Maria Rodriguez</p>
+                    </div>
+                    <div class="team-member-wrapper">
+                        <img src="staff2.png" alt="Dr. Jennifer Chen - Cosmetic dentist specializing in aesthetic treatments and smile makeovers" class="team-member">
+                        <p class="team-member-name">Dr. Jennifer Chen</p>
+                    </div>
+                    <div class="team-member-wrapper">
+                        <img src="staff3.png" alt="Sarah Johnson - Licensed Dental Hygienist providing professional teeth cleaning and oral health education" class="team-member">
+                        <p class="team-member-name">Sarah Johnson</p>
+                    </div>
+                    <div class="team-member-wrapper">
+                        <img src="staff4.png" alt="Lisa Martinez - Dental Assistant and patient care coordinator ensuring comfortable dental visits" class="team-member">
+                        <p class="team-member-name">Lisa Martinez</p>
+                    </div>
+                </div>
+                <div class="team-nav-dots" id="teamNavDots">
+                    <button class="nav-dot active" data-index="0"></button>
+                    <button class="nav-dot" data-index="1"></button>
+                    <button class="nav-dot" data-index="2"></button>
+                    <button class="nav-dot" data-index="3"></button>
+                    <button class="nav-dot" data-index="4"></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Location Section -->
     <section id="contact" class="location-section">
-        <div class="container">
+        <div class="location-container">
             <h2>VISIT OUR OFFICE</h2>
-            <div class="address">403 Cambridge St, Cambridge, MA 02141</div>
-            <h3>HOURS</h3>
-            <div class="hours-container">
-                <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
-                <p><strong>Saturday:</strong> 9:00 AM - 3:00 PM </p>
-                <p><strong>Sunday:</strong> Emergency Dental Care Only</p>
-            </div>
             
-            <div class="location-book-now">
-                <a href="book.html" class="book-now-location">BOOK NOW</a>
-            </div>
-            
-            <div class="map-container">
-                <div class="map-loading" id="mapLoading">
-                    <div class="map-spinner"></div>
-                    <div class="map-loading-text">Loading map...</div>
+            <div class="location-single">
+                <p class="address-centered">403 Cambridge St, Cambridge, MA 02141</p>
+                <div class="location-divider"></div>
+
+                <div class="map-container">
+                    <div class="map-loading" id="mapLoading">
+                        <div class="map-spinner"></div>
+                         
+                    </div>
+                    <iframe 
+                        id="mapIframe"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.5!2d-71.1!3d42.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370a8c8b8b8b8%3A0x8b8b8b8b8b8b8b8b!2s403%20Cambridge%20St%2C%20Cambridge%2C%20MA%2002141!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
                 </div>
-                <iframe 
-                    id="mapIframe"
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2947.5!2d-71.1!3d42.3!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89e370a8c8b8b8b8%3A0x8b8b8b8b8b8b8b8b!2s403%20Cambridge%20St%2C%20Cambridge%2C%20MA%2002141!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-                    allowfullscreen="" 
-                    loading="lazy" 
-                    referrerpolicy="no-referrer-when-downgrade">
-                </iframe>
+
+                <a class="maps-view-link" href="https://www.google.com/maps/place/403+Cambridge+St,+Cambridge,+MA+02141" target="_blank">View on Google Maps</a>
+
+                <div class="hours-card">
+                    <h3>HOURS</h3>
+                    <div class="hours-list centered">
+                         <p><strong>Monday - Friday:</strong> 8:00 AM - 6:00 PM</p>
+                         <p><strong>Saturday:</strong> 9:00 AM - 3:00 PM</p>
+                         <p><strong>Sunday:</strong> Emergency Dental Care Only</p>
+                    </div>
+                </div>
+
+                <div class="location-cta">
+                    <a href="#consultation-form" class="btn-book-appointment">Book Appointment</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Consultation Form Section -->
+    <section id="consultation-form" class="consultation-section">
+        <div class="consultation-container">
+            <h2>Schedule Your Consultation</h2>
+            <div class="form-wrapper">
+                <form class="consultation-form" id="consultationForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" placeholder="Full Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" placeholder="Email Address" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" placeholder="Message (Optional)" rows="5"></textarea>
+                    </div>
+                    <div class="form-group recaptcha-container">
+                        <div class="g-recaptcha" data-sitekey="your-recaptcha-site-key"></div>
+                    </div>
+                    <button type="submit" class="btn-submit-form">Submit</button>
+                </form>
             </div>
         </div>
     </section>
@@ -3413,7 +3630,24 @@
                 }
             }, 3000);
         }
+
+        // Smooth scroll for Book Appointment button
+        document.addEventListener('DOMContentLoaded', function() {
+            const bookButton = document.querySelector('.btn-book-appointment');
+            if (bookButton) {
+                bookButton.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            }
+        });
     </script>
 </body>
-</html>
 </html>

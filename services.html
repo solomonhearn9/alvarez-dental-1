@@ -14,6 +14,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Encode+Sans+Expanded:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Framer Motion -->
+    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11/dist/framer-motion.js"></script>
     <style>
         /*
         STYLE GUIDE
@@ -38,6 +41,7 @@
         html {
             overflow-x: hidden;
             height: 100%;
+            scroll-behavior: smooth;
         }
 
         body {
@@ -290,11 +294,21 @@
         /* Mobile Header */
         .mobile-header-top {
             display: flex;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             padding: 0;
             justify-content: space-between;
             align-items: stretch;
             height: 60px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1002;
+            width: 100%;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
 
         .mobile-book-now {
@@ -308,10 +322,13 @@
             letter-spacing: 1px;
             padding: 0;
             border-radius: 0;
-            flex: 1;
+            width: 50%;
+            flex-shrink: 0;
             display: flex;
             align-items: center;
             justify-content: center;
+            box-sizing: border-box;
+            min-height: 60px;
         }
 
         .mobile-phone {
@@ -324,10 +341,10 @@
             align-items: center;
             justify-content: center;
             gap: 8px;
-            padding: 0;
-            border-radius: 0;
-            flex: 1;
-            font-family: 'Charis SIL', serif;
+            padding: 0 14px;
+            width: 50%;
+            flex-shrink: 0;
+            min-height: 60px;
         }
 
         .hamburger {
@@ -530,6 +547,35 @@
             color: #ffffff;
             padding: 60px 20px;
             text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .services-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: heroGlow 8s ease-in-out infinite;
+        }
+
+        @keyframes heroGlow {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: translate(-10%, -10%) scale(1.1);
+                opacity: 0.8;
+            }
+        }
+
+        .services-hero > div {
+            position: relative;
+            z-index: 1;
         }
 
         .services-hero h1 {
@@ -573,13 +619,30 @@
             padding: 40px 30px;
             text-align: center;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.25, 0.4, 0.25, 1);
             border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(43, 165, 232, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .service-card:hover::before {
+            left: 100%;
         }
 
         .service-card:hover {
-            transform: translateY(-5px);
             border-color: #2BA5E8;
+            box-shadow: 0 12px 40px rgba(43, 165, 232, 0.2);
         }
 
         .service-icon {
@@ -593,6 +656,9 @@
             margin: 0 auto 20px;
             font-size: 32px;
             color: #ffffff;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 4px 15px rgba(43, 165, 232, 0.3);
         }
 
         .service-card h3 {
@@ -639,15 +705,17 @@
             padding: 12px 24px;
             border-radius: 6px;
             display: inline-block;
-            transition: all 0.3s ease;
+            transition: all 0.3s cubic-bezier(0.25, 0.4, 0.25, 1);
             text-transform: uppercase;
             letter-spacing: 1px;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 2px 10px rgba(43, 165, 232, 0.2);
         }
 
         .book-service-btn:hover {
             background-color: #1e8dc7;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 15px rgba(43, 165, 232, 0.3);
+            box-shadow: 0 6px 20px rgba(43, 165, 232, 0.4);
         }
 
         .emergency-section {
@@ -687,11 +755,40 @@
             display: inline-block;
             transition: all 0.3s ease;
             margin-top: 20px;
+            position: relative;
+            box-shadow: 0 4px 20px rgba(43, 165, 232, 0.3);
+        }
+
+        .emergency-phone::after {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 10px;
+            border: 2px solid #2BA5E8;
+            animation: pulse 2s ease-in-out infinite;
+            opacity: 0;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: scale(1.05);
+                opacity: 0.4;
+            }
+            100% {
+                transform: scale(1.1);
+                opacity: 0;
+            }
         }
 
         .emergency-phone:hover {
             background-color: #1e8dc7;
-            transform: scale(1.05);
         }
 
         /* Mobile Styles */
@@ -745,6 +842,7 @@
             .emergency-section h2 {
                 font-size: 28px;
             }
+            body { padding-top: 120px; }
         }
 
         /* Desktop Styles */
@@ -765,6 +863,13 @@
                 display: flex;
             }
         }
+
+        /* Mobile: Position header below mobile-header-top */
+        @media (max-width: 767px) {
+            header { top: 60px; z-index: 1000; }
+            .desktop-nav { display: none; }
+            .header-cta { display: none; }
+        }
     </style>
 </head>
 <body>
@@ -775,13 +880,13 @@
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
             </svg>
-            (617) 485-1769
+            (617)-485-1769
         </a>
     </div>
 
     <!-- Main Header -->
     <header>
-        <div class="logo-container">
+        <div class="logo-container" onclick="window.location.href='index.html'">
             <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo" class="logo-image">
             <div class="logo-text">
                 <h1>Alvarez</h1>
@@ -805,7 +910,7 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2BA5E8"/>
                 </svg>
-                (617) 485-1769
+                (617)-485-1769
             </a>
             <a href="book.html" class="book-now-header">BOOK NOW</a>
         </div>
@@ -849,111 +954,331 @@
     <!-- Page Content -->
     <div class="page-content">
         <!-- Services Hero -->
-        <section class="services-hero">
-            <h1>Our Services</h1>
-            <p>Comprehensive dental care for the whole family, from routine cleanings to advanced cosmetic procedures.</p>
+        <section class="services-hero" id="servicesHero">
+            <div id="heroContent"></div>
         </section>
 
         <!-- Services Section -->
-        <section class="services-section">
-            <h2>What We Offer</h2>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🦷</div>
-                    <h3>General Dentistry</h3>
-                    <p>Complete oral health care including cleanings, exams, fillings, and preventive treatments to keep your smile healthy.</p>
-                    <ul class="service-features">
-                        <li>Regular cleanings & exams</li>
-                        <li>Dental fillings</li>
-                        <li>Root canal therapy</li>
-                        <li>Gum disease treatment</li>
-                    </ul>
-                    <a href="book.html" class="book-service-btn">Book Appointment</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">✨</div>
-                    <h3>Cosmetic Dentistry</h3>
-                    <p>Transform your smile with our cosmetic procedures designed to enhance your appearance and boost your confidence.</p>
-                    <ul class="service-features">
-                        <li>Teeth whitening</li>
-                        <li>Porcelain veneers</li>
-                        <li>Dental bonding</li>
-                        <li>Smile makeovers</li>
-                    </ul>
-                    <a href="book.html" class="book-service-btn">Book Consultation</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🦷</div>
-                    <h3>Orthodontics</h3>
-                    <p>Straighten your teeth and improve your bite with our modern orthodontic treatments for all ages.</p>
-                    <ul class="service-features">
-                        <li>Traditional braces</li>
-                        <li>Clear aligners</li>
-                        <li>Retainers</li>
-                        <li>Invisalign</li>
-                    </ul>
-                    <a href="book.html" class="book-service-btn">Book Consultation</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🔧</div>
-                    <h3>Dental Implants</h3>
-                    <p>Replace missing teeth with durable, natural-looking dental implants that restore both function and aesthetics.</p>
-                    <ul class="service-features">
-                        <li>Single tooth implants</li>
-                        <li>Multiple tooth implants</li>
-                        <li>Full mouth reconstruction</li>
-                        <li>Implant-supported dentures</li>
-                    </ul>
-                    <a href="book.html" class="book-service-btn">Book Consultation</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">👶</div>
-                    <h3>Pediatric Dentistry</h3>
-                    <p>Specialized dental care for children in a fun, comfortable environment that makes dental visits enjoyable.</p>
-                    <ul class="service-features">
-                        <li>Child-friendly cleanings</li>
-                        <li>Fluoride treatments</li>
-                        <li>Sealants</li>
-                        <li>Early orthodontic evaluation</li>
-                    </ul>
-                    <a href="book.html" class="book-service-btn">Book Appointment</a>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🚨</div>
-                    <h3>Emergency Care</h3>
-                    <p>Immediate dental care when you need it most. We're here to help with dental emergencies and urgent situations.</p>
-                    <ul class="service-features">
-                        <li>Tooth pain relief</li>
-                        <li>Broken tooth repair</li>
-                        <li>Lost filling replacement</li>
-                        <li>Dental trauma care</li>
-                    </ul>
-                    <a href="tel:617-485-1769" class="book-service-btn">Call Now</a>
-                </div>
+        <section class="services-section" id="servicesSection">
+            <div id="servicesTitle"></div>
+            <div class="services-grid" id="servicesGrid">
+                <!-- Services will be dynamically rendered here with Framer Motion -->
             </div>
         </section>
 
         <!-- Emergency Section -->
-        <section class="emergency-section">
-            <div class="emergency-content">
-                <h2>Dental Emergency?</h2>
-                <p>Don't wait if you're experiencing severe dental pain or have a dental emergency. Our team is ready to provide immediate care to relieve your pain and address urgent dental issues.</p>
-                <p>We understand that dental emergencies can happen at any time, which is why we offer same-day emergency appointments for our patients.</p>
-                <a href="tel:617-485-1769" class="emergency-phone">📞 Call (617) 485-1769</a>
+        <section class="emergency-section" id="emergencySection">
+            <div class="emergency-content" id="emergencyContent">
+                <!-- Emergency content will be dynamically rendered here with Framer Motion -->
             </div>
         </section>
     </div>
 
-    <script>
-        // Header stays fixed at all times - no scroll behavior needed
-        // Header remains visible regardless of scroll direction
+    <script type="module">
+        const { motion } = window.Motion;
 
-        // Mobile navigation
+        // ========================================
+        // ANIMATION VARIANTS
+        // ========================================
+
+        // Fade in with upward movement
+        const fadeInUp = {
+            hidden: { opacity: 0, y: 60 },
+            visible: { 
+                opacity: 1, 
+                y: 0,
+                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
+            }
+        };
+
+        // Fade in with downward movement
+        const fadeInDown = {
+            hidden: { opacity: 0, y: -40 },
+            visible: { 
+                opacity: 1, 
+                y: 0,
+                transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }
+            }
+        };
+
+        // Fade in with left movement
+        const fadeInLeft = {
+            hidden: { opacity: 0, x: -60 },
+            visible: { 
+                opacity: 1, 
+                x: 0,
+                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
+            }
+        };
+
+        // Fade in with right movement
+        const fadeInRight = {
+            hidden: { opacity: 0, x: 60 },
+            visible: { 
+                opacity: 1, 
+                x: 0,
+                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
+            }
+        };
+
+        // Scale in (zoom-in effect)
+        const scaleIn = {
+            hidden: { opacity: 0, scale: 0.8 },
+            visible: { 
+                opacity: 1, 
+                scale: 1,
+                transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }
+            }
+        };
+
+        // Stagger container for children animations
+        const staggerContainer = {
+            hidden: { opacity: 0 },
+            visible: {
+                opacity: 1,
+                transition: {
+                    staggerChildren: 0.15,
+                    delayChildren: 0.1
+                }
+            }
+        };
+
+        // Service card animation with scale
+        const cardVariant = {
+            hidden: { opacity: 0, y: 40, scale: 0.95 },
+            visible: { 
+                opacity: 1, 
+                y: 0,
+                scale: 1,
+                transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }
+            }
+        };
+
+        // ========================================
+        // SERVICES DATA
+        // ========================================
+        const servicesData = [
+            {
+                icon: '🦷',
+                title: 'General Dentistry',
+                description: 'Complete oral health care including cleanings, exams, fillings, and preventive treatments to keep your smile healthy.',
+                features: [
+                    'Regular cleanings & exams',
+                    'Dental fillings',
+                    'Root canal therapy',
+                    'Gum disease treatment'
+                ],
+                link: 'book.html',
+                linkText: 'Book Appointment'
+            },
+            {
+                icon: '✨',
+                title: 'Cosmetic Dentistry',
+                description: 'Transform your smile with our cosmetic procedures designed to enhance your appearance and boost your confidence.',
+                features: [
+                    'Teeth whitening',
+                    'Porcelain veneers',
+                    'Dental bonding',
+                    'Smile makeovers'
+                ],
+                link: 'book.html',
+                linkText: 'Book Consultation'
+            },
+            {
+                icon: '🦷',
+                title: 'Orthodontics',
+                description: 'Straighten your teeth and improve your bite with our modern orthodontic treatments for all ages.',
+                features: [
+                    'Traditional braces',
+                    'Clear aligners',
+                    'Retainers',
+                    'Invisalign'
+                ],
+                link: 'book.html',
+                linkText: 'Book Consultation'
+            },
+            {
+                icon: '🔧',
+                title: 'Dental Implants',
+                description: 'Replace missing teeth with durable, natural-looking dental implants that restore both function and aesthetics.',
+                features: [
+                    'Single tooth implants',
+                    'Multiple tooth implants',
+                    'Full mouth reconstruction',
+                    'Implant-supported dentures'
+                ],
+                link: 'book.html',
+                linkText: 'Book Consultation'
+            },
+            {
+                icon: '👶',
+                title: 'Pediatric Dentistry',
+                description: 'Specialized dental care for children in a fun, comfortable environment that makes dental visits enjoyable.',
+                features: [
+                    'Child-friendly cleanings',
+                    'Fluoride treatments',
+                    'Sealants',
+                    'Early orthodontic evaluation'
+                ],
+                link: 'book.html',
+                linkText: 'Book Appointment'
+            },
+            {
+                icon: '🚨',
+                title: 'Emergency Care',
+                description: 'Immediate dental care when you need it most. We\'re here to help with dental emergencies and urgent situations.',
+                features: [
+                    'Tooth pain relief',
+                    'Broken tooth repair',
+                    'Lost filling replacement',
+                    'Dental trauma care'
+                ],
+                link: 'tel:617-485-1769',
+                linkText: 'Call Now'
+            }
+        ];
+
+        // ========================================
+        // RENDER HERO SECTION
+        // ========================================
+        const heroContentDiv = document.getElementById('heroContent');
+        const heroRoot = ReactDOM.createRoot(heroContentDiv);
+
+        heroRoot.render(
+            React.createElement(motion.div, {
+                initial: "hidden",
+                animate: "visible",
+                variants: staggerContainer,
+                style: { textAlign: 'center' }
+            }, [
+                React.createElement(motion.h1, {
+                    key: 'hero-title',
+                    variants: fadeInDown
+                }, 'Our Services'),
+                React.createElement(motion.p, {
+                    key: 'hero-subtitle',
+                    variants: fadeInUp
+                }, 'Comprehensive dental care for the whole family, from routine cleanings to advanced cosmetic procedures.')
+            ])
+        );
+
+        // ========================================
+        // RENDER SERVICES TITLE
+        // ========================================
+        const servicesTitleDiv = document.getElementById('servicesTitle');
+        const titleRoot = ReactDOM.createRoot(servicesTitleDiv);
+
+        titleRoot.render(
+            React.createElement(motion.h2, {
+                initial: "hidden",
+                whileInView: "visible",
+                viewport: { once: true, amount: 0.3 },
+                variants: fadeInUp
+            }, 'What We Offer')
+        );
+
+        // ========================================
+        // RENDER SERVICES GRID
+        // ========================================
+        const servicesGridDiv = document.getElementById('servicesGrid');
+        const gridRoot = ReactDOM.createRoot(servicesGridDiv);
+
+        const ServiceCard = ({ service, index }) => {
+            return React.createElement(motion.div, {
+                className: 'service-card',
+                initial: "hidden",
+                whileInView: "visible",
+                viewport: { once: true, amount: 0.2 },
+                variants: cardVariant,
+                whileHover: { 
+                    y: -10, 
+                    transition: { duration: 0.3 }
+                }
+            }, [
+                React.createElement(motion.div, {
+                    key: 'icon',
+                    className: 'service-icon',
+                    initial: { scale: 0, rotate: -180 },
+                    whileInView: { scale: 1, rotate: 0 },
+                    viewport: { once: true },
+                    transition: { 
+                        duration: 0.6, 
+                        delay: 0.2,
+                        ease: [0.25, 0.4, 0.25, 1]
+                    }
+                }, service.icon),
+                React.createElement('h3', { key: 'title' }, service.title),
+                React.createElement('p', { key: 'description' }, service.description),
+                React.createElement('ul', { 
+                    key: 'features',
+                    className: 'service-features' 
+                }, service.features.map((feature, i) => 
+                    React.createElement('li', { key: i }, feature)
+                )),
+                React.createElement(motion.a, {
+                    key: 'link',
+                    href: service.link,
+                    className: 'book-service-btn',
+                    whileHover: { scale: 1.05 },
+                    whileTap: { scale: 0.98 }
+                }, service.linkText)
+            ]);
+        };
+
+        gridRoot.render(
+            React.createElement(React.Fragment, null,
+                servicesData.map((service, index) => 
+                    React.createElement(ServiceCard, {
+                        key: index,
+                        service: service,
+                        index: index
+                    })
+                )
+            )
+        );
+
+        // ========================================
+        // RENDER EMERGENCY SECTION
+        // ========================================
+        const emergencyContentDiv = document.getElementById('emergencyContent');
+        const emergencyRoot = ReactDOM.createRoot(emergencyContentDiv);
+
+        emergencyRoot.render(
+            React.createElement(motion.div, {
+                initial: "hidden",
+                whileInView: "visible",
+                viewport: { once: true, amount: 0.3 },
+                variants: staggerContainer
+            }, [
+                React.createElement(motion.h2, {
+                    key: 'emergency-title',
+                    variants: fadeInDown
+                }, 'Dental Emergency?'),
+                React.createElement(motion.p, {
+                    key: 'emergency-text-1',
+                    variants: fadeInUp
+                }, 'Don\'t wait if you\'re experiencing severe dental pain or have a dental emergency. Our team is ready to provide immediate care to relieve your pain and address urgent dental issues.'),
+                React.createElement(motion.p, {
+                    key: 'emergency-text-2',
+                    variants: fadeInUp
+                }, 'We understand that dental emergencies can happen at any time, which is why we offer same-day emergency appointments for our patients.'),
+                React.createElement(motion.a, {
+                    key: 'emergency-phone',
+                    href: 'tel:617-485-1769',
+                    className: 'emergency-phone',
+                    variants: scaleIn,
+                    whileHover: { 
+                        scale: 1.08,
+                        boxShadow: '0 10px 30px rgba(43, 165, 232, 0.4)'
+                    },
+                    whileTap: { scale: 0.95 }
+                }, '📞 Call (617) 485-1769')
+            ])
+        );
+
+        // ========================================
+        // MOBILE NAVIGATION
+        // ========================================
         const hamburger = document.getElementById('hamburger');
         const mobileNav = document.getElementById('mobileNav');
         const mobileNavClose = document.getElementById('mobileNavClose');
@@ -988,6 +1313,30 @@
                 document.body.style.overflow = 'auto';
             });
         });
+
+        // Mobile nav handlers (match homepage)
+        (function(){
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
+            const mobileNavClose = document.getElementById('mobileNavClose');
+            function preventScroll(){ document.body.classList.add('menu-open'); document.body.style.overflow='hidden'; }
+            function allowScroll(){ document.body.classList.remove('menu-open'); document.body.style.overflow=''; }
+            if(hamburger && mobileNav){
+                hamburger.addEventListener('click', ()=>{
+                    hamburger.classList.toggle('active');
+                    mobileNav.classList.toggle('active');
+                    mobileNav.classList.contains('active') ? preventScroll() : allowScroll();
+                });
+            }
+            if(mobileNavClose){ mobileNavClose.addEventListener('click', ()=>{ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); }); }
+            if(mobileNav){
+                mobileNav.addEventListener('click', (e)=>{ if(e.target===mobileNav){ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); } });
+            }
+        })();
     </script>
+
+    <!-- React and ReactDOM for Framer Motion -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </body>
 </html>
