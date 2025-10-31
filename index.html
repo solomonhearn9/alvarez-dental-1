@@ -1073,25 +1073,20 @@
         .video-placeholder .youtube-play-button {
             width: 100px;
             height: 100px;
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-            border-radius: 50%;
+            background: transparent;
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 36px;
-            color: #2BA5E8;
+            color: #ffffff;
             transition: all 0.3s ease;
             position: relative;
             z-index: 2;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            border: 3px solid rgba(255, 255, 255, 0.8);
         }
 
         .video-placeholder .youtube-play-button:hover {
-            background: linear-gradient(135deg, #ffffff 0%, #e9ecef 100%);
             transform: scale(1.1);
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3);
-            color: #1e8dc7;
+            color: rgba(255, 255, 255, 0.9);
         }
 
         .play-button {
@@ -1486,6 +1481,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
+            text-decoration: none;
+            color: inherit;
         }
 
         .service-title {
@@ -1496,6 +1493,11 @@
             font-weight: 600;
             line-height: 1.3;
             text-align: center;
+            transition: color 0.3s ease;
+        }
+
+        .service-item:hover .service-title {
+            color: #2BA5E8;
         }
 
         .service-card {
@@ -1513,7 +1515,7 @@
             width: 100%;
         }
 
-        .service-card:hover {
+        .service-item:hover .service-card {
             transform: translateY(-8px);
             border-color: #2BA5E8;
             box-shadow: 0 12px 30px rgba(43, 165, 232, 0.15);
@@ -2861,7 +2863,7 @@
             "postalCode": "02141",
             "addressCountry": "US"
         },
-        "telephone": "(617)-485-1769",
+        "telephone": "(617) 441-0088",
         "email": "info@alvarezdental.com",
         "priceRange": "$$",
         "openingHoursSpecification": [
@@ -2898,7 +2900,7 @@
         "@id": "https://www.alvarezdental.com",
         "name": "Alvarez Dental Group",
         "image": "https://www.alvarezdental.com/hero-black.png",
-        "telephone": "(617)-485-1769",
+        "telephone": "(617) 441-0088",
         "email": "info@alvarezdental.com",
         "address": {
             "@type": "PostalAddress",
@@ -2921,11 +2923,11 @@
     <!-- Mobile Header Top -->
     <div class="mobile-header-top">
         <a href="book.html" class="mobile-book-now">BOOK NOW</a>
-        <a href="tel:617-485-1769" class="mobile-phone">
+        <a href="tel:617-441-0088" class="mobile-phone">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
             </svg>
-            (617)-485-1769
+            (617) 441-0088
         </a>
       </div>
 
@@ -2951,11 +2953,11 @@
         </nav>
 
         <div class="header-cta">
-            <a href="tel:617-485-1769" class="phone-number">
+            <a href="tel:617-441-0088" class="phone-number">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="#2BA5E8"/>
                 </svg>
-                (617)-485-1769
+                (617) 441-0088
             </a>
             <a href="book.html" class="book-now-header">BOOK NOW</a>
           </div>
@@ -2988,9 +2990,10 @@
                 <li>
                     <a href="#" class="mobile-parent-link" data-submenu="about">ABOUT<span class="nav-arrow">›</span></a>
                     <div class="mobile-submenu" id="about-submenu">
-                        <a href="our-team.html">Our Team</a>
-                        <a href="our-story.html">Our Story</a>
-                        <a href="our-founder.html">Our Founder</a>
+                        <a href="about.html">About Us</a>
+                        <a href="about/our-team.html">Our Team</a>
+                        <a href="about/our-story.html">Our Story</a>
+                        <a href="about/our-founder.html">Our Founder</a>
                     </div>
                 </li>
                 <li>
@@ -3006,7 +3009,7 @@
             </ul>
             
             <div class="mobile-nav-footer">
-                <a href="tel:617-485-1769">(617)-485-1769</a>
+                <a href="tel:617-441-0088">(617) 441-0088</a>
                 <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a>
                 <p>403 Cambridge St, Cambridge, MA 02141<br>United States of America</p>
             </div>
@@ -3127,7 +3130,9 @@
                 <div class="video-placeholder" id="videoContainer">
                     <div class="youtube-overlay" id="youtubeOverlay">
                         <div class="youtube-play-button">
-                            ▶
+                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M15 12L28 20L15 28V12Z" fill="currentColor"/>
+                            </svg>
                         </div>
                     </div>
                     <iframe id="youtubeVideo" 
@@ -3149,38 +3154,38 @@
             <h2>Featured Dental Services</h2>
             <div class="subtitle">Comprehensive dental care services in Cambridge, MA including preventive care, cosmetic dentistry, botox treatments, and advanced dental implants</div>
             <div class="services-grid">
-                <div class="service-item">
+                <a href="services/general-dentistry.html" class="service-item">
                     <div class="service-card">
                         <div class="service-image">
                             <img src="https://images.unsplash.com/photo-1606265752439-1f18756aa5fc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="General Dentistry - Friendly Dental Care">
                         </div>
                     </div>
                     <h3 class="service-title">General Dentistry</h3>
-                </div>
-                <div class="service-item">
+                </a>
+                <a href="services/cosmetic-dentistry.html" class="service-item">
                     <div class="service-card">
                         <div class="service-image">
                             <img src="cosmetic.jpg" alt="Cosmetic Dentistry - Happy Smile">
                         </div>
                     </div>
                     <h3 class="service-title">Cosmetic Dentistry</h3>
-                </div>
-                <div class="service-item">
+                </a>
+                <a href="services/dental-implants.html" class="service-item">
                     <div class="service-card">
                         <div class="service-image">
                             <img src="smile-6.jpg" alt="Dental Implants - Professional Care">
                         </div>
                     </div>
                     <h3 class="service-title">Dental Implants</h3>
-                </div>
-                <div class="service-item">
+                </a>
+                <a href="services/botox.html" class="service-item">
                     <div class="service-card">
                         <div class="service-image">
                             <img src="smile.jpg" alt="Botox & Aesthetic Treatments">
                         </div>
                     </div>
                     <h3 class="service-title">Botox & Aesthetic Treatments</h3>
-                </div>
+                </a>
             </div>
             <div class="browse-all-services">
                 <a href="services.html">Browse All Services</a>
@@ -3200,20 +3205,16 @@
                         <p class="team-member-name">Dr. Rosario Alvarez</p>
                     </div>
                     <div class="team-member-wrapper">
-                        <img src="staff1.png" alt="Dr. Maria Rodriguez - General Dentist specializing in preventive dental care and cosmetic procedures" class="team-member">
-                        <p class="team-member-name">Dr. Maria Rodriguez</p>
+                        <img src="staff1.png" alt="Team Member at Alvarez Dental Group" class="team-member">
                     </div>
                     <div class="team-member-wrapper">
-                        <img src="staff2.png" alt="Dr. Jennifer Chen - Cosmetic dentist specializing in aesthetic treatments and smile makeovers" class="team-member">
-                        <p class="team-member-name">Dr. Jennifer Chen</p>
+                        <img src="staff2.png" alt="Team Member at Alvarez Dental Group" class="team-member">
                     </div>
                     <div class="team-member-wrapper">
-                        <img src="staff3.png" alt="Sarah Johnson - Licensed Dental Hygienist providing professional teeth cleaning and oral health education" class="team-member">
-                        <p class="team-member-name">Sarah Johnson</p>
+                        <img src="staff3.png" alt="Team Member at Alvarez Dental Group" class="team-member">
                     </div>
                     <div class="team-member-wrapper">
-                        <img src="staff4.png" alt="Lisa Martinez - Dental Assistant and patient care coordinator ensuring comfortable dental visits" class="team-member">
-                        <p class="team-member-name">Lisa Martinez</p>
+                        <img src="staff4.png" alt="Team Member at Alvarez Dental Group" class="team-member">
                     </div>
                 </div>
                 <div class="team-nav-dots" id="teamNavDots">
@@ -3262,7 +3263,7 @@
                 </div>
 
                 <div class="location-cta">
-                    <a href="#consultation-form" class="btn-book-appointment">Book Appointment</a>
+                    <a href="book.html" class="btn-book-appointment">Book Appointment</a>
                 </div>
             </div>
         </div>
@@ -3317,7 +3318,7 @@
             <div class="footer-contact">
                 <h4>Contact Info</h4>
                 <p>403 Cambridge St<br>Cambridge, MA 02141</p>
-                <p>Phone: <a href="tel:617-485-1769">(617)-485-1769</a></p>
+                <p>Phone: <a href="tel:617-441-0088">(617) 441-0088</a></p>
                 <p>Email: <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a></p>
             </div>
         </div>
@@ -3461,12 +3462,14 @@
             
             // Simple, reliable touch swipe handling
             let touchStartX = 0;
+            let touchStartY = 0;
             let touchStartScrollLeft = 0;
             let touchStartTime = 0;
             let hasDeliberateSwipe = false;
             
             teamGallery.addEventListener('touchstart', (e) => {
                 touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
                 touchStartScrollLeft = teamGallery.scrollLeft;
                 touchStartTime = Date.now();
                 hasDeliberateSwipe = false;
@@ -3478,14 +3481,19 @@
             
             teamGallery.addEventListener('touchend', (e) => {
                 const touchEndX = e.changedTouches[0].clientX;
+                const touchEndY = e.changedTouches[0].clientY;
                 const touchEndTime = Date.now();
                 const swipeDistance = touchStartX - touchEndX;
+                const swipeVerticalDistance = touchStartY - touchEndY;
                 const scrollDistance = Math.abs(teamGallery.scrollLeft - touchStartScrollLeft);
                 const swipeTime = touchEndTime - touchStartTime;
                 
-                // Detect deliberate swipe: significant horizontal movement, minimal scrolling, quick gesture
+                // Only process horizontal swipes - ignore vertical swipes to allow page scrolling
+                const isHorizontalMovement = Math.abs(swipeDistance) > Math.abs(swipeVerticalDistance);
+                
+                // Detect deliberate swipe: significant horizontal movement, minimal scrolling, quick gesture, and primarily horizontal
                 const isQuickSwipe = swipeTime < 300;
-                const isHorizontalSwipe = Math.abs(swipeDistance) > 60 && scrollDistance < 15;
+                const isHorizontalSwipe = Math.abs(swipeDistance) > 60 && scrollDistance < 15 && isHorizontalMovement;
                 
                 if (isHorizontalSwipe && isQuickSwipe && !isScrolling) {
                     hasDeliberateSwipe = true;
@@ -3770,23 +3778,6 @@
             }, 3000);
         }
 
-        // Smooth scroll for Book Appointment button
-        document.addEventListener('DOMContentLoaded', function() {
-            const bookButton = document.querySelector('.btn-book-appointment');
-            if (bookButton) {
-                bookButton.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const targetId = this.getAttribute('href');
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            }
-        });
     </script>
 </body>
 </html>
