@@ -15,8 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Framer Motion -->
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11/dist/framer-motion.js"></script>
     <style>
         /*
         STYLE GUIDE
@@ -71,10 +69,6 @@
             margin: 0 auto;
             transition: transform 0.3s ease;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        header.hidden {
-            /* Header stays visible - no hiding on scroll */
         }
 
         .logo-container {
@@ -407,7 +401,9 @@
             display: flex;
             flex-direction: column;
             padding: 24px 32px;
+            padding-bottom: max(80px, env(safe-area-inset-bottom, 80px));
             box-sizing: border-box;
+            overflow-y: auto;
         }
 
         .mobile-nav-header {
@@ -521,9 +517,10 @@
         .mobile-nav-footer {
             margin-top: auto;
             padding-top: 30px;
+            padding-bottom: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .mobile-nav-footer a,
         .mobile-nav-footer p {
             color: #ffffff;
@@ -533,9 +530,18 @@
             line-height: 1.8;
             display: block;
             font-family: 'Montserrat', sans-serif;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
-
+        
+        .mobile-nav-footer a:last-of-type {
+            margin-bottom: 12px;
+        }
+        
+        .mobile-nav-footer p {
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
         .mobile-nav-footer a:hover {
             color: #2BA5E8;
         }
@@ -765,6 +771,7 @@
             }
             
             .hamburger {
+                display: flex;
                 margin-right: 12px;
             }
 
@@ -813,6 +820,13 @@
             .header-cta {
                 display: flex;
             }
+        }
+
+        /* Mobile: Position header below mobile-header-top */
+        @media (max-width: 767px) {
+            header { top: 60px; z-index: 1000; }
+            .desktop-nav { display: none; }
+            .header-cta { display: none; }
         }
     </style>
 </head>
@@ -890,7 +904,7 @@
             <div class="mobile-nav-footer">
                 <a href="tel:617-485-1769">(617)-485-1769</a>
                 <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a>
-                <p>403 Cambridge St, Cambridge, MA 02141,<br>United States of America</p>
+                <p>403 Cambridge St, Cambridge, MA 02141<br>United States of America</p>
             </div>
         </div>
     </div>
@@ -898,342 +912,132 @@
     <!-- Page Content -->
     <div class="page-content">
         <!-- About Hero -->
-        <section class="about-hero" id="aboutHero">
-            <div id="heroContent"></div>
+        <section class="about-hero">
+            <div>
+                <h1>About Our Team</h1>
+                <p>Meet the experienced professionals who make Alvarez Dental Group a trusted name in Cambridge for over 20 years.</p>
+            </div>
         </section>
 
         <!-- Team Section -->
-        <section class="team-section" id="teamSection">
-            <div id="teamTitle"></div>
-            <div class="team-grid" id="teamGrid">
-                <!-- Team members will be dynamically rendered here with Framer Motion -->
+        <section class="team-section">
+            <h2>Meet Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="staff0.png" alt="Dr. Sarah Alvarez">
+                    <h3>Dr. Sarah Alvarez</h3>
+                    <div class="role">Lead Dentist & Founder</div>
+                    <p>With over 20 years of experience, Dr. Alvarez leads our practice with a commitment to gentle, comprehensive dental care. She specializes in cosmetic and restorative dentistry.</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="staff1.png" alt="Dr. Maria Rodriguez">
+                    <h3>Dr. Maria Rodriguez</h3>
+                    <div class="role">Associate Dentist</div>
+                    <p>Dr. Rodriguez brings expertise in pediatric dentistry and orthodontics, ensuring our youngest patients receive the best care in a comfortable environment.</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="staff2.png" alt="Jennifer Chen">
+                    <h3>Jennifer Chen</h3>
+                    <div class="role">Dental Hygienist</div>
+                    <p>Jennifer has been with our practice for 15 years, providing exceptional preventive care and patient education to help maintain healthy smiles.</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="staff3.png" alt="Lisa Thompson">
+                    <h3>Lisa Thompson</h3>
+                    <div class="role">Office Manager</div>
+                    <p>Lisa ensures our practice runs smoothly, handling appointments, insurance, and making sure every patient has a positive experience from start to finish.</p>
+                </div>
             </div>
         </section>
 
         <!-- Mission Section -->
-        <section class="mission-section" id="missionSection">
-            <div class="mission-content" id="missionContent">
-                <!-- Mission content will be dynamically rendered here with Framer Motion -->
+        <section class="mission-section">
+            <div class="mission-content">
+                <h2>Our Mission & Values</h2>
+                <p>At Alvarez Dental Group, we believe that everyone deserves a healthy, beautiful smile. Our mission is to provide exceptional dental care in a comfortable, welcoming environment where patients feel valued and respected.</p>
+                <p>We are committed to staying at the forefront of dental technology and continuing education to ensure our patients receive the most advanced and effective treatments available.</p>
+
+                <div class="values-grid">
+                    <div class="value-card">
+                        <h3>Compassionate Care</h3>
+                        <p>We understand that dental visits can be anxiety-inducing, which is why we prioritize patient comfort and gentle treatment approaches.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <h3>Excellence</h3>
+                        <p>We maintain the highest standards of dental care, using state-of-the-art technology and evidence-based treatment methods.</p>
+                    </div>
+
+                    <div class="value-card">
+                        <h3>Community Focus</h3>
+                        <p>As a local practice, we're deeply committed to serving the Cambridge community and building lasting relationships with our patients.</p>
+                    </div>
+                </div>
             </div>
         </section>
     </div>
 
-    <script type="module">
-        const { motion } = window.Motion;
-
-        // ========================================
-        // ANIMATION VARIANTS
-        // ========================================
-        const fadeInUp = {
-            hidden: { opacity: 0, y: 60 },
-            visible: { 
-                opacity: 1, 
-                y: 0,
-                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        const fadeInDown = {
-            hidden: { opacity: 0, y: -40 },
-            visible: { 
-                opacity: 1, 
-                y: 0,
-                transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        const fadeInLeft = {
-            hidden: { opacity: 0, x: -60 },
-            visible: { 
-                opacity: 1, 
-                x: 0,
-                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        const fadeInRight = {
-            hidden: { opacity: 0, x: 60 },
-            visible: { 
-                opacity: 1, 
-                x: 0,
-                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        const scaleIn = {
-            hidden: { opacity: 0, scale: 0.8 },
-            visible: { 
-                opacity: 1, 
-                scale: 1,
-                transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        const staggerContainer = {
-            hidden: { opacity: 0 },
-            visible: {
-                opacity: 1,
-                transition: {
-                    staggerChildren: 0.15,
-                    delayChildren: 0.1
-                }
-            }
-        };
-
-        const cardVariant = {
-            hidden: { opacity: 0, y: 40, scale: 0.95 },
-            visible: { 
-                opacity: 1, 
-                y: 0,
-                scale: 1,
-                transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        // ========================================
-        // TEAM DATA
-        // ========================================
-        const teamData = [
-            {
-                image: 'team-white.png',
-                name: 'Dr. Sarah Alvarez',
-                role: 'Lead Dentist & Founder',
-                description: 'With over 20 years of experience, Dr. Alvarez leads our practice with a commitment to gentle, comprehensive dental care. She specializes in cosmetic and restorative dentistry.'
-            },
-            {
-                image: 'team-white.png',
-                name: 'Dr. Maria Rodriguez',
-                role: 'Associate Dentist',
-                description: 'Dr. Rodriguez brings expertise in pediatric dentistry and orthodontics, ensuring our youngest patients receive the best care in a comfortable environment.'
-            },
-            {
-                image: 'team-white.png',
-                name: 'Jennifer Chen',
-                role: 'Dental Hygienist',
-                description: 'Jennifer has been with our practice for 15 years, providing exceptional preventive care and patient education to help maintain healthy smiles.'
-            },
-            {
-                image: 'team-white.png',
-                name: 'Lisa Thompson',
-                role: 'Office Manager',
-                description: 'Lisa ensures our practice runs smoothly, handling appointments, insurance, and making sure every patient has a positive experience from start to finish.'
-            }
-        ];
-
-        const valuesData = [
-            {
-                title: 'Compassionate Care',
-                description: 'We understand that dental visits can be anxiety-inducing, which is why we prioritize patient comfort and gentle treatment approaches.'
-            },
-            {
-                title: 'Excellence',
-                description: 'We maintain the highest standards of dental care, using state-of-the-art technology and evidence-based treatment methods.'
-            },
-            {
-                title: 'Community Focus',
-                description: 'As a local practice, we\'re deeply committed to serving the Cambridge community and building lasting relationships with our patients.'
-            }
-        ];
-
-        // ========================================
-        // RENDER HERO SECTION
-        // ========================================
-        const heroContentDiv = document.getElementById('heroContent');
-        const heroRoot = ReactDOM.createRoot(heroContentDiv);
-
-        heroRoot.render(
-            React.createElement(motion.div, {
-                initial: "hidden",
-                animate: "visible",
-                variants: staggerContainer,
-                style: { textAlign: 'center' }
-            }, [
-                React.createElement(motion.h1, {
-                    key: 'hero-title',
-                    variants: fadeInDown
-                }, 'About Our Team'),
-                React.createElement(motion.p, {
-                    key: 'hero-subtitle',
-                    variants: fadeInUp
-                }, 'Meet the experienced professionals who make Alvarez Dental Group a trusted name in Cambridge for over 20 years.')
-            ])
-        );
-
-        // ========================================
-        // RENDER TEAM TITLE
-        // ========================================
-        const teamTitleDiv = document.getElementById('teamTitle');
-        const titleRoot = ReactDOM.createRoot(teamTitleDiv);
-
-        titleRoot.render(
-            React.createElement(motion.h2, {
-                initial: "hidden",
-                whileInView: "visible",
-                viewport: { once: true, amount: 0.3 },
-                variants: fadeInUp
-            }, 'Meet Our Team')
-        );
-
-        // ========================================
-        // RENDER TEAM GRID
-        // ========================================
-        const teamGridDiv = document.getElementById('teamGrid');
-        const gridRoot = ReactDOM.createRoot(teamGridDiv);
-
-        const TeamMember = ({ member }) => {
-            return React.createElement(motion.div, {
-                className: 'team-member',
-                initial: "hidden",
-                whileInView: "visible",
-                viewport: { once: true, amount: 0.2 },
-                variants: cardVariant,
-                whileHover: { 
-                    y: -10, 
-                    transition: { duration: 0.3 }
-                }
-            }, [
-                React.createElement(motion.img, {
-                    key: 'image',
-                    src: member.image,
-                    alt: member.name,
-                    initial: { scale: 0.8, opacity: 0 },
-                    whileInView: { scale: 1, opacity: 1 },
-                    viewport: { once: true },
-                    transition: { 
-                        duration: 0.6, 
-                        delay: 0.2,
-                        ease: [0.25, 0.4, 0.25, 1]
-                    }
-                }),
-                React.createElement('h3', { key: 'name' }, member.name),
-                React.createElement('div', { key: 'role', className: 'role' }, member.role),
-                React.createElement('p', { key: 'description' }, member.description)
-            ]);
-        };
-
-        gridRoot.render(
-            React.createElement(React.Fragment, null,
-                teamData.map((member, index) => 
-                    React.createElement(TeamMember, {
-                        key: index,
-                        member: member
-                    })
-                )
-            )
-        );
-
-        // ========================================
-        // RENDER MISSION SECTION
-        // ========================================
-        const missionContentDiv = document.getElementById('missionContent');
-        const missionRoot = ReactDOM.createRoot(missionContentDiv);
-
-        const ValuesGrid = () => {
-            return React.createElement('div', {
-                className: 'values-grid'
-            }, valuesData.map((value, index) => 
-                React.createElement(motion.div, {
-                    key: index,
-                    className: 'value-card',
-                    initial: "hidden",
-                    whileInView: "visible",
-                    viewport: { once: true, amount: 0.2 },
-                    variants: cardVariant,
-                    whileHover: { 
-                        y: -10, 
-                        transition: { duration: 0.3 }
-                    }
-                }, [
-                    React.createElement('h3', { key: 'title' }, value.title),
-                    React.createElement('p', { key: 'description' }, value.description)
-                ])
-            ));
-        };
-
-        missionRoot.render(
-            React.createElement(motion.div, {
-                initial: "hidden",
-                whileInView: "visible",
-                viewport: { once: true, amount: 0.3 },
-                variants: staggerContainer
-            }, [
-                React.createElement(motion.h2, {
-                    key: 'mission-title',
-                    variants: fadeInDown
-                }, 'Our Mission & Values'),
-                React.createElement(motion.p, {
-                    key: 'mission-text-1',
-                    variants: fadeInUp
-                }, 'At Alvarez Dental Group, we believe that everyone deserves a healthy, beautiful smile. Our mission is to provide exceptional dental care in a comfortable, welcoming environment where patients feel valued and respected.'),
-                React.createElement(motion.p, {
-                    key: 'mission-text-2',
-                    variants: fadeInUp
-                }, 'We are committed to staying at the forefront of dental technology and continuing education to ensure our patients receive the most advanced and effective treatments available.'),
-                React.createElement(ValuesGrid, { key: 'values-grid' })
-            ])
-        );
-
-        // ========================================
-        // MOBILE NAVIGATION
-        // ========================================
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobileNav');
-        const mobileNavClose = document.getElementById('mobileNavClose');
-
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
-        });
-
-        mobileNavClose.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Close mobile nav when clicking outside
-        mobileNav.addEventListener('click', function(e) {
-            if (e.target === mobileNav) {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Close mobile nav when clicking on links
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Mobile nav handlers (match homepage)
-        (function(){
+    <script>
+        // Mobile navigation handlers
+        document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
             const mobileNav = document.getElementById('mobileNav');
             const mobileNavClose = document.getElementById('mobileNavClose');
-            function preventScroll(){ document.body.classList.add('menu-open'); document.body.style.overflow='hidden'; }
-            function allowScroll(){ document.body.classList.remove('menu-open'); document.body.style.overflow=''; }
-            if(hamburger && mobileNav){
-                hamburger.addEventListener('click', ()=>{
+
+            function preventScroll() {
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function allowScroll() {
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            }
+
+            if (hamburger && mobileNav) {
+                hamburger.addEventListener('click', function() {
                     hamburger.classList.toggle('active');
                     mobileNav.classList.toggle('active');
-                    mobileNav.classList.contains('active') ? preventScroll() : allowScroll();
+                    if (mobileNav.classList.contains('active')) {
+                        preventScroll();
+                    } else {
+                        allowScroll();
+                    }
                 });
             }
-            if(mobileNavClose){ mobileNavClose.addEventListener('click', ()=>{ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); }); }
-            if(mobileNav){
-                mobileNav.addEventListener('click', (e)=>{ if(e.target===mobileNav){ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); } });
-            }
-        })();
-    </script>
 
-    <!-- React and ReactDOM for Framer Motion -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+            if (mobileNavClose) {
+                mobileNavClose.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    allowScroll();
+                });
+            }
+
+            // Close mobile nav when clicking outside
+            if (mobileNav) {
+                mobileNav.addEventListener('click', function(e) {
+                    if (e.target === mobileNav) {
+                        hamburger.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        allowScroll();
+                    }
+                });
+            }
+
+            // Close mobile nav when clicking on links
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    allowScroll();
+                });
+            });
+        });
+    </script>
 </body>
 </html>

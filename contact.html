@@ -407,7 +407,9 @@
             display: flex;
             flex-direction: column;
             padding: 24px 32px;
+            padding-bottom: max(80px, env(safe-area-inset-bottom, 80px));
             box-sizing: border-box;
+            overflow-y: auto;
         }
 
         .mobile-nav-header {
@@ -521,9 +523,10 @@
         .mobile-nav-footer {
             margin-top: auto;
             padding-top: 30px;
+            padding-bottom: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .mobile-nav-footer a,
         .mobile-nav-footer p {
             color: #ffffff;
@@ -533,9 +536,18 @@
             line-height: 1.8;
             display: block;
             font-family: 'Montserrat', sans-serif;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
-
+        
+        .mobile-nav-footer a:last-of-type {
+            margin-bottom: 12px;
+        }
+        
+        .mobile-nav-footer p {
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
         .mobile-nav-footer a:hover {
             color: #2BA5E8;
         }
@@ -949,7 +961,7 @@
             <div class="mobile-nav-footer">
                 <a href="tel:617-485-1769">(617)-485-1769</a>
                 <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a>
-                <p>403 Cambridge St, Cambridge, MA 02141,<br>United States of America</p>
+                <p>403 Cambridge St, Cambridge, MA 02141<br>United States of America</p>
             </div>
         </div>
     </div>

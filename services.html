@@ -15,8 +15,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Charis+SIL:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <!-- Framer Motion -->
-    <script src="https://cdn.jsdelivr.net/npm/framer-motion@11/dist/framer-motion.js"></script>
     <style>
         /*
         STYLE GUIDE
@@ -403,7 +401,9 @@
             display: flex;
             flex-direction: column;
             padding: 24px 32px;
+            padding-bottom: max(80px, env(safe-area-inset-bottom, 80px));
             box-sizing: border-box;
+            overflow-y: auto;
         }
 
         .mobile-nav-header {
@@ -514,12 +514,47 @@
             color: #2BA5E8;
         }
 
+        .mobile-submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .mobile-submenu.active {
+            max-height: 500px;
+        }
+
+        .mobile-submenu a {
+            font-size: 18px;
+            padding: 15px 30px 15px 50px;
+            font-weight: 400;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .mobile-submenu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-parent-link {
+            cursor: pointer;
+        }
+
+        .mobile-parent-link .nav-arrow {
+            transition: transform 0.3s ease;
+        }
+
+        .mobile-parent-link.active .nav-arrow {
+            transform: rotate(90deg);
+        }
+
         .mobile-nav-footer {
             margin-top: auto;
             padding-top: 30px;
+            padding-bottom: 20px;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
-
+        
         .mobile-nav-footer a,
         .mobile-nav-footer p {
             color: #ffffff;
@@ -529,9 +564,18 @@
             line-height: 1.8;
             display: block;
             font-family: 'Montserrat', sans-serif;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
         }
-
+        
+        .mobile-nav-footer a:last-of-type {
+            margin-bottom: 12px;
+        }
+        
+        .mobile-nav-footer p {
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+        
         .mobile-nav-footer a:hover {
             color: #2BA5E8;
         }
@@ -939,14 +983,31 @@
             </div>
             <ul class="mobile-nav-links">
                 <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT<span class="nav-arrow">›</span></a></li>
-                <li><a href="services.html" class="active">SERVICES<span class="nav-arrow">›</span></a></li>
+                <li>
+                    <a href="#" class="mobile-parent-link" data-submenu="about">ABOUT<span class="nav-arrow">›</span></a>
+                    <div class="mobile-submenu" id="about-submenu">
+                        <a href="about.html">About Us</a>
+                        <a href="our-team.html">Our Team</a>
+                        <a href="our-story.html">Our Story</a>
+                        <a href="our-founder.html">Our Founder</a>
+                    </div>
+                </li>
+                <li>
+                    <a href="#" class="mobile-parent-link" data-submenu="services">SERVICES<span class="nav-arrow">›</span></a>
+                    <div class="mobile-submenu" id="services-submenu">
+                        <a href="services.html">All Services</a>
+                        <a href="services/general-dentistry.html">General Dentistry</a>
+                        <a href="services/cosmetic-dentistry.html">Cosmetic Dentistry</a>
+                        <a href="services/dental-implants.html">Dental Implants</a>
+                        <a href="services/botox.html">Botox & Aesthetics</a>
+                    </div>
+                </li>
                 <li><a href="contact.html">CONTACT</a></li>
             </ul>
             <div class="mobile-nav-footer">
                 <a href="tel:617-485-1769">(617)-485-1769</a>
                 <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a>
-                <p>403 Cambridge St, Cambridge, MA 02141,<br>United States of America</p>
+                <p>403 Cambridge St, Cambridge, MA 02141<br>United States of America</p>
             </div>
         </div>
     </div>
@@ -954,389 +1015,193 @@
     <!-- Page Content -->
     <div class="page-content">
         <!-- Services Hero -->
-        <section class="services-hero" id="servicesHero">
-            <div id="heroContent"></div>
+        <section class="services-hero">
+            <div>
+                <h1>Our Services</h1>
+                <p>Comprehensive dental care for the whole family, from routine cleanings to advanced cosmetic procedures.</p>
+            </div>
         </section>
 
         <!-- Services Section -->
-        <section class="services-section" id="servicesSection">
-            <div id="servicesTitle"></div>
-            <div class="services-grid" id="servicesGrid">
-                <!-- Services will be dynamically rendered here with Framer Motion -->
+        <section class="services-section">
+            <h2>What We Offer</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>General Dentistry</h3>
+                    <p>Complete oral health care including cleanings, exams, fillings, and preventive treatments to keep your smile healthy.</p>
+                    <ul class="service-features">
+                        <li>Regular cleanings & exams</li>
+                        <li>Dental fillings</li>
+                        <li>Root canal therapy</li>
+                        <li>Gum disease treatment</li>
+                    </ul>
+                    <a href="services/general-dentistry.html" class="book-service-btn">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">✨</div>
+                    <h3>Cosmetic Dentistry</h3>
+                    <p>Transform your smile with our cosmetic procedures designed to enhance your appearance and boost your confidence.</p>
+                    <ul class="service-features">
+                        <li>Teeth whitening</li>
+                        <li>Porcelain veneers</li>
+                        <li>Dental bonding</li>
+                        <li>Smile makeovers</li>
+                    </ul>
+                    <a href="services/cosmetic-dentistry.html" class="book-service-btn">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🦷</div>
+                    <h3>Orthodontics</h3>
+                    <p>Straighten your teeth and improve your bite with our modern orthodontic treatments for all ages.</p>
+                    <ul class="service-features">
+                        <li>Traditional braces</li>
+                        <li>Clear aligners</li>
+                        <li>Retainers</li>
+                        <li>Invisalign</li>
+                    </ul>
+                    <a href="book.html" class="book-service-btn">Book Consultation</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🔧</div>
+                    <h3>Dental Implants</h3>
+                    <p>Replace missing teeth with durable, natural-looking dental implants that restore both function and aesthetics.</p>
+                    <ul class="service-features">
+                        <li>Single tooth implants</li>
+                        <li>Multiple tooth implants</li>
+                        <li>Full mouth reconstruction</li>
+                        <li>Implant-supported dentures</li>
+                    </ul>
+                    <a href="services/dental-implants.html" class="book-service-btn">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">💉</div>
+                    <h3>Botox & Cosmetic Injectables</h3>
+                    <p>Enhance your appearance with our cosmetic injectable treatments including Botox for a more youthful look.</p>
+                    <ul class="service-features">
+                        <li>Botox treatments</li>
+                        <li>Facial rejuvenation</li>
+                        <li>Wrinkle reduction</li>
+                        <li>Anti-aging solutions</li>
+                    </ul>
+                    <a href="services/botox.html" class="book-service-btn">Learn More</a>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🚨</div>
+                    <h3>Emergency Care</h3>
+                    <p>Immediate dental care when you need it most. We're here to help with dental emergencies and urgent situations.</p>
+                    <ul class="service-features">
+                        <li>Tooth pain relief</li>
+                        <li>Broken tooth repair</li>
+                        <li>Lost filling replacement</li>
+                        <li>Dental trauma care</li>
+                    </ul>
+                    <a href="tel:617-485-1769" class="book-service-btn">Call Now</a>
+                </div>
             </div>
         </section>
 
         <!-- Emergency Section -->
-        <section class="emergency-section" id="emergencySection">
-            <div class="emergency-content" id="emergencyContent">
-                <!-- Emergency content will be dynamically rendered here with Framer Motion -->
+        <section class="emergency-section">
+            <div class="emergency-content">
+                <h2>Dental Emergency?</h2>
+                <p>Don't wait if you're experiencing severe dental pain or have a dental emergency. Our team is ready to provide immediate care to relieve your pain and address urgent dental issues.</p>
+                <p>We understand that dental emergencies can happen at any time, which is why we offer same-day emergency appointments for our patients.</p>
+                <a href="tel:617-485-1769" class="emergency-phone">📞 Call (617) 485-1769</a>
             </div>
         </section>
     </div>
 
-    <script type="module">
-        const { motion } = window.Motion;
-
-        // ========================================
-        // ANIMATION VARIANTS
-        // ========================================
-
-        // Fade in with upward movement
-        const fadeInUp = {
-            hidden: { opacity: 0, y: 60 },
-            visible: { 
-                opacity: 1, 
-                y: 0,
-                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        // Fade in with downward movement
-        const fadeInDown = {
-            hidden: { opacity: 0, y: -40 },
-            visible: { 
-                opacity: 1, 
-                y: 0,
-                transition: { duration: 0.7, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        // Fade in with left movement
-        const fadeInLeft = {
-            hidden: { opacity: 0, x: -60 },
-            visible: { 
-                opacity: 1, 
-                x: 0,
-                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        // Fade in with right movement
-        const fadeInRight = {
-            hidden: { opacity: 0, x: 60 },
-            visible: { 
-                opacity: 1, 
-                x: 0,
-                transition: { duration: 0.8, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        // Scale in (zoom-in effect)
-        const scaleIn = {
-            hidden: { opacity: 0, scale: 0.8 },
-            visible: { 
-                opacity: 1, 
-                scale: 1,
-                transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        // Stagger container for children animations
-        const staggerContainer = {
-            hidden: { opacity: 0 },
-            visible: {
-                opacity: 1,
-                transition: {
-                    staggerChildren: 0.15,
-                    delayChildren: 0.1
-                }
-            }
-        };
-
-        // Service card animation with scale
-        const cardVariant = {
-            hidden: { opacity: 0, y: 40, scale: 0.95 },
-            visible: { 
-                opacity: 1, 
-                y: 0,
-                scale: 1,
-                transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] }
-            }
-        };
-
-        // ========================================
-        // SERVICES DATA
-        // ========================================
-        const servicesData = [
-            {
-                icon: '🦷',
-                title: 'General Dentistry',
-                description: 'Complete oral health care including cleanings, exams, fillings, and preventive treatments to keep your smile healthy.',
-                features: [
-                    'Regular cleanings & exams',
-                    'Dental fillings',
-                    'Root canal therapy',
-                    'Gum disease treatment'
-                ],
-                link: 'book.html',
-                linkText: 'Book Appointment'
-            },
-            {
-                icon: '✨',
-                title: 'Cosmetic Dentistry',
-                description: 'Transform your smile with our cosmetic procedures designed to enhance your appearance and boost your confidence.',
-                features: [
-                    'Teeth whitening',
-                    'Porcelain veneers',
-                    'Dental bonding',
-                    'Smile makeovers'
-                ],
-                link: 'book.html',
-                linkText: 'Book Consultation'
-            },
-            {
-                icon: '🦷',
-                title: 'Orthodontics',
-                description: 'Straighten your teeth and improve your bite with our modern orthodontic treatments for all ages.',
-                features: [
-                    'Traditional braces',
-                    'Clear aligners',
-                    'Retainers',
-                    'Invisalign'
-                ],
-                link: 'book.html',
-                linkText: 'Book Consultation'
-            },
-            {
-                icon: '🔧',
-                title: 'Dental Implants',
-                description: 'Replace missing teeth with durable, natural-looking dental implants that restore both function and aesthetics.',
-                features: [
-                    'Single tooth implants',
-                    'Multiple tooth implants',
-                    'Full mouth reconstruction',
-                    'Implant-supported dentures'
-                ],
-                link: 'book.html',
-                linkText: 'Book Consultation'
-            },
-            {
-                icon: '👶',
-                title: 'Pediatric Dentistry',
-                description: 'Specialized dental care for children in a fun, comfortable environment that makes dental visits enjoyable.',
-                features: [
-                    'Child-friendly cleanings',
-                    'Fluoride treatments',
-                    'Sealants',
-                    'Early orthodontic evaluation'
-                ],
-                link: 'book.html',
-                linkText: 'Book Appointment'
-            },
-            {
-                icon: '🚨',
-                title: 'Emergency Care',
-                description: 'Immediate dental care when you need it most. We\'re here to help with dental emergencies and urgent situations.',
-                features: [
-                    'Tooth pain relief',
-                    'Broken tooth repair',
-                    'Lost filling replacement',
-                    'Dental trauma care'
-                ],
-                link: 'tel:617-485-1769',
-                linkText: 'Call Now'
-            }
-        ];
-
-        // ========================================
-        // RENDER HERO SECTION
-        // ========================================
-        const heroContentDiv = document.getElementById('heroContent');
-        const heroRoot = ReactDOM.createRoot(heroContentDiv);
-
-        heroRoot.render(
-            React.createElement(motion.div, {
-                initial: "hidden",
-                animate: "visible",
-                variants: staggerContainer,
-                style: { textAlign: 'center' }
-            }, [
-                React.createElement(motion.h1, {
-                    key: 'hero-title',
-                    variants: fadeInDown
-                }, 'Our Services'),
-                React.createElement(motion.p, {
-                    key: 'hero-subtitle',
-                    variants: fadeInUp
-                }, 'Comprehensive dental care for the whole family, from routine cleanings to advanced cosmetic procedures.')
-            ])
-        );
-
-        // ========================================
-        // RENDER SERVICES TITLE
-        // ========================================
-        const servicesTitleDiv = document.getElementById('servicesTitle');
-        const titleRoot = ReactDOM.createRoot(servicesTitleDiv);
-
-        titleRoot.render(
-            React.createElement(motion.h2, {
-                initial: "hidden",
-                whileInView: "visible",
-                viewport: { once: true, amount: 0.3 },
-                variants: fadeInUp
-            }, 'What We Offer')
-        );
-
-        // ========================================
-        // RENDER SERVICES GRID
-        // ========================================
-        const servicesGridDiv = document.getElementById('servicesGrid');
-        const gridRoot = ReactDOM.createRoot(servicesGridDiv);
-
-        const ServiceCard = ({ service, index }) => {
-            return React.createElement(motion.div, {
-                className: 'service-card',
-                initial: "hidden",
-                whileInView: "visible",
-                viewport: { once: true, amount: 0.2 },
-                variants: cardVariant,
-                whileHover: { 
-                    y: -10, 
-                    transition: { duration: 0.3 }
-                }
-            }, [
-                React.createElement(motion.div, {
-                    key: 'icon',
-                    className: 'service-icon',
-                    initial: { scale: 0, rotate: -180 },
-                    whileInView: { scale: 1, rotate: 0 },
-                    viewport: { once: true },
-                    transition: { 
-                        duration: 0.6, 
-                        delay: 0.2,
-                        ease: [0.25, 0.4, 0.25, 1]
-                    }
-                }, service.icon),
-                React.createElement('h3', { key: 'title' }, service.title),
-                React.createElement('p', { key: 'description' }, service.description),
-                React.createElement('ul', { 
-                    key: 'features',
-                    className: 'service-features' 
-                }, service.features.map((feature, i) => 
-                    React.createElement('li', { key: i }, feature)
-                )),
-                React.createElement(motion.a, {
-                    key: 'link',
-                    href: service.link,
-                    className: 'book-service-btn',
-                    whileHover: { scale: 1.05 },
-                    whileTap: { scale: 0.98 }
-                }, service.linkText)
-            ]);
-        };
-
-        gridRoot.render(
-            React.createElement(React.Fragment, null,
-                servicesData.map((service, index) => 
-                    React.createElement(ServiceCard, {
-                        key: index,
-                        service: service,
-                        index: index
-                    })
-                )
-            )
-        );
-
-        // ========================================
-        // RENDER EMERGENCY SECTION
-        // ========================================
-        const emergencyContentDiv = document.getElementById('emergencyContent');
-        const emergencyRoot = ReactDOM.createRoot(emergencyContentDiv);
-
-        emergencyRoot.render(
-            React.createElement(motion.div, {
-                initial: "hidden",
-                whileInView: "visible",
-                viewport: { once: true, amount: 0.3 },
-                variants: staggerContainer
-            }, [
-                React.createElement(motion.h2, {
-                    key: 'emergency-title',
-                    variants: fadeInDown
-                }, 'Dental Emergency?'),
-                React.createElement(motion.p, {
-                    key: 'emergency-text-1',
-                    variants: fadeInUp
-                }, 'Don\'t wait if you\'re experiencing severe dental pain or have a dental emergency. Our team is ready to provide immediate care to relieve your pain and address urgent dental issues.'),
-                React.createElement(motion.p, {
-                    key: 'emergency-text-2',
-                    variants: fadeInUp
-                }, 'We understand that dental emergencies can happen at any time, which is why we offer same-day emergency appointments for our patients.'),
-                React.createElement(motion.a, {
-                    key: 'emergency-phone',
-                    href: 'tel:617-485-1769',
-                    className: 'emergency-phone',
-                    variants: scaleIn,
-                    whileHover: { 
-                        scale: 1.08,
-                        boxShadow: '0 10px 30px rgba(43, 165, 232, 0.4)'
-                    },
-                    whileTap: { scale: 0.95 }
-                }, '📞 Call (617) 485-1769')
-            ])
-        );
-
-        // ========================================
-        // MOBILE NAVIGATION
-        // ========================================
-        const hamburger = document.getElementById('hamburger');
-        const mobileNav = document.getElementById('mobileNav');
-        const mobileNavClose = document.getElementById('mobileNavClose');
-
-        hamburger.addEventListener('click', function() {
-            hamburger.classList.toggle('active');
-            mobileNav.classList.toggle('active');
-            document.body.style.overflow = mobileNav.classList.contains('active') ? 'hidden' : 'auto';
-        });
-
-        mobileNavClose.addEventListener('click', function() {
-            hamburger.classList.remove('active');
-            mobileNav.classList.remove('active');
-            document.body.style.overflow = 'auto';
-        });
-
-        // Close mobile nav when clicking outside
-        mobileNav.addEventListener('click', function(e) {
-            if (e.target === mobileNav) {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            }
-        });
-
-        // Close mobile nav when clicking on links
-        const mobileNavLinks = document.querySelectorAll('.mobile-nav-links a');
-        mobileNavLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                hamburger.classList.remove('active');
-                mobileNav.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-
-        // Mobile nav handlers (match homepage)
-        (function(){
+    <!-- Mobile Navigation - Separate script to ensure it runs after DOM loads -->
+    <script>
+        // Mobile navigation handlers
+        document.addEventListener('DOMContentLoaded', function() {
             const hamburger = document.getElementById('hamburger');
             const mobileNav = document.getElementById('mobileNav');
             const mobileNavClose = document.getElementById('mobileNavClose');
-            function preventScroll(){ document.body.classList.add('menu-open'); document.body.style.overflow='hidden'; }
-            function allowScroll(){ document.body.classList.remove('menu-open'); document.body.style.overflow=''; }
-            if(hamburger && mobileNav){
-                hamburger.addEventListener('click', ()=>{
+
+            function preventScroll() {
+                document.body.classList.add('menu-open');
+                document.body.style.overflow = 'hidden';
+            }
+
+            function allowScroll() {
+                document.body.classList.remove('menu-open');
+                document.body.style.overflow = '';
+            }
+
+            if (hamburger && mobileNav) {
+                hamburger.addEventListener('click', function() {
                     hamburger.classList.toggle('active');
                     mobileNav.classList.toggle('active');
-                    mobileNav.classList.contains('active') ? preventScroll() : allowScroll();
+                    if (mobileNav.classList.contains('active')) {
+                        preventScroll();
+                    } else {
+                        allowScroll();
+                    }
                 });
             }
-            if(mobileNavClose){ mobileNavClose.addEventListener('click', ()=>{ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); }); }
-            if(mobileNav){
-                mobileNav.addEventListener('click', (e)=>{ if(e.target===mobileNav){ hamburger.classList.remove('active'); mobileNav.classList.remove('active'); allowScroll(); } });
+
+            if (mobileNavClose) {
+                mobileNavClose.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    allowScroll();
+                });
             }
-        })();
+
+            // Close mobile nav when clicking outside
+            if (mobileNav) {
+                mobileNav.addEventListener('click', function(e) {
+                    if (e.target === mobileNav) {
+                        hamburger.classList.remove('active');
+                        mobileNav.classList.remove('active');
+                        allowScroll();
+                    }
+                });
+            }
+
+            // Handle mobile submenu toggles
+            const mobileParentLinks = document.querySelectorAll('.mobile-parent-link');
+            mobileParentLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const submenuId = this.getAttribute('data-submenu') + '-submenu';
+                    const submenu = document.getElementById(submenuId);
+                    
+                    // Toggle the submenu
+                    submenu.classList.toggle('active');
+                    this.classList.toggle('active');
+                });
+            });
+
+            // Close mobile nav when clicking on submenu links
+            const mobileSubMenuLinks = document.querySelectorAll('.mobile-submenu a');
+            mobileSubMenuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    // Close mobile nav
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    allowScroll();
+                });
+            });
+
+            // Close mobile nav when clicking on regular links
+            const mobileNavRegularLinks = document.querySelectorAll('.mobile-nav-links > li > a:not(.mobile-parent-link)');
+            mobileNavRegularLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburger.classList.remove('active');
+                    mobileNav.classList.remove('active');
+                    allowScroll();
+                });
+            });
+        });
     </script>
 
-    <!-- React and ReactDOM for Framer Motion -->
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
 </body>
 </html>

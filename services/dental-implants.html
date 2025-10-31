@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="General dentistry services at Alvarez Dental Group. Professional teeth cleanings, dental exams, fillings, and preventive care in Cambridge, MA.">
-    <title>General Dentistry - Alvarez Dental Group, LLC</title>
+    <meta name="description" content="Dental implant services at Alvarez Dental Group. Permanent tooth replacement solutions with natural-looking results in Cambridge, MA.">
+    <title>Dental Implants - Alvarez Dental Group, LLC</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -268,6 +268,46 @@
             font-size: 18px;
         }
 
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .benefit-card {
+            background: #F9F8FF;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+        }
+
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: #2BA5E8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: white;
+            font-size: 28px;
+        }
+
+        .benefit-card h3 {
+            font-size: 22px;
+            color: #2BA5E8;
+            margin-bottom: 15px;
+        }
+
+        .benefit-card p {
+            font-size: 15px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 0;
+        }
+
         .cta-section {
             background: linear-gradient(135deg, #2BA5E8 0%, #1a8ac9 100%);
             color: white;
@@ -394,6 +434,10 @@
                 font-size: 24px;
             }
 
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
             .cta-section h2 {
                 font-size: 28px;
             }
@@ -401,39 +445,69 @@
 
         @media (max-width: 767px) {
             body { padding-top: 120px; }
-            .desktop-nav, .header-cta { display:none; }
         }
 
         /* Mobile: Position header below mobile-header-top */
         @media (max-width: 767px) {
             header { top: 60px; z-index: 1000; }
         }
+        
+        .mobile-header-top { display:flex; background-color:rgba(255,255,255,0.95); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px); padding:0; justify-content:space-between; align-items:stretch; height:60px; position:fixed; top:0; left:0; right:0; z-index:1002; width:100%; box-shadow:0 2px 10px rgba(0,0,0,0.1); }
+        .mobile-book-now { background:#0391DB; color:#fff; display:flex; align-items:center; justify-content:center; width:50%; min-height:60px; text-decoration:none; font-weight:700; letter-spacing:1px; }
+        .mobile-phone { background:#002756; color:#fff; display:flex; align-items:center; justify-content:center; width:50%; min-height:60px; text-decoration:none; font-weight:700; gap:8px; padding:0 14px; }
+        
+        .hamburger { display:flex; flex-direction:column; gap:5px; cursor:pointer; background:#2BA5E8; padding:10px; border-radius:4px; margin-right:12px; }
+        .hamburger span { width:30px; height:3px; background:#fff; border-radius:2px; transition:all 0.3s ease; }
+        .hamburger.active span:nth-child(1) { transform:rotate(45deg) translate(8px, 8px); }
+        .hamburger.active span:nth-child(2) { opacity:0; }
+        .hamburger.active span:nth-child(3) { transform:rotate(-45deg) translate(8px, -8px); }
+        
+        .mobile-nav { position:fixed; top:0; left:0; width:100%; height:100vh; background:#1a1a1a; z-index:9999; display:none; opacity:0; transition:opacity 0.3s ease; }
+        .mobile-nav.active { display:flex; opacity:1; }
+        
+        .mobile-nav-content { width:100%; height:100%; background:#1a1a1a; display:flex; flex-direction:column; padding:24px 32px; padding-bottom:max(80px, env(safe-area-inset-bottom, 80px)); box-sizing:border-box; overflow-y:auto; }
+        
+        .mobile-nav-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:40px; padding-bottom:24px; border-bottom:1px solid rgba(255,255,255,0.1); }
+        
+        .mobile-nav-logo-container { display:flex; align-items:center; gap:12px; margin-left:-8px; }
+        .mobile-nav-logo-container img { width:60px; height:60px; object-fit:contain; }
+        .mobile-nav-logo-text { color:#fff; line-height:1.2; }
+        .mobile-nav-logo-text h1 { font-size:22px; font-weight:700; margin:0; padding:0; font-family:'Montserrat',sans-serif; color:#fff; line-height:1.1; }
+        .mobile-nav-logo-text p { font-size:22px; font-weight:700; margin:0; padding:0; color:#fff; font-family:'Montserrat',sans-serif; line-height:1.1; }
+        
+        .mobile-nav-close { background:none; border:none; font-size:18px; color:#fff; cursor:pointer; font-family:'Montserrat',sans-serif; font-weight:500; letter-spacing:2px; padding:0; text-transform:uppercase; }
+        
+        .mobile-nav-links { list-style:none; padding:0; margin:0; flex:1; }
+        .mobile-nav-links li { margin-bottom:0; }
+        .mobile-nav-links a { color:#fff; text-decoration:none; font-size:32px; font-weight:500; display:flex; justify-content:space-between; align-items:center; padding:20px 0; transition:color 0.3s ease; font-family:'Montserrat',sans-serif; text-transform:uppercase; letter-spacing:0.5px; }
+        .mobile-nav-links a:hover { color:#2BA5E8; }
+        .mobile-nav-links a.active { color:#2BA5E8; }
+        .mobile-nav-links .nav-arrow { font-size:36px; color:#fff; margin-left:-8px; }
+        .mobile-nav-links a:hover .nav-arrow { color:#2BA5E8; }
+        .mobile-nav-links a.active .nav-arrow { color:#2BA5E8; }
+        
+        .mobile-nav-footer { margin-top:auto; padding-top:30px; padding-bottom:20px; border-top:1px solid rgba(255,255,255,0.1); }
+        .mobile-nav-footer a, .mobile-nav-footer p { color:#fff; text-decoration:none; font-size:16px; font-weight:400; line-height:1.8; display:block; font-family:'Montserrat',sans-serif; margin-bottom:10px; }
+        .mobile-nav-footer a:last-of-type { margin-bottom:12px; }
+        .mobile-nav-footer p { margin-bottom:0; line-height:1.6; }
+        .mobile-nav-footer a:hover { color:#2BA5E8; }
+        
+        body.menu-open { overflow:hidden !important; }
     </style>
 </head>
 <body>
-    <!-- Mobile Header Top -->
-    <div class="mobile-header-top">
-        <a href="book.html" class="mobile-book-now">BOOK NOW</a>
-        <a href="tel:617-485-1769" class="mobile-phone">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" fill="white"/>
-            </svg>
-            (617)-485-1769
-        </a>
-    </div>
-
     <!-- Header -->
     <header>
-        <div class="logo-container" onclick="window.location.href='index.html'">
-            <img src="alvarez-logo-white.png" alt="Alvarez Dental Group Logo" class="logo-image">
-            <span class="logo-text-visual" style="color:#ffffff">Alvarez<br>Dental<br>Group, LLC</span>
+        <div class="logo-container" onclick="window.location.href='../index.html'">
+            <img src="../alvarez-logo-white.png" alt="Alvarez Dental Group Logo" class="logo-image">
+            <span class="logo-text-visual">Alvarez<br>Dental<br>Group, LLC</span>
         </div>
         <nav class="desktop-nav">
             <ul class="nav-links">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="services.html" class="active">SERVICES</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="../about.html">ABOUT</a></li>
+                <li><a href="../services.html" class="active">SERVICES</a></li>
+                <li><a href="../contact.html">CONTACT</a></li>
             </ul>
         </nav>
         <div class="header-cta">
@@ -443,7 +517,7 @@
                 </svg>
                 (617)-485-1769
             </a>
-            <a href="book.html" class="book-now-header">BOOK NOW</a>
+            <a href="../book.html" class="book-now-header">BOOK NOW</a>
         </div>
         <div class="hamburger" id="hamburger">
             <span></span>
@@ -457,7 +531,7 @@
         <div class="mobile-nav-content">
             <div class="mobile-nav-header">
                 <div class="mobile-nav-logo-container">
-                    <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo">
+                    <img src="../alvarez-logo-white.png" alt="Alvarez Dental Group Logo">
                     <div class="mobile-nav-logo-text">
                         <h1>Alvarez</h1>
                         <h1>Dental</h1>
@@ -467,118 +541,179 @@
                 <button class="mobile-nav-close" id="mobileNavClose">CLOSE</button>
             </div>
             <ul class="mobile-nav-links">
-                <li><a href="index.html">HOME</a></li>
-                <li><a href="about.html">ABOUT</a></li>
-                <li><a href="services.html" class="active">SERVICES<span class="nav-arrow">›</span></a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="../about.html">ABOUT</a></li>
+                <li><a href="../services.html" class="active">SERVICES<span class="nav-arrow">›</span></a></li>
+                <li><a href="../contact.html">CONTACT</a></li>
             </ul>
             <div class="mobile-nav-footer">
                 <a href="tel:617-485-1769">(617)-485-1769</a>
                 <a href="mailto:info@alvarezdental.com">info@alvarezdental.com</a>
-                <p>403 Cambridge St, Cambridge, MA 02141</p>
+                <p>403 Cambridge St, Cambridge, MA 02141<br>United States of America</p>
             </div>
         </div>
     </div>
 
     <!-- Page Hero -->
     <section class="page-hero">
-        <h1>General Dentistry</h1>
-        <p>Comprehensive oral health care for the whole family</p>
+        <h1>Dental Implants</h1>
+        <p>Permanent tooth replacement solutions that look and feel natural</p>
     </section>
 
     <!-- Service Section -->
     <section class="service-section">
         <div class="container">
             <div class="service-intro">
-                <h2>Complete Oral Health Care</h2>
-                <p>At Alvarez Dental Group, we believe that preventive care is the foundation of excellent oral health. Our comprehensive general dentistry services are designed to keep your teeth and gums healthy for life, while addressing any issues before they become serious problems.</p>
+                <h2>The Gold Standard in Tooth Replacement</h2>
+                <p>Dental implants are the most advanced solution for replacing missing teeth. They provide a permanent, stable foundation that looks, feels, and functions just like your natural teeth, helping you eat, speak, and smile with confidence.</p>
+            </div>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">💎</div>
+                    <h3>Permanent Solution</h3>
+                    <p>With proper care, dental implants can last a lifetime, making them a smart long-term investment.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">🦷</div>
+                    <h3>Natural Appearance</h3>
+                    <p>Custom-designed to match your natural teeth in color, shape, and size for seamless results.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">💪</div>
+                    <h3>Preserve Bone Health</h3>
+                    <p>Implants stimulate the jawbone, preventing bone loss that occurs with missing teeth.</p>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="benefit-icon">😊</div>
+                    <h3>Restored Function</h3>
+                    <p>Eat all your favorite foods and speak clearly without worry about slipping or discomfort.</p>
+                </div>
             </div>
 
             <div class="services-list">
                 <div class="service-item">
-                    <h3>Professional Teeth Cleaning</h3>
-                    <p>Regular professional cleanings are essential for maintaining optimal oral health. Our skilled dental hygienists use advanced techniques to remove plaque, tartar, and stains that regular brushing can't reach.</p>
+                    <h3>What Are Dental Implants?</h3>
+                    <p>Dental implants are titanium posts that are surgically placed into your jawbone, where they act as artificial tooth roots. Once the implant has fused with your bone, we attach a custom crown, creating a complete tooth replacement that is incredibly strong and natural-looking.</p>
                     <ul>
-                        <li>Thorough plaque and tartar removal</li>
-                        <li>Professional polishing for a brighter smile</li>
-                        <li>Fluoride treatments for added protection</li>
-                        <li>Personalized home care recommendations</li>
+                        <li>Biocompatible titanium material</li>
+                        <li>Integrates with natural bone structure</li>
+                        <li>Provides stable foundation for replacement teeth</li>
+                        <li>Can support single crowns, bridges, or dentures</li>
+                        <li>Success rate of over 95%</li>
                     </ul>
                 </div>
 
                 <div class="service-item">
-                    <h3>Comprehensive Dental Exams</h3>
-                    <p>Our detailed dental examinations help catch potential problems early, when they're easiest and most cost-effective to treat. We use the latest diagnostic technology to ensure nothing is overlooked.</p>
+                    <h3>Single Tooth Implants</h3>
+                    <p>If you're missing a single tooth, a dental implant with a custom crown is the ideal solution. Unlike a traditional bridge, an implant doesn't require altering adjacent healthy teeth.</p>
                     <ul>
-                        <li>Complete oral cancer screening</li>
-                        <li>Digital X-rays with minimal radiation</li>
-                        <li>Gum disease evaluation and assessment</li>
-                        <li>Bite and jaw alignment check</li>
-                        <li>Review of medical history and medications</li>
+                        <li>Replace one missing tooth permanently</li>
+                        <li>Preserve adjacent natural teeth</li>
+                        <li>Prevent bone loss in the jaw</li>
+                        <li>Natural appearance and function</li>
+                        <li>No special maintenance required</li>
                     </ul>
                 </div>
 
                 <div class="service-item">
-                    <h3>Tooth-Colored Fillings</h3>
-                    <p>When cavities occur, we restore your teeth with natural-looking composite fillings that blend seamlessly with your smile. These modern fillings are durable, safe, and virtually invisible.</p>
+                    <h3>Multiple Teeth Implants</h3>
+                    <p>For patients missing several teeth, implant-supported bridges offer a stable, comfortable solution without the drawbacks of removable partial dentures.</p>
                     <ul>
-                        <li>Mercury-free composite materials</li>
-                        <li>Color-matched to your natural teeth</li>
-                        <li>Strong and long-lasting results</li>
-                        <li>Conservative tooth preparation</li>
+                        <li>Replace multiple missing teeth</li>
+                        <li>More stable than traditional bridges</li>
+                        <li>No need for clasps or adhesives</li>
+                        <li>Improved chewing ability</li>
+                        <li>Long-lasting restoration</li>
                     </ul>
                 </div>
 
                 <div class="service-item">
-                    <h3>Preventive Care</h3>
-                    <p>Prevention is always better than treatment. We offer a range of preventive services to protect your teeth and help you maintain excellent oral health between visits.</p>
+                    <h3>Implant-Supported Dentures</h3>
+                    <p>For patients missing all teeth in an arch, implant-supported dentures provide exceptional stability and comfort compared to traditional dentures. Say goodbye to slipping, clicking, and messy adhesives.</p>
                     <ul>
-                        <li>Dental sealants to prevent cavities</li>
-                        <li>Fluoride treatments for all ages</li>
-                        <li>Custom night guards for teeth grinding</li>
-                        <li>Sports mouthguards for active patients</li>
-                        <li>Nutritional counseling for oral health</li>
+                        <li>Secure fit that doesn't slip</li>
+                        <li>Improved chewing efficiency</li>
+                        <li>Preserve facial structure and appearance</li>
+                        <li>Increased confidence when eating and speaking</li>
+                        <li>Can be fixed (permanent) or removable</li>
+                        <li>Prevent bone deterioration</li>
                     </ul>
                 </div>
 
                 <div class="service-item">
-                    <h3>Root Canal Therapy</h3>
-                    <p>When the inner pulp of a tooth becomes infected or damaged, root canal therapy can save the tooth and relieve pain. Our gentle approach makes the procedure comfortable and effective.</p>
+                    <h3>All-on-4® Treatment</h3>
+                    <p>The All-on-4 technique uses just four strategically placed implants to support a full arch of replacement teeth. This innovative approach often eliminates the need for bone grafting and can provide same-day teeth.</p>
                     <ul>
-                        <li>Advanced pain management techniques</li>
-                        <li>State-of-the-art endodontic equipment</li>
-                        <li>Preservation of your natural tooth</li>
-                        <li>Same-day emergency appointments available</li>
+                        <li>Full arch restoration with just four implants</li>
+                        <li>Often avoids need for bone grafting</li>
+                        <li>Potential for same-day teeth</li>
+                        <li>More affordable than individual implants</li>
+                        <li>Faster treatment timeline</li>
+                        <li>Excellent long-term outcomes</li>
                     </ul>
                 </div>
 
                 <div class="service-item">
-                    <h3>Dental Crowns & Bridges</h3>
-                    <p>Restore damaged or missing teeth with custom-crafted crowns and bridges. Our restorations are designed to look natural and function just like your own teeth.</p>
+                    <h3>The Implant Process</h3>
+                    <p>Getting dental implants is a multi-step process that typically takes several months, but the results are worth the wait. We'll guide you through each phase with care and expertise.</p>
                     <ul>
-                        <li>High-quality porcelain materials</li>
-                        <li>Custom color and shape matching</li>
-                        <li>Durable and long-lasting results</li>
-                        <li>Same-day crown options available</li>
+                        <li>Comprehensive consultation and examination</li>
+                        <li>3D imaging and treatment planning</li>
+                        <li>Surgical placement of implant post</li>
+                        <li>Healing period (3-6 months) for osseointegration</li>
+                        <li>Placement of abutment connector</li>
+                        <li>Custom crown or restoration fabrication and placement</li>
+                        <li>Follow-up care and maintenance guidance</li>
                     </ul>
                 </div>
 
                 <div class="service-item">
-                    <h3>Extractions</h3>
-                    <p>When a tooth cannot be saved or is causing problems, we perform gentle extractions with careful attention to your comfort. We also discuss tooth replacement options to restore your smile.</p>
+                    <h3>Bone Grafting</h3>
+                    <p>If you've been missing teeth for some time, you may have experienced bone loss in your jaw. Bone grafting can restore the necessary bone volume to support dental implants successfully.</p>
                     <ul>
-                        <li>Gentle and pain-free procedures</li>
-                        <li>Sedation options for anxious patients</li>
-                        <li>Detailed aftercare instructions</li>
-                        <li>Options for tooth replacement</li>
+                        <li>Rebuild jawbone density and volume</li>
+                        <li>Create stable foundation for implants</li>
+                        <li>Various grafting materials available</li>
+                        <li>Can often be done at time of extraction</li>
+                        <li>Increases implant success rate</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Caring for Your Implants</h3>
+                    <p>One of the great advantages of dental implants is that they require the same care as natural teeth. With good oral hygiene and regular dental visits, your implants can last a lifetime.</p>
+                    <ul>
+                        <li>Brush and floss regularly</li>
+                        <li>Attend regular dental checkups and cleanings</li>
+                        <li>Avoid smoking for optimal implant health</li>
+                        <li>Use a soft-bristled toothbrush</li>
+                        <li>Consider a water flosser for thorough cleaning</li>
+                        <li>Protect implants from grinding with a night guard if needed</li>
+                    </ul>
+                </div>
+
+                <div class="service-item">
+                    <h3>Are You a Candidate?</h3>
+                    <p>Most people with missing teeth are good candidates for dental implants. The ideal candidate has good overall health, sufficient bone density, and healthy gums. We'll evaluate your specific situation during your consultation.</p>
+                    <ul>
+                        <li>Good general and oral health</li>
+                        <li>Adequate bone density (or candidate for bone grafting)</li>
+                        <li>Healthy gum tissue</li>
+                        <li>Commitment to good oral hygiene</li>
+                        <li>Non-smoker or willing to quit</li>
+                        <li>Realistic expectations about the process and results</li>
                     </ul>
                 </div>
             </div>
 
             <div class="cta-section">
-                <h2>Ready to Schedule Your Appointment?</h2>
-                <p>Take the first step toward better oral health. Call us today or book online!</p>
-                <a href="book.html" class="cta-button">BOOK NOW</a>
+                <h2>Ready to Restore Your Smile?</h2>
+                <p>Schedule a consultation to learn if dental implants are right for you. We'll answer all your questions and create a personalized treatment plan.</p>
+                <a href="../book.html" class="cta-button">BOOK NOW</a>
             </div>
         </div>
     </section>
@@ -588,7 +723,7 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-logo">
-                    <img src="alvarez-logo-black.png" alt="Alvarez Dental Group Logo">
+                    <img src="../alvarez-logo-white.png" alt="Alvarez Dental Group Logo">
                     <div class="footer-text">
                         <h3>Alvarez Dental Group, LLC</h3>
                         <p>Bright Smiles, Gentle Care</p>
@@ -596,10 +731,10 @@
                 </div>
                 <div class="footer-links">
                     <h4>Quick Links</h4>
-                    <a href="index.html">Home</a>
-                    <a href="about.html">About</a>
-                    <a href="services.html">Services</a>
-                    <a href="contact.html">Contact</a>
+                    <a href="../index.html">Home</a>
+                    <a href="../about.html">About</a>
+                    <a href="../services.html">Services</a>
+                    <a href="../contact.html">Contact</a>
                 </div>
                 <div class="footer-contact">
                     <h4>Contact Info</h4>
