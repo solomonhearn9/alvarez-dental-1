@@ -3418,18 +3418,25 @@
             }
             
             function scrollToMember(index) {
-                if (isScrolling) return;
+                // Ensure index is within bounds
+                if (index < 0) index = 0;
+                if (index >= teamMembers.length) index = teamMembers.length - 1;
+                
+                if (isScrolling || index === currentIndex) return;
+                
                 isScrolling = true;
                 
                 const memberWidth = getMemberWidth();
                 const scrollPosition = index * memberWidth;
+                
+                // Update currentIndex immediately to prevent multiple swipes
+                currentIndex = index;
                 
                 teamGallery.scrollTo({
                     left: scrollPosition,
                     behavior: 'smooth'
                 });
                 
-                currentIndex = index;
                 updateActiveDot(index);
                 
                 // Add liquid glass effect to current member
@@ -3455,10 +3462,14 @@
             // Simple, reliable touch swipe handling
             let touchStartX = 0;
             let touchStartScrollLeft = 0;
+            let touchStartTime = 0;
+            let hasDeliberateSwipe = false;
             
             teamGallery.addEventListener('touchstart', (e) => {
                 touchStartX = e.touches[0].clientX;
                 touchStartScrollLeft = teamGallery.scrollLeft;
+                touchStartTime = Date.now();
+                hasDeliberateSwipe = false;
             }, { passive: true });
             
             teamGallery.addEventListener('touchmove', (e) => {
@@ -3467,50 +3478,81 @@
             
             teamGallery.addEventListener('touchend', (e) => {
                 const touchEndX = e.changedTouches[0].clientX;
+                const touchEndTime = Date.now();
                 const swipeDistance = touchStartX - touchEndX;
                 const scrollDistance = Math.abs(teamGallery.scrollLeft - touchStartScrollLeft);
+                const swipeTime = touchEndTime - touchStartTime;
                 
-                // Only snap if:
-                // 1. User swiped horizontally (not scrolled much)
-                // 2. Swipe distance is significant (>60px)
-                // 3. Not already programmatically scrolling
-                if (Math.abs(swipeDistance) > 60 && scrollDistance < 10 && !isScrolling) {
+                // Detect deliberate swipe: significant horizontal movement, minimal scrolling, quick gesture
+                const isQuickSwipe = swipeTime < 300;
+                const isHorizontalSwipe = Math.abs(swipeDistance) > 60 && scrollDistance < 15;
+                
+                if (isHorizontalSwipe && isQuickSwipe && !isScrolling) {
+                    hasDeliberateSwipe = true;
+                    
                     if (swipeDistance > 0 && currentIndex < teamMembers.length - 1) {
-                        // Swiped left - go to next
+                        // Swiped left - go to next (one card only)
                         scrollToMember(currentIndex + 1);
                     } else if (swipeDistance < 0 && currentIndex > 0) {
-                        // Swiped right - go to previous
+                        // Swiped right - go to previous (one card only)
                         scrollToMember(currentIndex - 1);
                     }
-                } else {
+                } else if (!hasDeliberateSwipe) {
                     // User was scrolling naturally, snap to nearest after scroll ends
                     setTimeout(() => {
-                        if (!isScrolling) {
+                        if (!isScrolling && !hasDeliberateSwipe) {
                             snapToNearest();
                         }
-                    }, 150);
+                    }, 200);
                 }
+                
+                // Reset flag after a delay
+                setTimeout(() => {
+                    hasDeliberateSwipe = false;
+                }, 400);
             }, { passive: true });
             
             // Mouse events for desktop (optional, for drag support)
+            let dragStartTime = 0;
+            let hasDeliberateDrag = false;
+            
             teamGallery.addEventListener('mousedown', (e) => {
                 startX = e.clientX;
                 touchStartScrollLeft = teamGallery.scrollLeft;
+                dragStartTime = Date.now();
+                hasDeliberateDrag = false;
                 isDragging = true;
             });
             
             teamGallery.addEventListener('mouseup', (e) => {
                 if (isDragging) {
+                    const dragEndTime = Date.now();
                     const dragDistance = startX - e.clientX;
-                    if (Math.abs(dragDistance) > 50 && !isScrolling) {
+                    const scrollDistance = Math.abs(teamGallery.scrollLeft - touchStartScrollLeft);
+                    const dragTime = dragEndTime - dragStartTime;
+                    
+                    // Detect deliberate drag: significant horizontal movement, minimal scrolling, quick gesture
+                    const isQuickDrag = dragTime < 400;
+                    const isHorizontalDrag = Math.abs(dragDistance) > 50 && scrollDistance < 15;
+                    
+                    if (isHorizontalDrag && isQuickDrag && !isScrolling) {
+                        hasDeliberateDrag = true;
+                        
                         if (dragDistance > 0 && currentIndex < teamMembers.length - 1) {
+                            // Dragged left - go to next (one card only)
                             scrollToMember(currentIndex + 1);
                         } else if (dragDistance < 0 && currentIndex > 0) {
+                            // Dragged right - go to previous (one card only)
                             scrollToMember(currentIndex - 1);
                         }
-                    } else {
+                    } else if (!hasDeliberateDrag) {
                         snapToNearest();
                     }
+                    
+                    // Reset flag after a delay
+                    setTimeout(() => {
+                        hasDeliberateDrag = false;
+                    }, 400);
                 }
                 isDragging = false;
             });
@@ -3530,28 +3572,35 @@
             // Update active dot and effects when scroll naturally settles
             let scrollTimeout;
             teamGallery.addEventListener('scroll', () => {
+                // Skip if we're programmatically scrolling or if a deliberate swipe just happened
                 if (isScrolling) return;
                 
                 clearTimeout(scrollTimeout);
                 scrollTimeout = setTimeout(() => {
-                    const memberWidth = getMemberWidth();
-                    const scrollLeft = teamGallery.scrollLeft;
-                    const newIndex = Math.round(scrollLeft / memberWidth);
-                    
-                    if (newIndex !== currentIndex && newIndex >= 0 && newIndex < teamMembers.length) {
-                        currentIndex = newIndex;
-                        updateActiveDot(currentIndex);
+                    // Only update if not currently in a programmatic scroll
+                    if (!isScrolling) {
+                        const memberWidth = getMemberWidth();
+                        const scrollLeft = teamGallery.scrollLeft;
+                        const newIndex = Math.round(scrollLeft / memberWidth);
                         
-                        // Apply liquid glass effect to current member
-                        teamMembers.forEach((member, i) => {
-                            const img = member.querySelector('.team-member');
-                            if (img) {
-                                img.classList.toggle('animate-in', i === currentIndex);
-                            }
-                        });
+                        // Clamp index to valid range
+                        const clampedIndex = Math.max(0, Math.min(newIndex, teamMembers.length - 1));
+                        
+                        if (clampedIndex !== currentIndex && clampedIndex >= 0 && clampedIndex < teamMembers.length) {
+                            currentIndex = clampedIndex;
+                            updateActiveDot(currentIndex);
+                            
+                            // Apply liquid glass effect to current member
+                            teamMembers.forEach((member, i) => {
+                                const img = member.querySelector('.team-member');
+                                if (img) {
+                                    img.classList.toggle('animate-in', i === currentIndex);
+                                }
+                            });
+                        }
                     }
-                }, 100);
-            });
+                }, 150);
+            }, { passive: true });
             
             // Auto-play functionality (optional)
             function startAutoPlay() {
